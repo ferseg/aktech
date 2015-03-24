@@ -24,7 +24,7 @@
 	    * Add a sample to each test group (HTTP Request for instance)
     	* Add Listeners to check the results
 
-	+ Uso más real:
+	+ More realistic example:
     	* Use the ```Recording Template``` to record user actions in a browser through a Proxy. ** Always remember to setup your browser and put the proxy configuration **
 	    * User Defined Variables: use variables to not wire the variables in the test
     	* Request Defaults
