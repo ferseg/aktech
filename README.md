@@ -1,6 +1,6 @@
 # tech-talks
 
-1. [David Ballesteros - A Frontend Workflow](../Yeoman+Bower+Angular/README.md)
+1. [David Ballesteros - A Frontend Workflow](../Yeoman+Grunt+Bower/README.md)
 2. Alexander Chaves
 3. Keylor
 4. Josue
