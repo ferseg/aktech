@@ -1,0 +1,146 @@
+<!doctype html>
+<!--
+    All Rights Reserved
+    This software is proprietary information of
+    Intelligent Sense
+    Use is subject to license terms.
+    Filename: index.html
+-->
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/sass-bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-dialog-service/dist/dialogs.min.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="CoesApp">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div id='container' class="wrapper container clear-padding-left clear-padding-right">
+        <coes-header></coes-header>
+        <div id='body' class="col-xs-12 clear-padding-left clear-padding-right content">
+            <div class="col-xs-12 clear-padding-left clear-padding-right main-content" ng-view=""></div>
+        </div>
+        <coes-footer></coes-footer>
+    </div>
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
+    <script src="bower_components/sass-bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/jquery-form/jquery.form.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-ui-sortable/sortable.js"></script>
+    <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
+    <script src="bower_components/angular-socket-io/socket.js"></script>
+    <script src="bower_components/angular-scrollable-table/angular-scrollable-table.js"></script>
+    <script src="bower_components/spin.js/spin.js"></script>
+    <script src="bower_components/angular-spinner/angular-spinner.js"></script>
+    <script src="bower_components/highcharts/highcharts.js"></script>
+    <script src="bower_components/highcharts/highcharts-more.js"></script>
+    <script src="bower_components/highcharts/modules/exporting.js"></script>
+    <script src="bower_components/highcharts-ng/dist/highcharts-ng.js"></script>
+    <script src="bower_components/angular-svg-round-progressbar/roundProgress.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-translate/angular-translate.js"></script>
+    <script src="bower_components/angular-dialog-service/dist/dialogs.min.js"></script>
+    <script src="bower_components/angular-dialog-service/dist/dialogs-default-translations.min.js"></script>
+    <script src="bower_components/angular-utils-pagination/dirPagination.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+
+    <!-- Factories -->
+    <script src="scripts/factories/config-loader.js"></script>
+    <script src="scripts/factories/request.js"></script>
+    <script src="scripts/factories/loggly-logger.js"></script>
+    <script src="scripts/factories/error-handler.js"></script>
+    <script src="scripts/factories/logs.js"></script>
+    <script src="scripts/factories/sessionService.js"></script>
+    <script src="scripts/factories/supervisor-params.js"></script>
+    <script src="scripts/factories/utils.js"></script>
+    <script src="scripts/factories/constants.js"></script>
+    <script src="scripts/factories/coes-modules.js"></script>
+
+    <!-- Providers -->
+    <script src="scripts/providers/exceptions-handler.js"></script>
+
+    <!-- Services -->
+    <script src="scripts/services/clients-service.js"></script>
+    <script src="scripts/services/fields-service.js"></script>
+    <script src="scripts/services/media-types-service.js"></script>
+    <script src="scripts/services/messages-service.js"></script>
+    <script src="scripts/services/spaces-service.js"></script>
+    <script src="scripts/services/publicity-service.js"></script>
+    <script src="scripts/services/sectors-service.js"></script>
+    <script src="scripts/services/users-service.js"></script>
+    <script src="scripts/services/field-types-service.js"></script>
+    <script src="scripts/services/articles-service.js"></script>
+    <script src="scripts/services/emailshash-service.js"></script>
+    <script src="scripts/services/supervisor-control-service.js"></script>
+    <script src="scripts/services/special-deliveries-service.js"></script>
+    <script src="scripts/services/exportable-fields-service.js"></script>
+
+    <!-- Filters -->
+    <script src="scripts/filters/subscription-filter.js"></script>
+
+    <!-- Controllers -->
+
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/login.js"></script>
+    <script src="scripts/controllers/users.js"></script>
+    <script src="scripts/controllers/directives/header.js"></script>
+    <script src="scripts/controllers/directives/footer.js"></script>
+    <script src="scripts/controllers/directives/color-picker.js"></script>
+    <script src="scripts/controllers/directives/dynamic-field.js"></script>
+    <script src="scripts/controllers/directives/time-picker.js"></script>
+    <script src="scripts/controllers/directives/articles-directive.js"></script>
+    <script src="scripts/controllers/directives/chat.js"></script>
+
+
+    <!-- Directives -->
+    <script src="scripts/directives/header-directive.js"></script>
+    <script src="scripts/directives/footer-directive.js"></script>
+    <script src="scripts/directives/color-picker-directive.js"></script>
+    <script src="scripts/directives/ngEnter.js"></script>
+    <script src="scripts/directives/focus-element.js"></script>
+    <script src="scripts/directives/dynamic-field.js"></script>
+    <script src="scripts/directives/time-picker.js"></script>
+    <script src="scripts/directives/article.js"></script>
+    <script src="scripts/directives/fileread.js"></script>
+    <script src="scripts/directives/chat.js"></script>
+    <script src="scripts/directives/angular-round-progress-directive.js"></script>
+    <script src="scripts/directives/angu-fixed-header-table.js"></script>
+    <script src="scripts/directives/formAutofillFix.js"></script>
+
+    <!-- endbuild -->
+</body>
+</html>
