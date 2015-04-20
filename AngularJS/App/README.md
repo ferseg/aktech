@@ -1,7 +1,7 @@
 AngularJS example
 =============
 
-All the angular example is App/public folder.
+All the angular example is in App/public folder.
 
 What's included?
 ------
