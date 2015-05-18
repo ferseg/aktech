@@ -4,7 +4,7 @@
 2. [Alexander Chaves - JMeter](../master/JMeter/README.md)
 3. Keylor
 4. [Josue - AngularJS](../master/AngularJS/App)
-5. Rodolfo
+5. [Rodolfo - Vagrant + Chef](../master/Vagrant+Chef)
 6. Ricardo
 7. Minor A
 8. Luis C
