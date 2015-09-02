@@ -18,7 +18,14 @@
 
 
 * Already done:
+
  1) [David Ballesteros - A Frontend Workflow](../master/Yeoman%2BGrunt%2BBower/README.md)
  2) [Alexander Chaves - JMeter](../master/JMeter/README.md)
  3) [Josue - AngularJS](../master/AngularJS/App)
  4) [Rodolfo - Vagrant + Chef](../master/Vagrant+Chef)
+
+ <ol>
+  <li>first item</li>
+  <li>second item</li>
+  <li>third item</li>
+</ol>
