@@ -1,17 +1,22 @@
 # tech-talks
 
-1. [David Ballesteros - A Frontend Workflow](../master/Yeoman%2BGrunt%2BBower/README.md)
-2. [Alexander Chaves - JMeter](../master/JMeter/README.md)
-3. Keylor
-4. [Josue - AngularJS](../master/AngularJS/App)
-5. [Rodolfo - Vagrant + Chef](../master/Vagrant+Chef)
-6. Ricardo
+* Order:
+1. Melina
+2. Allan
+3. Mario
+4. Minor P
+5. Luis C 
+6. Julio
 7. Minor A
-8. Luis C
-9. Minor P
-10. Melina
-11.	Julio
-12.	Erick
-13.	Fernando
-14.	Mau
-15. Felipe
+8. Mauricio
+9. Fabian
+10. Paulo
+11. Rodolfo
+12. Josue
+13. Alex
+
+* Already done:
+[David Ballesteros - A Frontend Workflow](../master/Yeoman%2BGrunt%2BBower/README.md)
+[Alexander Chaves - JMeter](../master/JMeter/README.md)
+[Josue - AngularJS](../master/AngularJS/App)
+[Rodolfo - Vagrant + Chef](../master/Vagrant+Chef)
