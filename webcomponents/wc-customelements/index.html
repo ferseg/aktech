@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script type="text/javascript">
+
+        var XElementoProto = Object.create(HTMLElement.prototype);
+
+        // 1. Give x-foo a foo() method.
+        XElementoProto.createdCallback = () => {
+            alert('Elemento creado');
+        };
+
+        // 2. Define a property read-only "bar".
+        Object.defineProperty(XElementoProto, "bar", {value: 5});
+
+        // 3. Register x-foo's definition.
+        document.registerElement('x-elemento', {
+            prototype: XElementoProto
+        });
+
+        </script>
+    </head>
+    <body>
+            <x-elemento>Elemento</x-elemento>
+    </body>
+</html>
