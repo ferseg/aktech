@@ -7,10 +7,7 @@ Web Components consists of several separate technologies. You can think of Web C
 Web Components consists of these four technologies (although each can be used separately):
 <ul>
 <li> Custom Elements </li>
+<li> HTML Templates </li>
+<li> Shadow DOM </li>
+<li> HTML Imports </li>
 </ul>
-
- HTML Templates
- Shadow DOM
- HTML Imports
- 
- 
