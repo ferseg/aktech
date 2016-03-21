@@ -36,7 +36,7 @@ gulp.task('modernizr', function() {
         tests : [],         // Will include tests that were not automatically added.
         excludeTests: [],   // Will remove tests that are auto added by mistake or just unwanted.
         customeTests: [],   // Currently unavailable @see https://github.com/Modernizr/customizr/issues/22
-        crawl: true,        // Enables this plugin to automatically add feature tests.
+        crawl: true,        // Enables this plugin to automatically add feature tests by checking JS and SASS files.
         useBuffers: true,
         files:
         {
@@ -86,12 +86,13 @@ gulp.task('js', ['modernizr'], function () {
 gulp.task('js-watch', ['js'], browserSync.reload);
 
 gulp.task('compass', function() {
-  gulp.src('app/sass/*.scss')
+  gulp.src('app/sass/**/*.scss')
     .pipe(compass({
       config_file: './config.rb',
       sass: 'app/sass',
       css: 'app/tmp/css',
-      fonts: 'app/fonts'
+      fonts: 'app/fonts',
+      images: 'app/images'
     }))
     .pipe(browserSync.stream());
 });
