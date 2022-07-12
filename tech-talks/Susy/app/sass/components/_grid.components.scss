@@ -1,0 +1,39 @@
+.container {
+    @include container;
+    @include clearfix;
+    background-color: white;
+}
+
+    .column {
+        @include span(4 of 12 no-gutter);
+        height: 100vh;
+
+        &--red {
+            background-color: red;
+            border: 2px solid black;
+        }
+
+        &--blue {
+            background-color: blue;
+            border: 2px solid black;
+        }
+
+        &--yellow {
+            background-color: yellow;
+            border: 2px solid black;
+        }
+
+        &--green {
+            background-color: green;
+            border: 2px solid black;
+        }
+    }
+
+    .column-child {
+        position: relative;
+        height: 100vh;
+        @include pad(.25)
+    }
+
+
+

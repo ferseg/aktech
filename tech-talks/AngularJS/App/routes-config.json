@@ -1,0 +1,430 @@
+{
+	"authorization": {
+		"containerFile": "utils/common-functions",
+		"method": "auth"
+	},
+	"endpoints": {
+		"get": {
+			"/api/sectors": {
+				"implementorFile": "implementors/sectors",
+				"method": "getSectors"
+			},
+			"/api/dashboard/sectors": {
+				"implementorFile": "implementors/sectors",
+				"method": "getDashboardSectors"
+			},
+			"/api/sectors/:tag": {
+				"implementorFile": "implementors/sectors",
+				"method": "getSectorsByTag"
+			},
+			"/api/sectors_hierarchy": {
+				"implementorFile": "implementors/sectors",
+				"method": "getSectorsHierarchy"
+			},
+			"/api/fields": {
+				"implementorFile": "implementors/fields",
+				"method": "getFields"
+			},
+			"/api/fields/exclusives": {
+				"implementorFile": "implementors/fields",
+				"method": "getExclusiveFields"
+			},
+			"/api/fields/measurables": {
+				"implementorFile": "implementors/fields",
+				"method": "getMeasurablesFields"
+			},
+			"/api/clients": {
+				"implementorFile": "implementors/clients",
+				"method": "getClients"
+			},
+			"/api/clients/:tag": {
+				"implementorFile": "implementors/clients",
+				"method": "getClient"
+			},
+			"/api/logs": {
+				"implementorFile": "implementors/logs",
+				"method": "getLogs"
+			},
+			"/api/spaces": {
+				"implementorFile": "implementors/spaces",
+				"method": "getSpaces"
+			},
+			"/api/spaces/with_media_type": {
+				"implementorFile": "implementors/spaces",
+				"method": "getSpacesWithMediaTypes"
+			},
+			"/api/subscription-deliveries/:idSubscripcion": {
+				"implementorFile": "implementors/subscription-deliveries",
+				"method": "getSubscriptionsDeliveries"
+			},
+			"/api/subscription-delivery/:id": {
+				"implementorFile": "implementors/subscription-deliveries",
+				"method": "getSubscriptionDeliveryById"
+			},
+			"/api/subscriptions/:idClient": {
+				"implementorFile": "implementors/subscriptions",
+				"method": "getSubscriptions"
+			},
+			"/api/currentUser": {
+				"implementorFile": "implementors/users",
+				"method": "getCurrentUser",
+				"noAuth": true
+			},
+			"/api/users": {
+				"implementorFile": "implementors/users",
+				"method": "getUsers"	
+			},
+			"/api/users/byClient/:clientTag": {
+				"implementorFile": "implementors/users",
+				"method": "getUsersByClient"	
+			},
+			"/api/users/:email": {
+				"implementorFile": "implementors/users",
+				"method": "getUserByEmail"
+			},
+			"/api/countries": {
+				"implementorFile": "implementors/countries",
+				"method": "getCountries"
+			},
+			"/api/media": {
+				"implementorFile": "implementors/media-types",
+				"method": "getMediaTypes"
+			},
+			"/api/media/:tag": {
+				"implementorFile": "implementors/media-types",
+				"method": "getMediaTypeByTag"
+			},
+			"/api/permissions": {
+				"implementorFile": "implementors/permissions",
+				"method": "getPermissions"
+			},
+			"/api/schedules": {
+				"implementorFile": "implementors/schedules",
+				"method": "getSchedules"
+			},
+			"/api/schedules/:id": {
+				"implementorFile": "implementors/schedules",
+				"method": "getSchedulesById",
+				"injectAppObject": "true"
+			},
+			"/api/schedules/:day/:hour": {
+				"implementorFile": "implementors/schedules",
+				"method": "getSchedulesByDayTime",
+				"injectAppObject": "true"
+			},
+			"/api/messages": {
+				"implementorFile": "implementors/messages",
+				"method": "getMessages",
+				"injectAppObject": "true"
+			},
+			"/api/messages/:tag": {
+				"implementorFile": "implementors/messages",
+				"method": "getMessagesOfUser",
+				"injectAppObject": "true"
+			},
+			"/api/articles": {
+				"implementorFile": "implementors/articles",
+				"method": "getArticles"
+			},
+			"/api/articlesByState/:state": {
+				"implementorFile": "implementors/articles",
+				"method": "getArticlesByState"
+			},
+			"/api/articles/:id": {
+				"implementorFile": "implementors/articles",
+				"method": "getArticle"
+			},
+			"/api/articlesById/:idsArticles": {
+				"implementorFile": "implementors/emailsHash",
+				"method": "getArticlesByIds"
+			},
+			"/api/spaces-publicity": {
+				"implementorFile": "implementors/publicity",
+				"method": "getSpacesPublicity"
+			},
+			"/api/spaces-publicity/:mediaType/:edition": {
+				"implementorFile": "implementors/publicity",
+				"method": "getPublicityBySpace"
+			},
+			"/api/spaces-publicity/:mediaType/:edition/:size": {
+				"implementorFile": "implementors/publicity",
+				"method": "getPublicityBySpaceWithSize"
+			},
+			"/api/tagsHash": {
+				"implementorFile": "implementors/tagsHash",
+				"method": "getTagsHash"
+			},
+			"/api/emailsHash": {
+				"implementorFile": "implementors/emailsHash",
+				"method": "getEmailsHash"
+			},
+			"/api/emailsHash/:maxNumberNotes": {
+				"implementorFile": "implementors/emailsHash",
+				"method": "getAllArticles"
+			},
+			"/api/emailsHash/:startDate/:endDate": {
+				"implementorFile": "implementors/emailsHash",
+				"method": "getAllArticlesBetweenDates"
+			},
+			"/api/emailsHash/:email/:maxNumberNotes": {
+				"implementorFile": "implementors/emailsHash",
+				"method": "getArticlesByEmail"
+			},
+			"/api/emailsHash/:email/:startDate/:endDate": {
+				"implementorFile": "implementors/emailsHash",
+				"method": "getArticlesByEmailBetweenDates"
+			},
+			"/api/emailsHash/:email/:clientTag/:startDate/:endDate": {
+				"implementorFile": "implementors/emailsHash",
+				"method": "getArticlesByEmailAndClientBetweenDates"
+			},
+			"/api/emailsHashbyEmailSchedule/:email/:idSchedule": {
+				"implementorFile": "implementors/emailsHash",
+				"method": "getEmailsHashByEmail"
+			},
+			"/api/templates": {
+				"implementorFile": "implementors/templates",
+				"method": "getTemplates"
+			},
+			"/api/templates/:tag": {
+				"implementorFile": "implementors/templates",
+				"method": "getTemplateByTag"
+			},
+			"/api/supervisorscontrol": {
+				"implementorFile": "implementors/supervisor-control",
+				"method": "getSupervisorsControl"
+			},
+			"/api/specialdeliveries": {
+				"implementorFile": "implementors/special-deliveries",
+				"method": "getSpecialsDeliveries"
+			},
+			"/api/exportableFields": {
+				"implementorFile": "implementors/exportableFields",
+				"method": "getExportableFields"
+			},
+			"/api/exportableFields/:tag": {
+				"implementorFile": "implementors/exportableFields",
+				"method": "getExportableFieldsByTag"
+			}
+		},
+		"post": {
+			"/api/sectors": {
+				"implementorFile": "implementors/sectors",
+				"method": "saveSector"
+			},
+			"/api/fields": {
+				"implementorFile": "implementors/fields",
+				"method": "createField"
+			},
+			"/api/clients": {
+				"implementorFile": "implementors/clients",
+				"method": "createClient"
+			},
+			"/api/clients/:id/trademarks": {
+				"implementorFile": "implementors/clients",
+				"method": "createTrademark"
+			},
+			"/api/clients/:id/trademarks/:tag/products": {
+				"implementorFile": "implementors/clients",
+				"method": "createProduct"
+			},
+			"/api/trademarks/photos": {
+				"implementorFile": "implementors/clients",
+				"method": "saveProductPhoto"
+			},
+			"/api/logs": {
+				"implementorFile": "implementors/logs",
+				"method": "createLog"
+			},
+			"/api/spaces": {
+				"implementorFile": "implementors/spaces",
+				"method": "createSpace"
+			},
+			"/api/subscription-deliveries": {
+				"implementorFile": "implementors/subscription-deliveries",
+				"method": "createSubscriptionDelivery"
+			},
+			"/api/subscriptions": {
+				"implementorFile": "implementors/subscriptions",
+				"method": "createSubscription"
+			},
+			"/api/login": {
+				"implementorFile": "implementors/users",
+				"method": "login",
+				"noAuth": true
+			},
+			"/api/logout": {
+				"implementorFile": "implementors/users",
+				"method": "logout"
+			},
+			"/api/users": {
+				"implementorFile": "implementors/users",
+				"method": "createUser"
+			},
+			"/api/users/photos": {
+				"implementorFile": "implementors/users",
+				"method": "saveUserPhoto"
+			},
+			"/api/countries": {
+				"implementorFile": "implementors/countries",
+				"method": "createCountry"
+			},
+			"/api/media": {
+				"implementorFile": "implementors/media-types",
+				"method": "createMediaType"
+			},
+			"/api/permissions": {
+				"implementorFile": "implementors/permissions",
+				"method": "createPermission"
+			},
+			"/api/schedules": {
+				"implementorFile": "implementors/schedules",
+				"method": "createSchedule",
+				"injectAppObject": "true"
+			},
+			"/api/messages": {
+				"implementorFile": "implementors/messages",
+				"method": "createMessage",
+				"injectAppObject": "true"
+			},
+			"/api/articles": {
+				"implementorFile": "implementors/articles",
+				"method": "saveArticle"
+			},
+			"/api/spaces-publicity": {
+				"implementorFile": "implementors/publicity",
+				"method": "createSpacesPublicity"
+			},
+			"/api/tagsHash": {
+				"implementorFile": "implementors/tagsHash",
+				"method": "createTagHash"
+			},
+			"/api/emailsHash": {
+				"implementorFile": "implementors/emailsHash",
+				"method": "createEmailHash"
+			},
+			"/api/templates/:user": {
+				"implementorFile": "implementors/templates",
+				"method": "createTemplate"
+			},
+			"/api/specialdeliveries": {
+				"implementorFile": "implementors/special-deliveries",
+				"method": "createSpecialDelivery"
+			},
+			"/api/exportableFields": {
+				"implementorFile": "implementors/exportableFields",
+				"method": "createExportableFields"
+			}
+		},
+		"delete": {
+			"/api/sectors/:tag": {
+				"implementorFile": "implementors/sectors",
+				"method": "deleteSector"
+			},
+			"/api/fields/:id": {
+				"implementorFile": "implementors/fields",
+				"method": "deleteField"
+			},
+			"/api/subscription-deliveries/:id": {
+				"implementorFile": "implementors/subscription-deliveries",
+				"method": "deleteSubscriptionDelivery"
+			},
+			"/api/media/:tag": {
+				"implementorFile": "implementors/media-types",
+				"method": "deleteMediaType"
+			},
+			"/api/schedules/:id": {
+				"implementorFile": "implementors/schedules",
+				"method": "removeSchedule"
+			}
+		},
+		"put": {
+			"/api/sectors/:tag": {
+				"implementorFile": "implementors/sectors",
+				"method": "updateSector"
+			},
+			"/api/fields/:id": {
+				"implementorFile": "implementors/fields",
+				"method": "updateField"
+			},
+			"/api/clients/:id": {
+				"implementorFile": "implementors/clients",
+				"method": "updateClient"
+			},
+			"/api/clients/:id/trademarks/:tag": {
+				"implementorFile": "implementors/clients",
+				"method": "updateTrademark"
+			},
+			"/api/clients/:id/trademarks/:tag/products/:tagProduct": {
+				"implementorFile": "implementors/clients",
+				"method": "updateProduct"
+			},
+			"/api/spaces/:id": {
+				"implementorFile": "implementors/spaces",
+				"method": "updateSpace"
+			},
+			"/api/subscription-deliveries/:id": {
+				"implementorFile": "implementors/subscription-deliveries",
+				"method": "updateSubscriptionDelivery"
+			},
+			"/api/subscriptions": {
+				"implementorFile": "implementors/subscriptions",
+				"method": "updateSubscription"
+			},
+			"/api/users/:id": {
+				"implementorFile": "implementors/users",
+				"method": "updateUser"
+			},
+			"/api/countries/:id": {
+				"implementorFile": "implementors/countries",
+				"method": "updateCountry"
+			},
+			"/api/media/:tag": {
+				"implementorFile": "implementors/media-types",
+				"method": "updateMediaType"
+			},
+			"/api/permissions/:id": {
+				"implementorFile": "implementors/permissions",
+				"method": "updatePermission"
+			},
+			"/api/schedules/:id": {
+				"implementorFile": "implementors/schedules",
+				"method": "updateSchedule",
+				"injectAppObject": "true"
+			},
+			"/api/messages/:id": {
+				"implementorFile": "implementors/messages",
+				"method": "updateMessage",
+				"injectAppObject": "true"
+			},
+			"/api/spaces-publicity/:id": {
+				"implementorFile": "implementors/publicity",
+				"method": "updateSpacesPublicity"
+			},
+			"/api/articles/:id": {
+				"implementorFile": "implementors/articles",
+				"method": "updateArticle"
+			},
+			"/api/tagsHash/:tag": {
+				"implementorFile": "implementors/tagsHash",
+				"method": "updateTagHash"
+			},
+			"/api/emailsHash/:email": {
+				"implementorFile": "implementors/emailsHash",
+				"method": "updateEmailHash"
+			},
+			"/api/templates/:tag/:user": {
+				"implementorFile": "implementors/templates",
+				"method": "updateTemplate"
+			},
+			"/api/supervisorscontrol/:id": {
+				"implementorFile": "implementors/supervisor-control",
+				"method": "updateSupervisorControl"
+			},
+			"/api/exportableFields/:tag": {
+				"implementorFile": "implementors/exportableFields",
+				"method": "updateExportableFields"
+			}
+		}
+	}
+}
