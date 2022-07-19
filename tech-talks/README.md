@@ -21,7 +21,9 @@ Any concept that might be the target of an author’s hypertext reference must f
 - **store**: noun inside a single document, */somecontext/users/{userid}/wishlist*
 - **controller**: verbs acting over a resource or document, */somecontext/users/{userid}/export*
 
-Wnat to know more about REST guidelines and naming conventions
+Want to know more about REST guidelines and naming conventions
+
 https://restfulapi.net/
+
 https://restfulapi.net/resource-naming/
 
