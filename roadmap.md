@@ -123,3 +123,18 @@ This list do not represent any assignment, are just topics worked by some akurey
 *   whitelabeling in react, andrey, oscar chavarria
 *   videojs, oscar chavarría
 *   connection pooling, rnunez
+*   serverless tips https://docs.google.com/document/d/1nl4BT1ZG2AAw4iq0SlacDapPO8KCl3W_/edit
+*   technical tips from https://docs.google.com/document/d/10MVA31vx0-X_jvUrIF-wGkpSZ05wDlQi/edit
+
+
+# procedures
+
+### **pull request procedure**
+1. Make sure to thoroughly test the issue, do not take this step lightly. This is very important. Most issues that fail review are because something was not tested carefully. Make sure that the feature/bug you have fixed is indeed fixed.
+
+2. the PR has a proper template: description, type of change, how it has been tested
+
+3. Make sure the task executed by the author is correctly running and works as expected.
+
+4. Make sure all the functions or statements added/modified are well optimized, escalable and clear.
+
