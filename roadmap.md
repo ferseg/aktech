@@ -106,39 +106,6 @@ List of tech topics to improve and teach in the company
 
 # tech tips
 
-### generate dynamic data in pdf format
-
-*problem:* is required to download or generate a pdf with an specific format but dynamic data within. 
-*solution:* avoid to generate the whole pdf document in code, instead, in a pdf tool design a pdf form having the desire static format and add the form fields. Then with a library such as https://pdf-lib.js.org/ the fields can be load:
-
-```
-async function getFieldsInDocument() {
-
-    const pdfDoc = await PDFDocument.load('path/url to pdf file');
-    const form = pdfDoc.getForm();
-    const fields = form.getFields();
-
-    let newFields = []; 
-
-    fields.forEach((field) => {
-        const type = field.constructor.name;
-        const name = field.getName();
-        newFields.push({ type: type, name: name });
-    });
-}
-```
-
-then replace the fields with the values required
-```
-function updateFields(field,value) {
-    const newFields = updatedFields.filter((x)=>x.name !== field);
-    const currentFields = [...newFields,{name:field,value:value}];
-}
-```
-then finally write back to disk, buffer or send in the response the built pdf with the new values.
-> code courtesy and research by luis diego aguilar
-
-
 
 This list do not represent any assignment, are just topics worked by some akurey members. each topic is going to be analized and extract important tips from them. 
 

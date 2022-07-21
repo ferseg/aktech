@@ -1,7 +1,7 @@
 # Akurey's tech base
 In this repository you will find tech talks, technical hints, useful docker images, code examples and much more. This is a official evidence of akurey's standards, best practices and the more important, the technical principles to lead to our excellence. 
 
-## [Tech talks](https://github.com/akurey/aktech/tree/master/tech-talks)
+## [Tech talks](https://github.com/akurey/aktech/tree/master/tech-tips)
 Short articles and videos to demo specific practices in multiple languages, tools and strategies
 
 ## [Docker images](https://github.com/akurey/aktech/tree/master/docker%20images)

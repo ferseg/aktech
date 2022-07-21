@@ -1,10 +1,41 @@
 # tech-talks
 List of tech talks by category
 
-## frontend
+## general
 
-[Susy](https://github.com/akurey/aktech/tree/master/tech-talks/Susy)
-The Susy framework is a lightweight SASS gridding system that allows a great amount of flexibility and is able to implement just about any layout that is conceivable. It was presented in this talk as an alternative to Bootstrap for responsive websites implementation because of it's low impact on the overall CSS and it fits perfectly with the ITCSS architecture.
+### generate dynamic data in pdf format
+
+*problem:* is required to download or generate a pdf with an specific format but dynamic data within. 
+*solution:* avoid to generate the whole pdf document in code, instead, in a pdf tool design a pdf form having the desire static format and add the form fields. Then with a library such as https://pdf-lib.js.org/ the fields can be load:
+
+```
+async function getFieldsInDocument() {
+
+    const pdfDoc = await PDFDocument.load('path/url to pdf file');
+    const form = pdfDoc.getForm();
+    const fields = form.getFields();
+
+    let newFields = []; 
+
+    fields.forEach((field) => {
+        const type = field.constructor.name;
+        const name = field.getName();
+        newFields.push({ type: type, name: name });
+    });
+}
+```
+
+then replace the fields with the values required
+```
+function updateFields(field,value) {
+    const newFields = updatedFields.filter((x)=>x.name !== field);
+    const currentFields = [...newFields,{name:field,value:value}];
+}
+```
+then finally write back to disk, buffer or send in the response the built pdf with the new values.
+> code courtesy and research by luis diego aguilar
+
+## frontend
 
 
 ## backend
