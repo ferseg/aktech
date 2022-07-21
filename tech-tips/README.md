@@ -1,7 +1,7 @@
-# tech-talks
-List of tech talks by category
+# tech tips
+This a list of technical tips in different fields of software engineering
 
-## general
+## 1. general
 
 ### generate dynamic data in pdf format
 
@@ -35,12 +35,15 @@ function updateFields(field,value) {
 then finally write back to disk, buffer or send in the response the built pdf with the new values.
 > code courtesy and research by luis diego aguilar
 
-## frontend
+=============================================
+
+## 2. frontend
 
 
-## backend
+## 3. backend
 
-[RESTful naming conventions](https://1drv.ms/v/s!ApqDVCYL8CG8jYgiFl4thvty4XZsSA?e=ZzMXAo)
+### restful naming conventions
+
 REST is an acronym for REpresentational State Transfer and an architectural style for distributed hypermedia systems. Roy Fielding first presented it in 2000 in his famous dissertation. Like other architectural styles, REST has its guiding principles and constraints. These principles must be satisfied if a service interface needs to be referred to as RESTful.
 
 In REST, the primary data representation is called resource. Having a consistent and robust REST resource naming strategy will prove one of the best design decisions in the long term.
@@ -58,3 +61,6 @@ https://restfulapi.net/
 
 https://restfulapi.net/resource-naming/
 
+[watch the video](https://1drv.ms/v/s!ApqDVCYL8CG8jYgiFl4thvty4XZsSA?e=ZzMXAo)
+
+=============================================
