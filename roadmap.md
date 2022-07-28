@@ -39,62 +39,114 @@
 
 **3. Use testing:**  Testing is fundamental for each project, for example use pytest, is an open-source testing framework that is possibly on of the most widely used Python testing frameworks out there, this library is full recommended for unit test.
 
+# procedures
+
+### **pull request procedure**
+1. Make sure to thoroughly test the issue, do not take this step lightly. This is very important. Most issues that fail review are because something was not tested carefully. Make sure that the feature/bug you have fixed is indeed fixed.
+
+2. the PR has a proper template: description, type of change, how it has been tested
+
+3. Make sure the task executed by the author is correctly running and works as expected.
+
+4. Make sure all the functions or statements added/modified are well optimized, escalable and clear.
+
+
 # best practices in action
 
 **control management**
 
-*automatic bug's template in jira*, michelle alvarado
-have an automatic template when creating a jira bug, then everyone can create bug's ticket faster. 
 
-*concept maps and project documentation structure*, lindsay morales, diego cantillo, soledad kooper
-making a concept map is a good way to organize page hierarchy before building everything out in confluence. also, keep the information, decisions and assumptions correctly documented for all team members.
+*michelle alvarado. automatic bug template in jira*
+automate in Jira a template to create bug report tickets, such automation will be implemented in the jira projects under akurey's control and the ones when the client agrees to add it.
 
-*standarize ticket writing*, rodrigo navarro
-sections required: problem and acceptance criteria. also add solution saying what to do, and poc. 
+*rodrigo navarro. automatic standard template for tickets in jira*
+automate in Jira a template for tickets having a minimum set of information fields such as problem, acceptance criteria, what-to-do or solution explained, and point of contact 
 
-*slack for productivity and daily communication*, heiner leon
-reinforce the slack guide and practices to increase company productiviy
+due date: michelle alvarado and rodrigo navarro are going to research the best way to implement such ticket automation in Jira, making it easy to export or install such templates within Jira environments. Be aware of how to keep versioning such templates. 
+-----------------------------------
+
+*lindsay morales, soledad kooper, diego cantillo. clear content structures and project documentation*
+define the format and minimum fields of information for making concept maps as a good way to organize content or page hierarchy before building or documenting everything out in confluence or similar tools. also, include in such format the minimum information to keep track of decisions and assumptions within the project important for the team members. 
+
+due date: August 10th to 12th, together they're going to define a format to promote the use of mind maps and the organization of decisions and assumptions impacting the project requirements or scope. 
+-----------------------------------
 
 **operations**
 
-*async stand-up update*, esteban damazio
-send a 3 part message with the Most Important Thing Yesterday (MITY), Today (MITT), and blockers using short sentences. If needed, a subject can be expanded on a Slack thread or similar. Tag people considered important to read such update.
+
+*heiner leon, improve slack communication productivity over slack*
+reinforce the slack guide for the correctness practice in the company, channels refactoring, improve searching for info and insisist in practicing the guideline 
+
+due date:   friday 5th, proposal of channels refactoring
+-----------------------------------
+
+*esteban damazio, async stand-up updates*
+when performing daily stand-ups send in slack a 3 part message with the Most Important Thing Yesterday (MITY), Today (MITT), and blockers using short sentences. If needed, a subject can be expanded on a Slack thread or similar. Also tag concerned people on specific updates. 
+
+due date: thursday 4th, research on how to automate this process in slack on his current team and, keep a log with some examples of his standups following this format. In the next steps we'll extend this practice into other teams
+-----------------------------------
 
 **technical**
 
-*assets for devs*, ana elena, velvet, maría jésus, michelle lacoutre, pablo calderon, victoria
-standarize how to export assets to development
 
-*general settings in web projects*, esteban jimenez
-have a settings standard to have measures, colors and others to be use by all the components
+*velvet, ana elena, maría jesús, michelle lacouture, pablo calderon, victoria. standard to export assets to dev team*
+design the order, schema, values, outputs and organization of how the assets must be released to dev team for mobile and web apps
 
-*github desktop*, fabricio alvarado
-extend the use of github desktop, becoming a guro in such tool
+due date: 17th to 19 August, research what kind of inputs and assets are the most common in different mobile and web apps developed by akurey in the past, organize and compile such information. 
 
-*peer reviews to perform PRs*, fernando segovia
-perform a peer review when PRs are too complex 
+In the next steps, for every information unit detected,  the team will define what and how the assets must be released, taking in consideration fonts, sizes, color, brand book, cross-platform, cross browsing, quality and performance requirements. 
+-----------------------------------
 
-*security in mobile apps*, juan josé alpizar
-measure and improve security levels and knowledge in our mobile development field
+*esteban jiménez, reduce potential errors by having general settings in web projects*
+have a settings standard file in web projects to have measures, colors and others to be use by all the web components keeping consistency 
 
-*toDo code standard*, wilson lopez
-standarize the toDO format within the code
+due date: friday 29th, research in other previous projects developed by akurey how the general settings were managed to compare among multiple approaches. People who can provide info about it: emmanuel, alejandro arce, fernando segovia, rodrigo navarro, franco quiros, kristal duran
+-----------------------------------
 
-*microservices in micronaut*, roy cordero, jonathan avalos, arturo padilla, jason solano
-have a template to start new microserviecs projects in java with built-in good practices
+*fabricio alvarado, guro in github desktop*
+increase productivity and github conflicts by becoming a guru en github desktop to then spread such practices in the company
 
-*smart conditionals*, yeison picado
-follow the correctness on if, switch, ? and similar stataments depending of the programming context
+due date: friday 29, demo of the skills learned during July. 
+-----------------------------------
 
-*pendings*
+*fernando segovia, peer reviews to improve PRs efficacy*
+fernando will keep a log for himself of peer reviews performed: date, feature, person, findings and brief note describing why this PR required a peer review
+find out a niche where to suggest, implement and monitor such practice. current reviewers:
+rodrigo navarro -> fernanda porras, randall moya, roy fallas
+roy cordero -> andrey sanchez, oscar chavarría
+heiner leon -> esteban damazio y lindsay
 
-*   luis fernando quiros
-*   oscar chavarria
-*   andrey sanchez
-*   jose andres barboza
-*   juan manuel guevara
-*   pamela vega
-*   nahomy moya
+due date: august 17th, check the log of the PR/peer review performed by fernando. Also, fernando will talk with the previous reviewers to check if they had performed peer reviews in the past to validate PRs. 
+-----------------------------------
+
+*juan josé alpizar, security practices for mobile apps*
+perform an assessment of developed mobile apps in akurey to list vulnerabilities and establish a set of minimum security practices for the dev team
+PureHealth, verlo con Alejandro Arce
+Joypath, verlo con Alejandro Arce
+Unimart, verlo con Wilson Lopez
+
+due date: friday 19th, assessment performed of at least 3 apps. 
+In the next steps, based on the assessment result, extract the minimum set of practices and organice with rodrigo how this is going to be spread in the company.
+-----------------------------------
+
+*wilson lopez, jonathan salazar, esteban navarro, luis diego aguilar, standardize toDo format*
+team is going to design a format for toDOs in code, look if search or any other tool within the code editor to display all the toDos
+
+due date: tuesday 23rd, everyone in the team will send me a slack message with the output screenshot with your toDos in code to verify the format 
+-----------------------------------
+
+*roy cordero, jonathan avalos, arturo padilla, jason solano. micronaut microservices boilerplate*
+build, test and release a boilerplate for micronaut microservices architecture, following within multiple best practices and architectural patterns 
+
+due date: friday 5th, have the first basic version of the boilerplate ready for projects from scratch. 
+In the next steps, a list of the practices and architectural patterns will be set. 
+-----------------------------------
+
+*yeison picado, conditional correctness structure*
+improve general code quality and reduce errors by the constant practice of correct conditional statements such as if, switch and ? 
+
+due date: August 10th, extract the key practices and considerations to write excellent if, switchs and if .
+-----------------------------------
 
 # pending technical topics
 
@@ -106,10 +158,8 @@ List of tech topics to improve and teach in the company
 
 # tech tips
 
-
 This list do not represent any assignment, are just topics worked by some akurey members. each topic is going to be analized and extract important tips from them. 
 
-*   generar PDF basados en templates, luis diego aguilar
 *   swift operadores custom, andrey sanchez
 *   hasura para graphql, emmanuel murillo
 *   vercel, CI/CD, hosting, gratis fácil de usar
@@ -122,16 +172,4 @@ This list do not represent any assignment, are just topics worked by some akurey
 *   connection pooling, rnunez
 *   serverless tips https://docs.google.com/document/d/1nl4BT1ZG2AAw4iq0SlacDapPO8KCl3W_/edit
 *   technical tips from https://docs.google.com/document/d/10MVA31vx0-X_jvUrIF-wGkpSZ05wDlQi/edit
-
-
-# procedures
-
-### **pull request procedure**
-1. Make sure to thoroughly test the issue, do not take this step lightly. This is very important. Most issues that fail review are because something was not tested carefully. Make sure that the feature/bug you have fixed is indeed fixed.
-
-2. the PR has a proper template: description, type of change, how it has been tested
-
-3. Make sure the task executed by the author is correctly running and works as expected.
-
-4. Make sure all the functions or statements added/modified are well optimized, escalable and clear.
 
