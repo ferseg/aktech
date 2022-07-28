@@ -57,95 +57,120 @@
 
 
 *michelle alvarado. automatic bug template in jira*
+
 automate in Jira a template to create bug report tickets, such automation will be implemented in the jira projects under akurey's control and the ones when the client agrees to add it.
 
 *rodrigo navarro. automatic standard template for tickets in jira*
-automate in Jira a template for tickets having a minimum set of information fields such as problem, acceptance criteria, what-to-do or solution explained, and point of contact 
+automate in Jira a template for tickets having a minimum set of information fields such as problem, acceptance criteria, what-to-do or solution explained, and point of contact.
 
 due date: michelle alvarado and rodrigo navarro are going to research the best way to implement such ticket automation in Jira, making it easy to export or install such templates within Jira environments. Be aware of how to keep versioning such templates. 
+
 -----------------------------------
 
 *lindsay morales, soledad kooper, diego cantillo. clear content structures and project documentation*
+
 define the format and minimum fields of information for making concept maps as a good way to organize content or page hierarchy before building or documenting everything out in confluence or similar tools. also, include in such format the minimum information to keep track of decisions and assumptions within the project important for the team members. 
 
 due date: August 10th to 12th, together they're going to define a format to promote the use of mind maps and the organization of decisions and assumptions impacting the project requirements or scope. 
+
 -----------------------------------
 
 **operations**
 
 
 *heiner leon, improve slack communication productivity over slack*
-reinforce the slack guide for the correctness practice in the company, channels refactoring, improve searching for info and insisist in practicing the guideline 
 
-due date:   friday 5th, proposal of channels refactoring
+reinforce the slack guide for the correctness practice in the company, channels refactoring, improve searching for info and insisist in practicing the guideline.
+
+due date:   friday 5th, proposal of channels refactoring.
+
 -----------------------------------
 
 *esteban damazio, async stand-up updates*
+
 when performing daily stand-ups send in slack a 3 part message with the Most Important Thing Yesterday (MITY), Today (MITT), and blockers using short sentences. If needed, a subject can be expanded on a Slack thread or similar. Also tag concerned people on specific updates. 
 
-due date: thursday 4th, research on how to automate this process in slack on his current team and, keep a log with some examples of his standups following this format. In the next steps we'll extend this practice into other teams
+due date: thursday 4th, research on how to automate this process in slack on his current team and, keep a log with some examples of his standups following this format. In the next steps we'll extend this practice into other teams.
+
 -----------------------------------
 
 **technical**
 
 
 *velvet, ana elena, maría jesús, michelle lacouture, pablo calderon, victoria. standard to export assets to dev team*
-design the order, schema, values, outputs and organization of how the assets must be released to dev team for mobile and web apps
+
+design the order, schema, values, outputs and organization of how the assets must be released to dev team for mobile and web apps.
 
 due date: 17th to 19 August, research what kind of inputs and assets are the most common in different mobile and web apps developed by akurey in the past, organize and compile such information. 
 
 In the next steps, for every information unit detected,  the team will define what and how the assets must be released, taking in consideration fonts, sizes, color, brand book, cross-platform, cross browsing, quality and performance requirements. 
+
 -----------------------------------
 
 *esteban jiménez, reduce potential errors by having general settings in web projects*
-have a settings standard file in web projects to have measures, colors and others to be use by all the web components keeping consistency 
 
-due date: friday 29th, research in other previous projects developed by akurey how the general settings were managed to compare among multiple approaches. People who can provide info about it: emmanuel, alejandro arce, fernando segovia, rodrigo navarro, franco quiros, kristal duran
+have a settings standard file in web projects to have measures, colors and others to be use by all the web components keeping consistency.
+
+due date: friday 29th, research in other previous projects developed by akurey how the general settings were managed to compare among multiple approaches. People who can provide info about it: emmanuel, alejandro arce, fernando segovia, rodrigo navarro, franco quiros, kristal duran.
+
 -----------------------------------
 
 *fabricio alvarado, guro in github desktop*
-increase productivity and github conflicts by becoming a guru en github desktop to then spread such practices in the company
+
+increase productivity and github conflicts by becoming a guru en github desktop to then spread such practices in the company.
 
 due date: friday 29, demo of the skills learned during July. 
+
 -----------------------------------
 
 *fernando segovia, peer reviews to improve PRs efficacy*
-fernando will keep a log for himself of peer reviews performed: date, feature, person, findings and brief note describing why this PR required a peer review
-find out a niche where to suggest, implement and monitor such practice. current reviewers:
+
+fernando will keep a log for himself of peer reviews performed: date, feature, person, findings and brief note describing why this PR required a peer review. find out a niche where to suggest, implement and monitor such practice. 
+current reviewers:
 rodrigo navarro -> fernanda porras, randall moya, roy fallas
 roy cordero -> andrey sanchez, oscar chavarría
 heiner leon -> esteban damazio y lindsay
 
 due date: august 17th, check the log of the PR/peer review performed by fernando. Also, fernando will talk with the previous reviewers to check if they had performed peer reviews in the past to validate PRs. 
+
 -----------------------------------
 
 *juan josé alpizar, security practices for mobile apps*
-perform an assessment of developed mobile apps in akurey to list vulnerabilities and establish a set of minimum security practices for the dev team
-PureHealth, verlo con Alejandro Arce
-Joypath, verlo con Alejandro Arce
-Unimart, verlo con Wilson Lopez
+
+perform an assessment of developed mobile apps in akurey to list vulnerabilities and establish a set of minimum security practices for the dev team.
+
+PureHealth, check with Alejandro Arce
+Joypath, check with Alejandro Arce
+Unimart, check with Wilson Lopez
 
 due date: friday 19th, assessment performed of at least 3 apps. 
 In the next steps, based on the assessment result, extract the minimum set of practices and organice with rodrigo how this is going to be spread in the company.
+
 -----------------------------------
 
 *wilson lopez, jonathan salazar, esteban navarro, luis diego aguilar, standardize toDo format*
-team is going to design a format for toDOs in code, look if search or any other tool within the code editor to display all the toDos
 
-due date: tuesday 23rd, everyone in the team will send me a slack message with the output screenshot with your toDos in code to verify the format 
+team is going to design a format for toDOs in code, look if search or any other tool within the code editor to display all the toDos.
+
+due date: tuesday 23rd, everyone in the team will send me a slack message with the output screenshot with your toDos in code to verify the format.
+
 -----------------------------------
 
 *roy cordero, jonathan avalos, arturo padilla, jason solano. micronaut microservices boilerplate*
-build, test and release a boilerplate for micronaut microservices architecture, following within multiple best practices and architectural patterns 
+
+build, test and release a boilerplate for micronaut microservices architecture, following within multiple best practices and architectural patterns.
 
 due date: friday 5th, have the first basic version of the boilerplate ready for projects from scratch. 
 In the next steps, a list of the practices and architectural patterns will be set. 
+
 -----------------------------------
 
 *yeison picado, conditional correctness structure*
+
 improve general code quality and reduce errors by the constant practice of correct conditional statements such as if, switch and ? 
 
 due date: August 10th, extract the key practices and considerations to write excellent if, switchs and if .
+
 -----------------------------------
 
 # pending technical topics
