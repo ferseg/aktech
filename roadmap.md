@@ -188,13 +188,18 @@ This list do not represent any assignment, are just topics worked by some akurey
 *   swift operadores custom, andrey sanchez
 *   hasura para graphql, emmanuel murillo
 *   vercel, CI/CD, hosting, gratis fácil de usar
-*   redux problems, antipatrones, unsecure, luis diego aguilar
+*   redux problems al usar componetes de devtools para ver el storage, antipatrones, unsecure, luis diego aguilar
 *   custommodal, resusable components, lindsay morales
 *   typehead, para react components, lindsay morales
 *   mobx, oscar chavarria
 *   whitelabeling in react, andrey, oscar chavarria
 *   videojs, oscar chavarría
 *   connection pooling, rnunez
+*   mobile components phone, text, calendar que se pueda ver mes y año actual, con manejo de focus, esteban jimenez
+*   Como usar a favor de uno la composicion en react, dado que no hay herencia. https://es.reactjs.org/docs/composition-vs-inheritance.html
+*   
+*   atomic design, randall moya
+*   manejo de logs y errores en front y back
 *   serverless tips https://docs.google.com/document/d/1nl4BT1ZG2AAw4iq0SlacDapPO8KCl3W_/edit
 *   technical tips from https://docs.google.com/document/d/10MVA31vx0-X_jvUrIF-wGkpSZ05wDlQi/edit
 
