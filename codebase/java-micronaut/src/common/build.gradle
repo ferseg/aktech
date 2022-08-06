@@ -17,6 +17,10 @@ dependencies {
     implementation('io.micronaut:micronaut-runtime:3.5.1')
     implementation('io.micronaut:micronaut-session:3.5.1')
 
+    implementation('io.micronaut.sql:micronaut-hibernate-jpa:4.6.2')
+    implementation('io.micronaut.sql:micronaut-jdbc-hikari:4.6.2')
+    implementation('io.micronaut.data:micronaut-data-hibernate-jpa:3.7.0')
+
     implementation('io.micronaut.security:micronaut-security-annotations:3.6.3')
     implementation('io.micronaut.security:micronaut-security-jwt:3.6.3')
 

@@ -23,7 +23,6 @@ dependencies {
     implementation("io.micronaut.security:micronaut-security-jwt")
 }
 
-
 application {
     mainClass.set("com.akurey.Application")
 }
