@@ -3,7 +3,11 @@ package com.akurey.controllers;
 import javax.validation.Valid;
 
 import com.akurey.controllers.workers.LoginWorker;
+import com.akurey.controllers.workers.LogoutWorker;
+import com.akurey.controllers.workers.RefreshAuthTokenWorker;
 import com.akurey.models.LoginRequest;
+import com.akurey.models.LogoutRequest;
+import com.akurey.models.RefreshAuthTokenRequest;
 
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.MediaType;
@@ -19,29 +23,24 @@ import jakarta.inject.Inject;
 public class AuthenticationController {
 
   @Inject private LoginWorker loginWorker;
+  @Inject private LogoutWorker logoutWorker;
+  @Inject private RefreshAuthTokenWorker refreshAuthTokenWorker;
 
   @Post(value = "/login", produces = MediaType.APPLICATION_JSON)
   public HttpResponse<?> login(@RequestBean @Valid LoginRequest request) {
     return loginWorker.execute(request);
   }
 
-  // TODO: Implement other methods
+  @Secured(SecurityRule.IS_AUTHENTICATED)
+  @Post(value = "/logout", produces = MediaType.APPLICATION_JSON)
+  public HttpResponse<?> logoutStudent(@RequestBean @Valid LogoutRequest request) {
+    return logoutWorker.execute(request);
+  }
 
-  //  @Secured(SecurityRule.IS_AUTHENTICATED)
-  //  @Post(value = "/logout", produces = MediaType.APPLICATION_JSON)
-  //  public HttpResponse<?> logoutStudent(@RequestBean @Valid LogoutRequest request, Authentication authentication) {
-  //    return logoutWorker.execute(request);
-  //  }
-  //
-  //  @Post(value = "/token", produces = MediaType.APPLICATION_JSON)
-  //  public HttpResponse<?> refreshAuthToken(@RequestBean @Valid RefreshAuthTokenRequest request) {
-  //    return refreshAuthTokenWorker.execute(request);
-  //  }
-  //
-  //  @Secured(SecurityRule.IS_ANONYMOUS)
-  //  @Post(value = "/forgottenpassword", produces = MediaType.APPLICATION_JSON)
-  //  public HttpResponse<?> handleForgottenPassword(@RequestBean @Valid CreateTemporaryPasswordRequest request) {
-  //
-  //    return forgottenPasswordWorker.execute(request);
-  //  }
+  @Post(value = "/token/refresh", produces = MediaType.APPLICATION_JSON)
+  public HttpResponse<?> refreshAuthToken(@RequestBean @Valid RefreshAuthTokenRequest request) {
+    return refreshAuthTokenWorker.execute(request);
+  }
+
+  // TODO: Add forgot password flow
 }

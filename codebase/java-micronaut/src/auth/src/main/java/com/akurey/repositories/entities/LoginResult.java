@@ -29,5 +29,4 @@ public class LoginResult extends BaseSPResult {
     this.changePasswordToken = value;
     return this;
   }
-
 }

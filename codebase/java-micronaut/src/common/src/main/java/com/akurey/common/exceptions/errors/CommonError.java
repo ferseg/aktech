@@ -4,7 +4,8 @@ public enum CommonError implements HEError {
 
   NOT_HANDLED_ERROR(29000, "Something went wrong. Please try again"),
   DB_EXECUTION_ERROR(29001, "Something went wrong. Please try again"),
-  LOGIN_ERROR(29002, "Something went wrong. Please try again");
+  LOGIN_ERROR(29002, "Something went wrong. Please try again"),
+  REFRESH_TOKEN_ERROR(29003, "Something went wrong. Please try again");
 
   private int code;
   private String message;
