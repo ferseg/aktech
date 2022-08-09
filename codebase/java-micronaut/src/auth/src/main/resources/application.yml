@@ -15,12 +15,12 @@ micronaut:
         signatures:
           secret:
             generator:
-              secret: ${ACCESS_TOKEN_SECRET}
+              secret: "mqt9hg3bCvBx3TyR.jEz39ewr_LGi*RTFrZAefHV3i"
         generator:
           access-token:
             expiration: 2629746
           refresh-token:
-            secret: ${REFRESH_TOKEN_SECRET}
+            secret: "@YabzWDPohcUPcLhqCD.X9!UFCqt2_Qf!MHWaJPE8H"
 ---
 jpa:
   default:
@@ -40,7 +40,7 @@ datasources:
   default:
     pool-name: he-hikari-pool
     maximum-pool-size: 2
-    url: jdbc:mysql://${DATABASE_ENDPOINT}:3306/${DATABASE_NAME}
+    url: jdbc:mysql://localhost:3306/boilerplate
     driverClassName: com.mysql.cj.jdbc.Driver
-    username: ${DATABASE_USER}
-    password: ${DATABASE_PASSWORD}
+    username: mysql
+    password: mysql

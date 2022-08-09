@@ -1,3 +1,10 @@
 # Base backend code using Java and Micronaut
 
-TODO - Add documentation
+## Dependencies for local development:
+
+### Make: 
+https://formulae.brew.sh/formula/make
+
+```
+brew install make
+```
