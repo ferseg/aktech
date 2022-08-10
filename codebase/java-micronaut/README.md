@@ -24,6 +24,8 @@ ACCESS_TOKEN_SECRET: ask the team for the secret
 REFRESH_TOKEN_SECRET: ask the team for the secret
 DATABASE_USER: mysql
 DATABASE_PASSWORD: mysql
+DATABASE_ENDPOINT: localhost
+DATABASE_NAME: boilerplate
 ```
 
 You can use the following command (on Mac) to add them:
