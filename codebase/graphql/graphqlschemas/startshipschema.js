@@ -1,0 +1,6 @@
+"use strict";
+exports.__esModule = true;
+exports.StarShipSchema = void 0;
+var graphql_1 = require("graphql");
+exports.StarShipSchema = (0, graphql_1.buildSchema)("\n  enum ShipClass {\n    GALAXY,\n    INTREPID,\n    VESSEL,\n    COMBAT,\n    CARGO\n  },\n\n  type SpaceShip {\n    model: String!\n    class: ShipClass!\n    year: Int!\n    name: String!\n    versions: [String!]!\n    warpdrive: Boolean!\n  },\n\n  interface ISpaceShip {\n    model: String!\n    class: ShipClass!\n    year: Int!\n    warpdrive: Boolean!\n  },\n\n  type CargoShip implements ISpaceShip {\n    model: String!\n    class: ShipClass!\n    year: Int!\n    warpdrive: Boolean!\n    capacity: Int!\n    maxSpeed: Int!\n  },\n\n  type IntrepidShip implements ISpaceShip {\n    model: String!\n    class: ShipClass!\n    year: Int!\n    warpdrive: Boolean!\n    maxSpeed: Int!\n    maxWarp: Float!\n    torpedoBays: Int!\n    shieldPower: Float!\n  },\n\n  input ShipInput {\n    model: String!\n    class: ShipClass!\n    year: Int!\n    warpdrive: Boolean!\n    maxSpeed: Int\n    maxWarp: Float\n    torpedoBays: Int\n    shieldPower: Float\n  },\n\n  type Ship {\n    ships: [ISpaceShip]\n  }\n");
+module.exports = exports.StarShipSchema;

@@ -169,7 +169,15 @@ In the next steps, a list of the practices and architectural patterns will be se
 
 improve general code quality and reduce errors by the constant practice of correct conditional statements such as if, switch and ? 
 
-due date: August 10th, extract the key practices and considerations to write excellent if, switchs and if .
+*conditional correcness checklist*
+
+1. the often condition must be first
+2. circuit break principle on conditions order
+3. early termination (break, return)
+4. when many cases are required to evaluated, the switch is better than if
+5. ifs changing just one variable state can be transform into ternary conditional operation 
+
+on revision keep a log with revision date, person, amount of ifs reviewed, amount of ifs fixed
 
 -----------------------------------
 
