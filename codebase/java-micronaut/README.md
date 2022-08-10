@@ -31,3 +31,29 @@ i.e: for the DATABASE_USER would be:
 ```
 export DATABASE_USER=mysql
 ```
+
+### Database initialization
+
+Create the docker container database instance
+```
+make database-up
+```
+
+Then create the schemas, tables, SPs and filling queries
+```
+make database-migrate
+```
+
+Now, you can connect to the database
+```
+make database-connect
+```
+
+If for some reason, you need to delete your database instance, run the following
+```
+make database-down
+make database-remove
+```
+**Important note:** Take into account that all the data stored will be deleted.
+
+You can find all these definitions in the [Makefile](./Makefile).
