@@ -20,8 +20,8 @@ brew install docker
 
 In the [application.yaml](src/auth/src/main/resources/application.yml) file in the `auth` microservice, you need to set the following environment variables:
 ```
-ACCESS_TOKEN_SECRET: ask the team for the secret
-REFRESH_TOKEN_SECRET: ask the team for the secret
+ACCESS_TOKEN_SECRET: {you can add whatever token you want for local development}
+REFRESH_TOKEN_SECRET: {you can add whatever token you want for local development}
 DATABASE_USER: mysql
 DATABASE_PASSWORD: mysql
 DATABASE_ENDPOINT: localhost
