@@ -69,9 +69,43 @@ due date: michelle alvarado and rodrigo navarro are going to research the best w
 
 *lindsay morales, soledad kooper, diego cantillo. clear content structures and project documentation*
 
-define the format and minimum fields of information for making concept maps as a good way to organize content or page hierarchy before building or documenting everything out in confluence or similar tools. also, include in such format the minimum information to keep track of decisions and assumptions within the project important for the team members. 
+this is the definition and example of a concept map, the account manager is encouraged to build a concept map of the starting project and then analyze it in detail along with the team members. the maintenance of such map is not mandatory. the technological tool to build it, store it and share is also an account manager criteria.  
 
-due date: August 10th to 12th, together they're going to define a format to promote the use of mind maps and the organization of decisions and assumptions impacting the project requirements or scope. 
+concept maps can help you quickly structure or organize the information generated from a brainstorming session. concept maps are sensemaking tools that connect many ideas, objects, and events within a domain and, as a result, help organise and visualise knowledge. you start with an overarching concept that you break down into its smaller parts, using arrows and linking words to show how ideas are connected. Concept maps are helpful in any field by driving creative and visual thinking. a concept map helps you gain a better understanding of complex topics, see the big picture, and discover new connections through a collaborative and visual approach. concept maps are always used to structure your thoughts or quickly visualize information.
+
+**The process of concept mapping involves three major steps: **
+
+1. List key concepts/terms related to the topic 
+2. Build up concepts to elaborate key concepts
+3. Identify links between concepts 
+
+_structure_: concept maps usually follow a hierarchical top-to-bottom format. 
+
+_focus_: concept maps involve many connected ideas or concepts. 
+
+_labels_: concept maps use linking words to illustrate relationships between concepts. 
+
+_purpose_: concept maps or conceptual charts are best used for consolidating knowledge and analyzing problems, and require detailed thinking.
+
+**_example_**:
+
+any starting project must have valuable information for the team members, the technological tool, what information is available, and which information have more value for the team is an account manager criteria. the following list have the recommended fields to integrate into the starting project documentation respository. 
+
+1. project folder hierarchy 
+2. project dependencies
+3. conceptual map
+4. workflows, description and steps
+5. workflow restrictions and limitations
+6. project external services 
+7. services hierarchy (aws, gpa, azure, or similar)
+8. important project assets and its description
+9. configuration files
+10. architecture design focus in backend distribution and databases 
+11. fields relationship among database fields and frontend fields
+12. potential errors and how to tackle them
+13. members rol description
+14. project scope
+
 
 -----------------------------------
 
