@@ -69,6 +69,89 @@ then finally write back the pdf to disk, buffer or send it as an http response.
 
 ## 2. frontend
 
+### responsive design - internationalization
+
+English is written from left to right and top to bottom, but not all languages are written this way. Some languages like Arabic and Hebrew read from right to left, and some Japanese typefaces read vertically instead of horizontally. To accommodate these writing modes, logical properties were introduced in CSS.
+
+Whereas the directional property margin-left always refers to the margin on the left side of a content box, the logical property margin-inline-start refers to the margin on the left side of a content box in a left-to-right language, and the margin on the right side of a content box in a right-to-left language. 
+
+Don't 
+```
+		.byline {
+		  text-align: right;
+		}
+```
+Do 
+```
+		.byline {
+		  text-align: end;
+		}
+```
+
+When CSS has a specific directional value like left or right, there's a corresponding logical property. Where once we had margin-left now we also have margin-inline-start.
+In a language like English where text flows from left to right, inline-start corresponds to "left" and inline-end corresponds to "right". 
+
+Likewise, in a language like English where the text is written from top to bottom, block-start corresponds to "top" and block-end corresponds to "bottom." 
+
+Don't 
+```
+		label {
+		  margin-right: 0.5em;
+		}
+```
+Do 
+```
+		label {
+		  margin-inline-end: 0.5em;
+		}
+```
+
+You can mimic the effect of seeing your pages in a right-to-left language by using the dir attribute on your html element. A value of ltr means "left to right." A value of "rtl" means "right to left." 
+
+```
+  <body dir="rtl">
+    <h1>Form fields</h1>
+    <form>
+      <section>
+        <label for="namefield">Name</label>
+        <input type="text" id="namefield">
+      </section>
+      <section>
+        <label for="emailfield">Email</label>
+        <input type="email" id="emailfield">
+      </section>
+    </form>
+  </body>
+
+  section {
+    margin-block-start: 1rem;
+    display: flex;
+    flex-direction: row;
+  }
+
+  h1 {
+    margin-inline-start: 2rem;
+  }
+
+  label {
+    display: inline-block;
+    width: 100%;
+    max-width: 3em;
+    text-align: start;
+    margin-inline-end: 1em;
+    margin-inline-start: 2rem;
+  }
+
+  input {
+    width: 100%;
+    max-width: 16em;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    border: 3px solid #555;
+    margin-inline-end: 2rem;
+  }
+```
 
 ## 3. backend
 
