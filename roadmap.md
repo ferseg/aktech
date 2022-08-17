@@ -92,7 +92,7 @@ _purpose_: concept maps or conceptual charts are best used for consolidating kno
 any starting project must have valuable information for the team members, the technological tool, what information is available, and which information have more value for the team is an account manager criteria. the following list have the recommended fields to integrate into the starting project documentation respository. 
 
 1. project folder hierarchy 
-![using a diagram tool](/assets/images/file%20distribution.png)
+![using a diagram tool](/assets/images/file%20distribution.png){ width=50% height=50%}
 
 or using the folder explorer tool in your favorite IDE
 ![project explorer tool, example of basic react project](/assets/images/react%20folder%20distribution.png)
