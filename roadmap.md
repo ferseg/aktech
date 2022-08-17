@@ -107,8 +107,13 @@ or using the folder explorer tool in your favorite IDE
 
 
 2. project dependencies
-3. conceptual map
+3. conceptual map, as described above
+
 4. workflows, description and steps
+the account manager or the person designed to design such workflows decides the tool and how to share it to the team.
+
+![](/assets/images/sign%20up%20workflow.png) 
+
 5. workflow restrictions and limitations
 6. project external services 
 7. services hierarchy (aws, gpa, azure, or similar)
@@ -116,6 +121,10 @@ or using the folder explorer tool in your favorite IDE
 9. configuration files
 10. architecture design focus in backend distribution and databases 
 11. fields relationship among database fields and frontend fields
+the most important goal on this is to map which fields are important in the frontend and how such fields are related to database fields
+
+![](/assets/images/sign%20up%20fields.png)
+
 12. potential errors and how to tackle them
 13. members rol description
 14. project scope
