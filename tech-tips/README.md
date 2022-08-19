@@ -9,7 +9,7 @@ This a list of technical tips in different fields of software engineering
 *solution:* avoid to generate the whole pdf document in code, instead, in a pdf tool, design a pdf form having the desire static format and add the form fields. 
 
 Then with a library (https://pdf-lib.js.org/) the fields can be load:
-```
+```js
 async function getFieldsInDocument() {
 
     const pdfDoc = await PDFDocument.load('path/url to pdf file');
@@ -28,7 +28,7 @@ async function getFieldsInDocument() {
 ```
 
 now replace the fields with the values required
-```
+```js
 function updateFields(field,value) {
     const newFields = newFields.filter((x)=>x.name !== field);
     const currentFields = [...newFields,{name:field,value:value}];
@@ -36,7 +36,7 @@ function updateFields(field,value) {
 ```
 
 then finally write back the pdf to disk, buffer or send it as an http response.
-```
+```js
   async function updatePDF() {
 
     const formPdfBytes = source_PDFBuffer;
@@ -63,7 +63,7 @@ then finally write back the pdf to disk, buffer or send it as an http response.
   }
 ```
 
-> code courtesy and research by luis diego aguilar
+> ing. luis diego aguilar
 
 =============================================
 
@@ -76,13 +76,13 @@ English is written from left to right and top to bottom, but not all languages a
 Whereas the directional property margin-left always refers to the margin on the left side of a content box, the logical property margin-inline-start refers to the margin on the left side of a content box in a left-to-right language, and the margin on the right side of a content box in a right-to-left language. 
 
 Don't 
-```
+```css
 .byline {
 	text-align: right;
 }
 ```
 Do 
-```
+```css
 .byline {
 	text-align: end;
 }
@@ -152,6 +152,7 @@ input {
   margin-inline-end: 2rem;
 }
 ```
+> ing. alejandro arce
 
 ### responsive design - identify page language
 ```html
@@ -197,6 +198,8 @@ Make sure your line-height values can accommodate characters like accents and ot
 
 Don't create images that have text in them. If you do, you'll have to create separate images for each language. Instead, separate the text and the image, and use CSS to overlay the text on the image.
 
+> ing. alejandro arce
+
 ### responsive design - typography
 It's difficult to know what size text on the web should be.
 
@@ -234,9 +237,9 @@ It's important that you don't use the vw by itself in a font-size declaration.
 Don't
 
 ```css
-  html {
-    font-size: 2.5vw;
-  }
+html {
+  font-size: 2.5vw;
+}
 ```
 
 If you do, the user won't be able to resize the text. The text will be resizable if you mix in a relative unit—like em, rem or ch. The CSS calc() function is perfect for this.
@@ -246,9 +249,9 @@ You probably don't want your text to shrink and grow to extremes. You can contro
 The clamp() function is like the calc() function but it takes three values. The middle value is the same as what you pass to calc(). The opening value specifies the minimum size, in this case 1rem so as to not go below the user's preferred font size. The closing value specifies the maximum size.
 
 ```css
-  html {
-    font-size: clamp(1rem, 0.75rem + 1.5vw, 2rem);
-  }
+html {
+  font-size: clamp(1rem, 0.75rem + 1.5vw, 2rem);
+}
 ```
 
 Now the text size shrinks and grows in proportion to the user's screen but the text size will never go below 1rem or above 2rem.
@@ -258,16 +261,16 @@ Don't set your line-lengths with a fixed unit like px. Users can scale their fon
 
 Don't
 ```css
-  article {
-    max-inline-size: 700px;
-  }
+article {
+  max-inline-size: 700px;
+}
 ```
 
 Do
 ```css
-  article {
-    max-inline-size: 66ch;
-  }
+article {
+  max-inline-size: 66ch;
+}
 ```
 
 Using ch units for width will cause new lines to wrap at the 66th character at that font size.
@@ -276,16 +279,18 @@ Use unitless values for your line-height declarations. This ensures that the lin
 
 Don't
 ```css
-  line-height: 24px;
+line-height: 24px;
 ```
 Do
 ```css
-  line-height: 1.5;
+line-height: 1.5;
 ```
 
 An empty alt attribute is not the same as a missing alt attribute. Always provide an alt attribute even if an image is presentational and the alt attribute has no content.
 
 Usually the alt attribute describes the contents of the image (“Three horizontal lines.”) but with standalone icons, the alt attribute describes the meaning of the image (“Menu”).
+
+> ing. alejandro arce
 
 ### responsive design - accesibility
 
@@ -299,10 +304,10 @@ a {
 ```
 Do
 ```css
-  a {
-    color: red;
-    font-weight: bold;
-  }
+a {
+  color: red;
+  font-weight: bold;
+}
 ```
 
 Keyboard navigation
@@ -319,6 +324,8 @@ a:focus-visible {
   outline: 3px solid;
 }
 ```
+
+> ing. alejandro arce
 
 ## 3. backend
 
@@ -343,4 +350,5 @@ https://restfulapi.net/resource-naming/
 
 [watch the video](https://1drv.ms/v/s!ApqDVCYL8CG8jYgiFl4thvty4XZsSA?e=ZzMXAo)
 
+> msc. rodrigo nunez
 =============================================
