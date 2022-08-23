@@ -108,7 +108,7 @@ label {
 
 You can mimic the effect of seeing your pages in a right-to-left language by using the dir attribute on your html element. A value of ltr means "left to right." A value of "rtl" means "right to left." 
 
-```css
+```html
 <body dir="rtl">
   <h1>Form fields</h1>
   <form>
@@ -122,7 +122,8 @@ You can mimic the effect of seeing your pages in a right-to-left language by usi
     </section>
   </form>
 </body>
-
+```
+```css
 section {
   margin-block-start: 1rem;
   display: flex;
@@ -171,8 +172,6 @@ The lang attribute can go on any HTML element, in this case, one word is in Germ
 ```html
 <p>I felt some <span lang="de">schadenfreude</span>.</p>
 ```
-
-Identify a linked document's language
 
 The hreflang attribute takes the same language code notation as the lang attribute and describes the linked document's language. If there's a translation of your entire page available in German, link to it like this:
 
@@ -339,7 +338,7 @@ Any concept that might be the target of an author’s hypertext reference must f
 
 - **collection:** plural nouns, */somecontext/users*
 - **document:** singular noun, */somecontext/users/{userid}*
-- **store**: noun inside a single document, */somecontext/users/{userid}/wishlist*
+- **store**: plural noun inside a single document, */somecontext/users/{userid}/wishlists*
 - **controller**: verbs acting over a resource or document, */somecontext/users/{userid}/export*
 
 Want to know more about REST guidelines and naming conventions
@@ -350,5 +349,6 @@ https://restfulapi.net/resource-naming/
 
 [watch the video](https://1drv.ms/v/s!ApqDVCYL8CG8jYgiFl4thvty4XZsSA?e=ZzMXAo)
 
-> msc. rodrigo nunez
+> msc. rodrigo nunez 
+
 =============================================
