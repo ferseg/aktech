@@ -210,11 +210,11 @@ In the next steps, based on the assessment result, extract the minimum set of pr
 
 -----------------------------------
 
-*wilson lopez, jonathan salazar, esteban navarro, luis diego aguilar, standardize toDo format*
+*wilson lopez, jonathan salazar, esteban navarro, luis diego aguilar, kristal duran,  standardize toDo format*
 
 team is going to design a format for toDOs in code, look if search or any other tool within the code editor to display all the toDos.
 
-due date: tuesday 23rd, everyone in the team will send me a slack message with the output screenshot with your toDos in code to verify the format.
+the implementation of the toDo format is ready, starting in september the team we'll collect the extension of its use in the current project.
 
 -----------------------------------
 
