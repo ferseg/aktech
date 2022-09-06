@@ -106,33 +106,108 @@ or using the folder explorer tool in your favorite IDE
 ![project explorer tool, example of basic react project](/assets/images/react%20folder%20distribution.png)
 
 
-2. project dependencies
-3. conceptual map, as described above
-4. workflows, description, steps, restrictions and limitations 
+2. conceptual map, as described above
+3. workflows, description, steps, restrictions and limitations 
 
 the account manager or the person designed to design such workflows decides the tool and how to share it to the team.
 
 ![](/assets/images/sign%20up%20workflow.png) 
 
-5. project external services 
-6. services hierarchy (aws, gpa, azure, or similar)
-7. important project assets and its description
+4. project external services or services hierarchy (aws, gpa, azure, or similar)
+have a map or directory of the external services in the project, a diagram might work also in order to show the dependencies and relationships among the external components
+
+![](/assets/images/external%20services.png) 
+
+5. important project assets and its description
 
 design department will provide standard assets and information for the project. There's a minimum of information expected. check in this sections such requirements. bellow some examples:
 
 ![](/assets/images/assetsexample.png)
 
-8. configuration files
-9. architecture design focus in backend distribution and databases 
-10. fields relationship among database fields and frontend fields 
+6. architecture design focus in backend distribution and databases  
+there's not specific rules and shapes to diagram an architecture, but is always recommended to have at least a first version to visualize:
+- technological components
+- 3rd party services
+- technologies to be use in all the layers: presentation, business and data
+- protocols, dependencies and interconectivity 
+
+bellow some examples
+
+![](/assets/images/archi1.png) 
+![](/assets/images/archi2.png)
+![](/assets/images/archi5.png) 
+![](/assets/images/archi6.png) 
+
+
+7. fields relationship among database fields and frontend fields 
 
 the most important goal on this is to map which fields are important in the frontend and how such fields are related to database fields
 
 ![](/assets/images/sign%20up%20fields.png)
 
-12. potential errors and how to tackle them
-13. members rol description
-14. project scope
+8. potential errors and how to tackle them 
+this information must be build during project execution and becomes extremely important for on going projects. this information reduce blocking time for new team members and when building the dev environtment from scratch. 
+
+these are examples of problems and how to taclke, keep it simple and using reacheable words. 
+
+_*_Maligned structs_
+For reference on this issue, visit the following article: http://onedomain.com/ff/help/article-180
+
+_Problems updating vendors_ 
+when updating vendors using Go modules you may encounter the following error: 
+
+run vendor library-x master 
+go: github.com/facility/library-x master => v1.39.2-0.20201030171102-0132eeef438a 
+go get: inconsistent versions: 
+    github.com/facility/library-x@v1.39.2-0.20201030171102-0132eeef438a from github.com/facility/library-x@master
+    requires github.com/facility/library-x@v4.0.0+incompatible
+    (not github.com/facility/library-x@v1.39.2-0.20201030171102-0132eeef438a from github.com/facility/library-x@master)
+
+solution: 
+make sure you are in Go 1.14+
+
+_Problems with the run proto command_ 
+When you try to run the proto command in any of the golang MS you need all the repositories cloned in your computer. If that is not the case, you will find some errors like these:
+
+github.com/facility/clinic/api/proto: warning: directory does not exist.
+github.com/facility/mpi/api/proto: warning: directory does not exist.
+github.com/facility/meeting/api/proto: warning: directory does not exist.
+
+
+9. members rol description 
+at least have the person name and the brief role description. when posibble list each person role functions as describe below in the example
+
+*Mariana Musk, Technical Architect Rol* 
+- analyze and review codes PR (pull request)
+- design and analyze Technical Approaches for the solution.
+- oversees assigned programs and provide guidance to team members.
+- provide full support to the client by explaining approaches we took or may take, doing research, and bug fixing.
+- participate in several tech meetings.
+- support BA folks on their technical ask.
+- communication with apps member to align on our products and share knowledge.
+- analyze Technical Documents provided by clients to adjust our site solutions to their systems.
+- evaluate and select appropriate software and/or hardware.
+
+*Aurelio Fuentes, Business Architect Rol* 
+- work with the Technical Analysts and development team to clarify specifications.
+- coordinate workload with others BA.
+- review, create and update technical documents.
+- perform requirements analysis.
+- gather, validate and document business requirements.
+- join technical meetings.
+- analyze business scenarios.
+- create Mock Apis.
+
+another useful option in this section is the team roster table 
+![](/assets/images/teamroster.png)
+
+
+10. project scope
+the suggested project scope consist in a business card or visualization including the following information 
+- business goal of the project
+- near milestores of the project
+- everyone's contribution level to such of milestones 
+- progress balance updated 
 
 
 -----------------------------------
