@@ -73,7 +73,7 @@ this is the definition and example of a concept map, the account manager is enco
 
 concept maps can help you quickly structure or organize the information generated from a brainstorming session. concept maps are sensemaking tools that connect many ideas, objects, and events within a domain and, as a result, help organise and visualise knowledge. you start with an overarching concept that you break down into its smaller parts, using arrows and linking words to show how ideas are connected. Concept maps are helpful in any field by driving creative and visual thinking. a concept map helps you gain a better understanding of complex topics, see the big picture, and discover new connections through a collaborative and visual approach. concept maps are always used to structure your thoughts or quickly visualize information.
 
-**The process of concept mapping involves three major steps: **
+**The process of concept mapping involves three major steps:** 
 
 1. List key concepts/terms related to the topic 
 2. Build up concepts to elaborate key concepts
@@ -87,73 +87,80 @@ _labels_: concept maps use linking words to illustrate relationships between con
 
 _purpose_: concept maps or conceptual charts are best used for consolidating knowledge and analyzing problems, and require detailed thinking.
 
-**_example_**:
+**example**:
 
 ![example of a sales concept map](/assets/images/sales%20concept%20map.png) 
 
 
-any starting project must have valuable information for the team members, the technological tool, what information is available, and which information have more value for the team is an account manager criteria. the following list have the recommended fields to integrate into the starting project documentation respository. 
+any starting project must have valuable information for the team members, the tools to document it, what information is available, and which information have more value for the team is an account manager criteria. the following list are suggested items for any starting project. 
 
 1. project folder hierarchy 
 the desire folder distribution of the project will depends of the kind of project, the architectural design, boilerplates, the technology and requirements of the project
 
-for example it can be represent it using a diagram tool 
+    for example it can be represent it using a diagram tool 
 
-<img src="/assets/images/file%20distribution.png"/>
+    <img src="/assets/images/file%20distribution.png"/>
 
-or using the folder explorer tool in your favorite IDE 
+    or using the folder explorer tool in your favorite IDE 
 
-![project explorer tool, example of basic react project](/assets/images/react%20folder%20distribution.png)
+    ![project explorer tool, example of basic react project](/assets/images/react%20folder%20distribution.png)
 
 
-2. conceptual map, as described above
+2. conceptual map, as described above 
+
 3. workflows, description, steps, restrictions and limitations 
 
-the account manager or the person designed to design such workflows decides the tool and how to share it to the team.
+    the account manager or the person designed to design such workflows decides the tool and how to share it to the team.
 
-![](/assets/images/sign%20up%20workflow.png) 
+    ![](/assets/images/sign%20up%20workflow.png) 
 
 4. project external services or services hierarchy (aws, gpa, azure, or similar)
-have a map or directory of the external services in the project, a diagram might work also in order to show the dependencies and relationships among the external components
+    have a map or directory of the external services in the project, a diagram might work also in order to show the dependencies and relationships among the external components
 
-![](/assets/images/external%20services.png) 
+    ![](/assets/images/external%20services.png) 
 
 5. important project assets and its description
 
-design department will provide standard assets and information for the project. There's a minimum of information expected. check in this sections such requirements. bellow some examples:
+    design department will provide standard assets and information for the project. There's a minimum of information expected. check in this sections such requirements. bellow some examples:
 
-![](/assets/images/assetsexample.png)
+    ![](/assets/images/assetsexample.png)
 
 6. architecture design focus in backend distribution and databases  
-there's not specific rules and shapes to diagram an architecture, but is always recommended to have at least a first version to visualize:
+    there's not specific rules and shapes to diagram an architecture, but is always recommended to have at least a first version to visualize: 
+
 - technological components
 - 3rd party services
 - technologies to be use in all the layers: presentation, business and data
 - protocols, dependencies and interconectivity 
 
-bellow some examples
+    bellow some examples
 
-![](/assets/images/archi1.png) 
-![](/assets/images/archi2.png)
-![](/assets/images/archi5.png) 
-![](/assets/images/archi6.png) 
+    ![](/assets/images/archi1.jpg) 
+    ![](/assets/images/archi2.png)
+    ![](/assets/images/archi5.png) 
+    ![](/assets/images/archi6.jpg) 
 
 
 7. fields relationship among database fields and frontend fields 
 
-the most important goal on this is to map which fields are important in the frontend and how such fields are related to database fields
+    the most important goal on this is to map which fields are important in the frontend and how such fields are related to database fields
 
-![](/assets/images/sign%20up%20fields.png)
+    ![](/assets/images/sign%20up%20fields.png)
 
 8. potential errors and how to tackle them 
-this information must be build during project execution and becomes extremely important for on going projects. this information reduce blocking time for new team members and when building the dev environtment from scratch. 
 
-these are examples of problems and how to taclke, keep it simple and using reacheable words. 
+    this information must be build during project execution and becomes extremely important for on going projects. this information reduce blocking time for new team members and when building the dev environtment from scratch. 
 
-_*_Maligned structs_
+    these are examples of problems and how to taclke, keep it simple and using reacheable words. 
+
+_Maligned structs_ 
+
 For reference on this issue, visit the following article: http://onedomain.com/ff/help/article-180
 
+--------------------------------------
+
 _Problems updating vendors_ 
+
 when updating vendors using Go modules you may encounter the following error: 
 
 run vendor library-x master 
@@ -166,16 +173,20 @@ go get: inconsistent versions:
 solution: 
 make sure you are in Go 1.14+
 
+--------------------------------------
+
 _Problems with the run proto command_ 
+
 When you try to run the proto command in any of the golang MS you need all the repositories cloned in your computer. If that is not the case, you will find some errors like these:
 
 github.com/facility/clinic/api/proto: warning: directory does not exist.
 github.com/facility/mpi/api/proto: warning: directory does not exist.
 github.com/facility/meeting/api/proto: warning: directory does not exist.
 
+--------------------------------------
 
 9. members rol description 
-at least have the person name and the brief role description. when posibble list each person role functions as describe below in the example
+    at least have the person name and the brief role description. when posibble list each person role functions as describe below in the example
 
 *Mariana Musk, Technical Architect Rol* 
 - analyze and review codes PR (pull request)
@@ -198,12 +209,14 @@ at least have the person name and the brief role description. when posibble list
 - analyze business scenarios.
 - create Mock Apis.
 
-another useful option in this section is the team roster table 
-![](/assets/images/teamroster.png)
+    another useful option in this section is the team roster table 
+    
+    ![](/assets/images/teamroster.png)
 
 
-10. project scope
-the suggested project scope consist in a business card or visualization including the following information 
+10. project scope 
+
+    the suggested project scope consist in a business card or visualization including the following information 
 - business goal of the project
 - near milestores of the project
 - everyone's contribution level to such of milestones 
