@@ -209,9 +209,9 @@ github.com/facility/meeting/api/proto: warning: directory does not exist.
 - analyze business scenarios.
 - create Mock Apis.
 
-    another useful option in this section is the team roster table 
-    
-    ![](/assets/images/teamroster.png)
+another useful option in this section is the team roster table 
+
+![](/assets/images/teamroster.png)
 
 
 10. project scope 
@@ -338,11 +338,6 @@ List of tech topics to improve and teach in the company
 *   airflow
 *   odoo models
 *   i18n
-
-# tech tips
-
-This list do not represent any assignment, are just topics worked by some akurey members. each topic is going to be analized and extract important tips from them. 
-
 *   swift operadores custom, andrey sanchez
 *   hasura para graphql, emmanuel murillo
 *   vercel, CI/CD, hosting, gratis fácil de usar
@@ -358,6 +353,7 @@ This list do not represent any assignment, are just topics worked by some akurey
 *   
 *   atomic design, randall moya
 *   manejo de logs y errores en front y back
+*   heiner leon temas de arquitectura, interfaces proyecto huli
 *   serverless tips https://docs.google.com/document/d/1nl4BT1ZG2AAw4iq0SlacDapPO8KCl3W_/edit
 *   technical tips from https://docs.google.com/document/d/10MVA31vx0-X_jvUrIF-wGkpSZ05wDlQi/edit
 
