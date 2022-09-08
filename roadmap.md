@@ -63,7 +63,7 @@ automate in Jira a template to create bug report tickets, such automation will b
 *rodrigo navarro. automatic standard template for tickets in jira*
 automate in Jira a template for tickets having a minimum set of information fields such as problem, acceptance criteria, what-to-do or solution explained, and point of contact.
 
-due date: michelle alvarado and rodrigo navarro are going to research the best way to implement such ticket automation in Jira, making it easy to export or install such templates within Jira environments. Be aware of how to keep versioning such templates. 
+due date: michelle alvarado and rodrigo navarro are going to research the best way to implement such ticket automation in Jira, making it easy to export or install such templates within Jira environments. Be aware of how to keep versioning such templates. Check in date sep 15th.
 
 -----------------------------------
 
@@ -232,7 +232,10 @@ another useful option in this section is the team roster table
 
 reinforce the slack guide for the correctness practice in the company, channels refactoring, improve searching for info and insisist in practicing the guideline.
 
-due date:   friday 5th, proposal of channels refactoring.
+The first two task will be completed by Sep 30rd
+- normalize public and private channels 
+- reduce noise in public directory 
+- move project's channels from public to private 
 
 -----------------------------------
 
@@ -240,7 +243,7 @@ due date:   friday 5th, proposal of channels refactoring.
 
 when performing daily stand-ups send in slack a 3 part message with the Most Important Thing Yesterday (MITY), Today (MITT), and blockers using short sentences. If needed, a subject can be expanded on a Slack thread or similar. Also tag concerned people on specific updates. 
 
-due date: thursday 4th, research on how to automate this process in slack on his current team and, keep a log with some examples of his standups following this format. In the next steps we'll extend this practice into other teams.
+the-a-team, in charge of odoo, website and the internal apps of the company started using this format and async updates in slack since Sep 1st.  
 
 -----------------------------------
 
@@ -251,17 +254,17 @@ due date: thursday 4th, research on how to automate this process in slack on his
 
 design the order, schema, values, outputs and organization of how the assets must be released to dev team for mobile and web apps.
 
-due date: 17th to 19 August, research what kind of inputs and assets are the most common in different mobile and web apps developed by akurey in the past, organize and compile such information. 
-
 In the next steps, for every information unit detected,  the team will define what and how the assets must be released, taking in consideration fonts, sizes, color, brand book, cross-platform, cross browsing, quality and performance requirements. 
 
+First version of such standard will be release by Sep 20th
 -----------------------------------
 
 *esteban jiménez, reduce potential errors by having general settings in web projects*
 
 have a settings standard file in web projects to have measures, colors and others to be use by all the web components keeping consistency.
 
-due date: friday 29th, research in other previous projects developed by akurey how the general settings were managed to compare among multiple approaches. People who can provide info about it: emmanuel, alejandro arce, fernando segovia, rodrigo navarro, franco quiros, kristal duran.
+after a research about what and how the general settings of a web projected have been managed by others, a minimum list of settings are set as akurey standard by Sep 20th.
+
 
 -----------------------------------
 
@@ -269,19 +272,21 @@ due date: friday 29th, research in other previous projects developed by akurey h
 
 increase productivity and github conflicts by becoming a guru en github desktop to then spread such practices in the company.
 
-due date: friday 29, demo of the skills learned during July. 
+people in akurey are using commmand lines, github desktop and other visual tools for this purpose. fabricio identify who wants to learn an specific tool to perform a workshop or mentoring on this. 
+
+final decision will take place on october 4th. 
 
 -----------------------------------
 
 *fernando segovia, peer reviews to improve PRs efficacy*
 
 fernando will keep a log for himself of peer reviews performed: date, feature, person, findings and brief note describing why this PR required a peer review. find out a niche where to suggest, implement and monitor such practice. 
-current reviewers:
-rodrigo navarro -> fernanda porras, randall moya, roy fallas
-roy cordero -> andrey sanchez, oscar chavarría
-heiner leon -> esteban damazio y lindsay
 
-due date: august 17th, check the log of the PR/peer review performed by fernando. Also, fernando will talk with the previous reviewers to check if they had performed peer reviews in the past to validate PRs. 
+fernando will perform meetings to set how is going to perform the peer reviews when doing PRs.
+
+rodrigo navarro -> fernanda porras, randall moya, franco
+roy cordero -> andrey sanchez, oscar chavarría
+
 
 -----------------------------------
 
@@ -304,6 +309,14 @@ team is going to design a format for toDOs in code, look if search or any other 
 
 the implementation of the toDo format is ready, starting in september the team we'll collect the extension of its use in the current project.
 
+counters 
+
+- 09/06/2022
+    Jona: 0
+    Luis: 1
+    Esteban: 12
+    Wilson: 10
+    Kris: 0
 -----------------------------------
 
 *roy cordero, jonathan avalos, arturo padilla, jason solano. micronaut microservices boilerplate*

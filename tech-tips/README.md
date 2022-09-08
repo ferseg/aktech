@@ -351,4 +351,16 @@ https://restfulapi.net/resource-naming/
 
 > msc. rodrigo nunez 
 
+
+### choosing a message broker to communicate microservices asynchronously 
+
+to communicate microservices asynchronously with each other, meaning without waiting for a response, suited for distributed systems, a message broker is required. 
+
+when choosing a broker you should consider a few things: 
+
+- Broker Scale — The number of messages sent per second in the system.
+- Data Persistency — The ability to recover messages.
+- Consumer Capability — Whether the broker is capable of managing one-to-one and/or one-to-many consumers. 
+
+![](/assets/images/message%20broker.png)
 =============================================
