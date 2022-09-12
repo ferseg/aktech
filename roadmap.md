@@ -42,7 +42,7 @@
 # procedures
 
 ### **pull request procedure**
-1. Make sure to thoroughly test the issue, do not take this step lightly. This is very important. Most issues that fail review are because something was not tested carefully. Make sure that the feature/bug you have fixed is indeed fixed.
+1. When the author completes all the changes make sure to thoroughly test the issue, do not take this step lightly. This is very important. Most issues that fail review are because something was not tested carefully. Make sure that the feature/bug you have fixed is indeed fixed.
 
 2. the PR has a proper template: description, type of change, how it has been tested
 
@@ -257,6 +257,7 @@ design the order, schema, values, outputs and organization of how the assets mus
 In the next steps, for every information unit detected,  the team will define what and how the assets must be released, taking in consideration fonts, sizes, color, brand book, cross-platform, cross browsing, quality and performance requirements. 
 
 First version of such standard will be release by Sep 20th
+
 -----------------------------------
 
 *esteban jiménez, reduce potential errors by having general settings in web projects*
@@ -284,7 +285,8 @@ fernando will keep a log for himself of peer reviews performed: date, feature, p
 
 fernando will perform meetings to set how is going to perform the peer reviews when doing PRs.
 
-rodrigo navarro -> fernanda porras, randall moya, franco
+rodrigo navarro -> fernanda porras, randall moya, franco 
+
 roy cordero -> andrey sanchez, oscar chavarría
 
 
@@ -363,7 +365,6 @@ List of tech topics to improve and teach in the company
 *   connection pooling, rnunez
 *   mobile components phone, text, calendar que se pueda ver mes y año actual, con manejo de focus, esteban jimenez
 *   Como usar a favor de uno la composicion en react, dado que no hay herencia. https://es.reactjs.org/docs/composition-vs-inheritance.html
-*   
 *   atomic design, randall moya
 *   manejo de logs y errores en front y back
 *   heiner leon temas de arquitectura, interfaces proyecto huli
