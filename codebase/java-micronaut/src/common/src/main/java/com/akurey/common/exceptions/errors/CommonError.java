@@ -1,6 +1,6 @@
 package com.akurey.common.exceptions.errors;
 
-public enum CommonError implements HEError {
+public enum CommonError implements CustomError {
 
   NOT_HANDLED_ERROR(29000, "Something went wrong. Please try again"),
   DB_EXECUTION_ERROR(29001, "Something went wrong. Please try again"),

@@ -2,15 +2,15 @@ package com.akurey.common.exceptions;
 
 import com.akurey.common.exceptions.errors.NotFoundError;
 
-public class HENotFoundException extends HEException {
+public class NotFoundException extends CustomException {
 
   private static final long serialVersionUID = 1L;
 
-  public HENotFoundException() {
+  public NotFoundException() {
     super(NotFoundError.NOT_FOUND_RESULT);
   }
 
-  public HENotFoundException(Throwable cause) {
+  public NotFoundException(Throwable cause) {
     super(NotFoundError.NOT_FOUND_RESULT, cause);
   }
 }

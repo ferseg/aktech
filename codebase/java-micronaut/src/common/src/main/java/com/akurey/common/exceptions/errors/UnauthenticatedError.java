@@ -1,6 +1,6 @@
 package com.akurey.common.exceptions.errors;
 
-public enum UnauthenticatedError implements HEError {
+public enum UnauthenticatedError implements CustomError {
 
   UNAUTHENTICATED_ERROR(401, "You are not authorized to perform this action"),
   PASSWORD_RESET_ERROR(21000, "You need to reset your password");

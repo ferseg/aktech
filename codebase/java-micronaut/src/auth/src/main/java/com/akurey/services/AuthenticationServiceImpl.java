@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-import com.akurey.common.exceptions.HEException;
-import com.akurey.common.exceptions.HEResetPasswordException;
-import com.akurey.common.exceptions.HEUnauthorizedException;
+import com.akurey.common.exceptions.CustomException;
+import com.akurey.common.exceptions.ResetPasswordException;
+import com.akurey.common.exceptions.UnauthorizedException;
 import com.akurey.common.exceptions.errors.CommonError;
 import com.akurey.common.exceptions.errors.UnauthenticatedError;
 import com.akurey.common.exceptions.errors.UnauthorizedError;
@@ -36,12 +36,15 @@ import jakarta.inject.Inject;
 
 public class AuthenticationServiceImpl implements AuthenticationService {
 
-  @Inject private AccessRefreshTokenGenerator tokenGenerator;
-  @Inject private RefreshTokenValidator refreshTokenValidator;
-  @Inject private AuthenticationRepository repository;
+  @Inject
+  private AccessRefreshTokenGenerator tokenGenerator;
+  @Inject
+  private RefreshTokenValidator refreshTokenValidator;
+  @Inject
+  private AuthenticationRepository repository;
 
   @Override
-  public LoginResponse login(LoginRequest request) throws HEException {
+  public LoginResponse login(LoginRequest request) throws CustomException {
 
     // Login
     LoginParams params = new LoginParams()
@@ -51,11 +54,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     LoginResult result = repository.login(params);
 
     if (!result.getRoleCode().contentEquals(UserRole.ROLE_USER.getCode())) {
-      throw new HEUnauthorizedException(UnauthorizedError.LOGIN_USER_ERROR);
+      throw new UnauthorizedException(UnauthorizedError.LOGIN_USER_ERROR);
     }
 
     if (result.getChangePasswordToken() != null) {
-      throw new HEResetPasswordException(UnauthenticatedError.PASSWORD_RESET_ERROR, result.getChangePasswordToken());
+      throw new ResetPasswordException(UnauthenticatedError.PASSWORD_RESET_ERROR, result.getChangePasswordToken());
     }
 
     // Generate JWT token
@@ -84,12 +87,12 @@ public class AuthenticationServiceImpl implements AuthenticationService {
           .setRefreshToken(token.getRefreshToken());
     }
     else {
-      throw new HEException(CommonError.LOGIN_ERROR);
+      throw new CustomException(CommonError.LOGIN_ERROR);
     }
   }
 
   @Override
-  public LogoutResponse logout(LogoutRequest request) throws HEException {
+  public LogoutResponse logout(LogoutRequest request) throws CustomException {
 
     String authorizationHeader = request.getAuthorizationHeader();
     authorizationHeader = authorizationHeader.replaceFirst("Bearer ", "");
@@ -103,14 +106,14 @@ public class AuthenticationServiceImpl implements AuthenticationService {
   }
 
   @Override
-  public RefreshAuthTokenResponse refreshAuthToken(RefreshAuthTokenRequest request) throws HEException {
+  public RefreshAuthTokenResponse refreshAuthToken(RefreshAuthTokenRequest request) throws CustomException {
 
     String refreshToken = request.getAuthorizationHeader().replaceFirst("Bearer ", "");
 
     Optional<String> validRefreshToken = refreshTokenValidator.validate(refreshToken);
     if (validRefreshToken.isEmpty()) {
       // Signature of refresh token is not valid
-      throw new HEUnauthorizedException(UnauthorizedError.REFRESH_TOKEN_ERROR);
+      throw new UnauthorizedException(UnauthorizedError.REFRESH_TOKEN_ERROR);
     }
 
     GetUserWithRefreshTokenParams params = new GetUserWithRefreshTokenParams()
@@ -142,7 +145,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
           .setRefreshToken(token.getRefreshToken());
     }
     else {
-      throw new HEException(CommonError.REFRESH_TOKEN_ERROR);
+      throw new CustomException(CommonError.REFRESH_TOKEN_ERROR);
     }
   }
 }

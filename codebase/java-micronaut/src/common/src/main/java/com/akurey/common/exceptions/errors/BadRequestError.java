@@ -1,6 +1,6 @@
 package com.akurey.common.exceptions.errors;
 
-public enum BadRequestError implements HEError {
+public enum BadRequestError implements CustomError {
 
   BAD_REQUEST_ERROR(400, "Something is wrong in the request. "),
   NEXT_CODE(20000, "Placeholder for next error code");

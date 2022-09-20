@@ -3,13 +3,13 @@ package com.akurey.common.logs;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.akurey.common.exceptions.HEException;
+import com.akurey.common.exceptions.CustomException;
 
 import static net.logstash.logback.marker.Markers.append;
 
-public final class HELogger {
+public final class CustomLogger {
 
-  private static final String HE_LOG = "he_log";
+  private static final String CUSTOM_LOG = "custom_log";
 
   public static void logRequestSuccess(Object caller, Object request) {
     Logger logger = LoggerFactory.getLogger(caller.getClass());
@@ -20,10 +20,10 @@ public final class HELogger {
     marker.setEventCode(event.getCode());
     marker.setEventMessage(event.getMessage());
 
-    logger.info(event.getMessage(), append(HE_LOG, marker));
+    logger.info(event.getMessage(), append(CUSTOM_LOG, marker));
   }
 
-  public static void logRequestFailure(Object caller, HEException exception, Object request) {
+  public static void logRequestFailure(Object caller, CustomException exception, Object request) {
     LogEvent event = LogEvent.REQUEST_EXECUTION_FAILED;
     Logger logger = LoggerFactory.getLogger(caller.getClass());
     LogMarker marker = new LogMarker();
@@ -34,7 +34,7 @@ public final class HELogger {
     marker.setEventCode(event.getCode());
     marker.setEventMessage(event.getMessage());
 
-    logger.error(event.getMessage(), append(HE_LOG, marker));
+    logger.error(event.getMessage(), append(CUSTOM_LOG, marker));
   }
 
   private static String getMessageFromStack(Exception exception) {

@@ -1,7 +1,7 @@
 package com.akurey.controllers.workers;
 
 import com.akurey.common.http.BaseWorker;
-import com.akurey.common.logs.HELogger;
+import com.akurey.common.logs.CustomLogger;
 import com.akurey.models.LogoutRequest;
 import com.akurey.models.LogoutResponse;
 import com.akurey.services.AuthenticationService;
@@ -14,8 +14,11 @@ public class LogoutWorker extends BaseWorker<LogoutRequest, LogoutResponse> {
 
   @Override
   protected LogoutResponse executeImpl(LogoutRequest request) throws Exception {
+
     LogoutResponse response = service.logout(request);
-    HELogger.logRequestSuccess(this, request);
+
+    CustomLogger.logRequestSuccess(this, request);
+
     return response;
   }
 }
