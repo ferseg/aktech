@@ -6,17 +6,15 @@ import io.micronaut.core.bind.exceptions.UnsatisfiedArgumentException;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Produces;
-import io.micronaut.http.server.exceptions.ExceptionHandler;
-import io.micronaut.http.server.exceptions.UnsatisfiedArgumentHandler;
 import jakarta.inject.Singleton;
 
 @SuppressWarnings("rawtypes")
 @Produces
 @Singleton
-@Requires(classes = { UnsatisfiedArgumentException.class, ExceptionHandler.class })
-@Replaces(UnsatisfiedArgumentHandler.class)
-public class HEUnsatisfiedArgumentHandler extends HEExceptionHandler
-    implements ExceptionHandler<UnsatisfiedArgumentException, HttpResponse> {
+@Requires(classes = { UnsatisfiedArgumentException.class, io.micronaut.http.server.exceptions.ExceptionHandler.class })
+@Replaces(io.micronaut.http.server.exceptions.UnsatisfiedArgumentHandler.class)
+public class UnsatisfiedArgumentHandler extends ExceptionHandler
+    implements io.micronaut.http.server.exceptions.ExceptionHandler<UnsatisfiedArgumentException, HttpResponse> {
 
   @Override
   public HttpResponse handle(HttpRequest request, UnsatisfiedArgumentException exception) {

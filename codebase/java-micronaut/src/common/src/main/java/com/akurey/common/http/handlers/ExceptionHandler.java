@@ -10,9 +10,9 @@ import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.HttpStatus;
 
-public abstract class HEExceptionHandler {
+public abstract class ExceptionHandler {
 
-  Logger logger = LoggerFactory.getLogger(HEExceptionHandler.class);
+  Logger logger = LoggerFactory.getLogger(ExceptionHandler.class);
 
   protected HttpResponse<RestResponse<?>> handleBadRequest(HttpRequest<?> request, Exception exception,
       String message) {

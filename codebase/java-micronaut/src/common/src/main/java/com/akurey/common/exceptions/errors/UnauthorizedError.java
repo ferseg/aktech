@@ -1,6 +1,6 @@
 package com.akurey.common.exceptions.errors;
 
-public enum UnauthorizedError implements HEError {
+public enum UnauthorizedError implements CustomError {
 
   UNAUTHORIZED_ERROR(403, "You are not authorized to perform this action"),
   LOGIN_USER_ERROR(23000, "You are not authorized to login as user"),

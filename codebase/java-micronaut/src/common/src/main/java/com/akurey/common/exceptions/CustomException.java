@@ -1,29 +1,29 @@
 package com.akurey.common.exceptions;
 
-import com.akurey.common.exceptions.errors.HEError;
+import com.akurey.common.exceptions.errors.CustomError;
 
-public class HEException extends Exception {
+public class CustomException extends Exception {
 
   private static final long serialVersionUID = 1L;
 
   private int errorCode;
 
-  public HEException(HEError error, Throwable cause) {
+  public CustomException(CustomError error, Throwable cause) {
     super(error.getMessage(), cause);
     this.errorCode = error.getCode();
   }
 
-  public HEException(HEError error) {
+  public CustomException(CustomError error) {
     super(error.getMessage());
     this.errorCode = error.getCode();
   }
 
-  public HEException(String message, Throwable cause, int errorCode) {
+  public CustomException(String message, Throwable cause, int errorCode) {
     super(message, cause);
     this.errorCode = errorCode;
   }
 
-  public HEException(String message) {
+  public CustomException(String message) {
     super(message);
   }
 

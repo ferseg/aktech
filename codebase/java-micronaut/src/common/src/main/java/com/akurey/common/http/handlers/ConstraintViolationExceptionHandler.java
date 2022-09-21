@@ -13,17 +13,16 @@ import io.micronaut.context.annotation.Requires;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Produces;
-import io.micronaut.http.server.exceptions.ExceptionHandler;
 import io.micronaut.validation.exceptions.ConstraintExceptionHandler;
 import jakarta.inject.Singleton;
 
 @SuppressWarnings("rawtypes")
 @Produces
 @Singleton
-@Requires(classes = { ConstraintViolationException.class, ExceptionHandler.class })
+@Requires(classes = { ConstraintViolationException.class, io.micronaut.http.server.exceptions.ExceptionHandler.class })
 @Replaces(ConstraintExceptionHandler.class)
-public class HEConstraintViolationExceptionHandler extends HEExceptionHandler
-    implements ExceptionHandler<ConstraintViolationException, HttpResponse> {
+public class ConstraintViolationExceptionHandler extends ExceptionHandler
+    implements io.micronaut.http.server.exceptions.ExceptionHandler<ConstraintViolationException, HttpResponse> {
 
   @Override
   public HttpResponse handle(HttpRequest request, ConstraintViolationException exception) {
