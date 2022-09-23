@@ -1,0 +1,18 @@
+DELIMITER //
+DROP PROCEDURE IF EXISTS ${schemaName}.CoreSPTest //
+CREATE PROCEDURE ${schemaName}.CoreSPTest(
+)
+BEGIN
+
+  DECLARE EXIT HANDLER FOR SQLEXCEPTION
+  BEGIN
+    GET DIAGNOSTICS CONDITION 1 @err_no = MYSQL_ERRNO, @message = MESSAGE_TEXT;
+    SET @type = @err_no;
+    ROLLBACK;
+    SELECT SUBSTRING(@message, 1, 128) INTO @message;
+    RESIGNAL SET MESSAGE_TEXT = @message, CONSTRAINT_CATALOG=@type;
+  END;
+  
+  SELECT 12 AS Id;
+
+END //

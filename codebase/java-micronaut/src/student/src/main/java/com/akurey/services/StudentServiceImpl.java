@@ -1,7 +1,6 @@
 package com.akurey.services;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,6 +8,8 @@ import com.akurey.models.StudentRequest;
 import com.akurey.models.StudentResponse;
 import com.akurey.repositories.StudentRepository;
 import com.akurey.repositories.entities.Student;
+import com.akurey.repositories.entities.TestParams;
+import com.akurey.repositories.entities.TestResult;
 import com.google.common.collect.ImmutableList;
 
 import io.micronaut.core.util.StringUtils;
@@ -25,6 +26,14 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<StudentResponse> getStudents() {
+        try {
+            TestResult result = studentRepository.test(new TestParams());
+            System.out.println("id: " + result.getId());
+        }
+        catch (Exception e) {
+            System.out.println("ERROR");
+        }
+
         final List<Student> students = ImmutableList.copyOf(studentRepository.findAll());
         return students.stream()
                 .map(this::mapStudentToStudentResponse)
