@@ -1,6 +1,6 @@
 # quality assurance
 
-```typescript
+```js
 import { beforeEach } from 'mocha';
 import { generatePerson } from 'cypress/support/dataGenerators';
 
@@ -43,7 +43,7 @@ describe('Add element to Web Table', function () {
 });
 ```
 
-```typescript
+```js
 import { generatePerson } from 'cypress/support/dataGenerators';
 
 Cypress.on('uncaught:exception', (err, runnable) => {
