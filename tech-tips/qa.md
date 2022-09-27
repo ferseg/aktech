@@ -88,6 +88,6 @@ describe('Add element to Web Table', function () {
     });
 });
 ```
-notice how readable the test is, it simulates user actions and also the functions fillPersonInputs and submitPerson can be reuse in both tests.
+notice how readable the test is, it simulates user actions, also, the functions fillPersonInputs and submitPerson are used in both tests.
 
 > ing. nahomy moya
