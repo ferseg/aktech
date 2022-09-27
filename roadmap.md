@@ -289,6 +289,8 @@ rodrigo navarro -> fernanda porras, randall moya, franco
 
 roy cordero -> andrey sanchez, oscar chavarría
 
+Final guideline by September 30th
+
 
 -----------------------------------
 
@@ -296,12 +298,16 @@ roy cordero -> andrey sanchez, oscar chavarría
 
 perform an assessment of developed mobile apps in akurey to list vulnerabilities and establish a set of minimum security practices for the dev team.
 
+Three apps were check. 
+
 PureHealth, check with Alejandro Arce
 Joypath, check with Alejandro Arce
 Unimart, check with Wilson Lopez
 
 due date: friday 19th, assessment performed of at least 3 apps. 
-In the next steps, based on the assessment result, extract the minimum set of practices and organice with rodrigo how this is going to be spread in the company.
+In the next steps, based on the assessment result, extract the minimum set of practices and organice with rodrigo how this is going to be spread in the company. 
+
+Mobile security workshop based on HonoredEd app will be perform in 2023. 
 
 -----------------------------------
 
@@ -311,7 +317,7 @@ team is going to design a format for toDOs in code, look if search or any other 
 
 the implementation of the toDo format is ready, starting in september the team we'll collect the extension of its use in the current project.
 
-counters 
+counters , next count Octobr 18th
 
 - 09/06/2022
     Jona: 0
@@ -326,8 +332,10 @@ counters
 build, test and release a boilerplate for micronaut microservices architecture, following within multiple best practices and architectural patterns.
 
 due date: friday 5th, have the first basic version of the boilerplate ready for projects from scratch. 
+
 In the next steps, a list of the practices and architectural patterns will be set. 
 
+Next check Sep 23rd
 -----------------------------------
 
 *yeison picado, conditional correctness structure*
@@ -344,6 +352,15 @@ improve general code quality and reduce errors by the constant practice of corre
 
 on revision keep a log with revision date, person, amount of ifs reviewed, amount of ifs fixed
 
+Mainor Sancho, 24/8/2022, Revisados: 15, Sugerencia persona: 2, Suerencias proyecto: 1 
+Fernando Segovia, 24/8/2022, Revisados: 15, Sugerencia persona: 0, Suerencias proyecto: 2 
+Andrey Sanchez, 9/9/2022, Revisados: 10, Sugerencia persona: 1, Sugerencia proyecto: 1 
+Esteban Navarro, 9/8/2022, Revisados: 15, Sugerencia persona: 1, Sugerencia proyecto: 1 
+Lindsay, PENDIENTE, Revisados: 0, Sugerencia persona: 0, Sugerencia proyecto: 0 
+
+
+Sugerencia persona: codigo creado por la persona
+Sugerencia proyecto: codigo creado por otra persona pero que esta en el proyecto donde se trabaja, asi que ellos lo pueden mejorar
 -----------------------------------
 
 # pending technical topics
