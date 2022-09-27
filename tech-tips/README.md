@@ -11,3 +11,4 @@ find in this section technical tips in different fields of software engineering 
 
 # [backend](https://github.com/akurey/aktech/blob/master/tech-tips/4.%20backend.md) 
 
+# [qa](https://github.com/akurey/aktech/blob/master/tech-tips/5.%20qa.md) 
