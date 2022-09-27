@@ -59,7 +59,7 @@ describe('Add element to Web Table', function () {
 ```
 notice the granular amount of commands such as click and type; also the repeated code in both tests.
 
-### _for instance, the test can be coded way better like this_
+### _for instance, a way better code would be this_
 
 ```ts
 import { generatePerson } from 'cypress/support/dataGenerators';
