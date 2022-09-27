@@ -13,9 +13,7 @@ basic principles
 - write reusable functions to avoid duplicated code
 
 
-*in this example, the previous 3 rules are violated under the screenplay pattern* 
-
-notice the granular amount of commands such as click and type; also the repeated code in both tests.
+### _the following code example violated the 3 previous principles_  
 
 ```ts
 import { beforeEach } from 'mocha';
@@ -59,11 +57,9 @@ describe('Add element to Web Table', function () {
   });
 });
 ```
-
+notice the granular amount of commands such as click and type; also the repeated code in both tests.
 
 ### _for instance, the test can be coded way better like this_
-
-notice how readable the test is, it simulates user actions and also the functions fillPersonInputs and submitPerson can be reuse in both tests.
 
 ```ts
 import { generatePerson } from 'cypress/support/dataGenerators';
@@ -92,5 +88,6 @@ describe('Add element to Web Table', function () {
     });
 });
 ```
+notice how readable the test is, it simulates user actions and also the functions fillPersonInputs and submitPerson can be reuse in both tests.
 
 > ing. nahomy moya
