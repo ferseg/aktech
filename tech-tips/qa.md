@@ -4,16 +4,18 @@
 
 the screenplay pattern is a user-centered approach to writing high-quality automated acceptance tests. Instead of focusing on low-level, interface-centric interactions, you describe your test scenarios in a similar way you'd describe them to a human being - an actor in Screenplay-speak. You write simple, readable and highly-reusable code that instructs the actors what activities to perform and what things to check. 
 
+basic principles 
+
 - avoid commands execution on the test (i.e click, type, assertions…), by the contrary, encapsulate such commands into reusable functions
 
-- use meaningful names on each variable, functions, class, file and enum; make sure the name reveals user actions (i.e fillLogInnputFields(username:string, password:string))
+- use meaningful names on each variable, functions, class, file and enum; make sure the name reveals user actions (i.e fillLogInputFields(username:string, password:string))
 
-- code reusable functions to avoid code duplicated
+- write reusable functions to avoid duplicated code
 
 
 *in this example, the previous 3 rules are violated under the screenplay pattern* 
 
-notice granular amount of commands such as click and type; also the repeated code in both tests.
+notice the granular amount of commands such as click and type; also the repeated code in both tests.
 
 ```ts
 import { beforeEach } from 'mocha';
@@ -59,7 +61,7 @@ describe('Add element to Web Table', function () {
 ```
 
 
-*for instance, the test can be coded way better like this* 
+### _for instance, the test can be coded way better like this_
 
 notice how readable the test is, it simulates user actions and also the functions fillPersonInputs and submitPerson can be reuse in both tests.
 
