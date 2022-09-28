@@ -53,7 +53,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     LoginResult result = repository.login(params);
 
-    if (!result.getRoleCode().contentEquals(UserRole.ROLE_USER.getCode())) {
+    if (!result.getRoleCode().contentEquals(UserRole.ROLE_USER.getCode()) &&
+        !result.getRoleCode().contentEquals(UserRole.ROLE_ADMIN.getCode())) {
       throw new UnauthorizedException(UnauthorizedError.LOGIN_USER_ERROR);
     }
 
@@ -65,7 +66,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     ArrayList<String> roles = new ArrayList<>();
     roles.add(result.getRoleCode());
 
-    Map<String, Object> attributes = new HashMap<String, Object>();
+    Map<String, Object> attributes = new HashMap<>();
 
     Authentication userDetails = new ServerAuthentication(request.getUsername(), roles, attributes);
 

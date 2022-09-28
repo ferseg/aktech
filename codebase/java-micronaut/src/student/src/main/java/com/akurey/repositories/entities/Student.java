@@ -9,26 +9,31 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @Entity
 @Table(name = "student")
 @NoArgsConstructor
+@AllArgsConstructor
 public class Student {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long studentId;
-    @NotNull
-    private String firstName;
-    private String middleName;
-    @NotNull
-    private String lastName;
-    @NotNull
-    private String email;
-    @NotNull
-    private LocalDateTime created;
-    @NotNull
-    private LocalDateTime updated;
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long studentId;
+  @NotNull
+  private String firstName;
+  private String middleName;
+  @NotNull
+  private String lastName;
+  @NotNull
+  private String email;
+  @NotNull
+  private LocalDateTime created;
+  @NotNull
+  private LocalDateTime updated;
 }

@@ -4,8 +4,6 @@ import javax.validation.Valid;
 
 import com.akurey.common.exceptions.CustomException;
 import com.akurey.common.http.BaseController;
-import com.akurey.controllers.workers.LogoutWorker;
-import com.akurey.controllers.workers.RefreshAuthTokenWorker;
 import com.akurey.models.LoginRequest;
 import com.akurey.models.LoginResponse;
 import com.akurey.models.LogoutRequest;

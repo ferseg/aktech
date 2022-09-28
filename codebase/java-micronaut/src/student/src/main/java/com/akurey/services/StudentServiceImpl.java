@@ -4,8 +4,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+import com.akurey.common.exceptions.CustomException;
+import com.akurey.common.exceptions.NotFoundException;
+import com.akurey.common.models.MessageResponse;
 import com.akurey.models.StudentRequest;
 import com.akurey.models.StudentResponse;
+import com.akurey.models.StudentsResponse;
 import com.akurey.repositories.StudentRepository;
 import com.akurey.repositories.entities.Student;
 import com.akurey.repositories.entities.TestParams;
@@ -16,76 +20,83 @@ import io.micronaut.core.util.StringUtils;
 import jakarta.inject.Inject;
 
 public class StudentServiceImpl implements StudentService {
-    
-    private final StudentRepository studentRepository;
 
-    @Inject
-    public StudentServiceImpl(StudentRepository studentRepository) {
-        this.studentRepository = studentRepository;
+  private final StudentRepository studentRepository;
+
+  @Inject
+  public StudentServiceImpl(StudentRepository studentRepository) {
+    this.studentRepository = studentRepository;
+  }
+
+  @Override
+  public StudentsResponse getStudents() {
+    try {
+      TestResult result = studentRepository.test(new TestParams());
+      System.out.println("id: " + result.getId());
+    }
+    catch (Exception e) {
+      System.out.println("ERROR");
     }
 
-    @Override
-    public List<StudentResponse> getStudents() {
-        try {
-            TestResult result = studentRepository.test(new TestParams());
-            System.out.println("id: " + result.getId());
-        }
-        catch (Exception e) {
-            System.out.println("ERROR");
-        }
+    final List<Student> result = ImmutableList.copyOf(studentRepository.findAll());
+    final List<StudentResponse> students = result.stream()
+        .map(this::mapStudentToStudentResponse)
+        .collect(ImmutableList.toImmutableList());
 
-        final List<Student> students = ImmutableList.copyOf(studentRepository.findAll());
-        return students.stream()
-                .map(this::mapStudentToStudentResponse)
-                .collect(ImmutableList.toImmutableList());
-    }
+    return StudentsResponse.builder()
+        .students(students)
+        .build();
+  }
 
-    @Override
-    public StudentResponse getStudent(final Long studentId) {
-        return mapStudentToStudentResponse(studentRepository.findById(studentId).orElseThrow());
-    }
+  @Override
+  public StudentResponse getStudent(final Long studentId) throws CustomException {
+    final Student student = studentRepository.findById(studentId).orElseThrow(NotFoundException::new);
+    return mapStudentToStudentResponse(student);
+  }
 
-    @Override
-    public StudentResponse createStudent(final StudentRequest student) {
-        final Student newStudent = new Student();
-        newStudent.setFirstName(student.getFirstName());
-        newStudent.setMiddleName(Optional.ofNullable(student.getMiddleName()).orElse(StringUtils.EMPTY_STRING));
-        newStudent.setLastName(student.getLastName());
-        newStudent.setEmail(student.getEmail());
-        newStudent.setCreated(LocalDateTime.now());
-        newStudent.setUpdated(LocalDateTime.now());
+  @Override
+  public StudentResponse createStudent(final StudentRequest student) {
+    final Student newStudent = Student.builder()
+        .firstName(student.getFirstName())
+        .middleName(student.getMiddleName())
+        .lastName(student.getLastName())
+        .email(student.getEmail())
+        .created(LocalDateTime.now())
+        .updated(LocalDateTime.now())
+        .build();
 
-        return mapStudentToStudentResponse(studentRepository.save(newStudent));
-    }
+    return mapStudentToStudentResponse(studentRepository.save(newStudent));
+  }
 
-    @Override
-    public StudentResponse updateStudent(final Long stundentId, final StudentRequest student) {
-        final Student existingStudent = studentRepository.findById(stundentId).orElseThrow();
-        existingStudent.setFirstName(student.getFirstName());
-        existingStudent.setMiddleName(Optional.ofNullable(student.getMiddleName()).orElse(StringUtils.EMPTY_STRING));
-        existingStudent.setLastName(student.getLastName());
-        existingStudent.setEmail(student.getEmail());
-        existingStudent.setUpdated(LocalDateTime.now());
-        
-        return mapStudentToStudentResponse(studentRepository.update(existingStudent));
-    }
+  @Override
+  public StudentResponse updateStudent(final Long studentId, final StudentRequest student) throws CustomException {
+    final Student existingStudent = studentRepository.findById(studentId).orElseThrow(NotFoundException::new);
 
-    @Override
-    public boolean deleteStudent(final Long studentId) {
-        final Student student = studentRepository.findById(studentId).orElseThrow();
-        studentRepository.delete(student);
-        return Boolean.TRUE;
-    }
+    existingStudent.setFirstName(student.getFirstName());
+    existingStudent.setMiddleName(Optional.ofNullable(student.getMiddleName()).orElse(StringUtils.EMPTY_STRING));
+    existingStudent.setLastName(student.getLastName());
+    existingStudent.setEmail(student.getEmail());
+    existingStudent.setUpdated(LocalDateTime.now());
 
-    private StudentResponse mapStudentToStudentResponse(final Student student) {
-        return StudentResponse.builder()
-                .studentId(student.getStudentId())
-                .firstName(student.getFirstName())
-                .middleName(student.getMiddleName())
-                .lastName(student.getLastName())
-                .email(student.getEmail())
-                .created(student.getCreated())
-                .updated(student.getUpdated())
-                .build();
-    }
+    return mapStudentToStudentResponse(studentRepository.update(existingStudent));
+  }
+
+  @Override
+  public MessageResponse deleteStudent(final Long studentId) throws CustomException {
+    final Student student = studentRepository.findById(studentId).orElseThrow(NotFoundException::new);
+    studentRepository.delete(student);
+    return new MessageResponse();
+  }
+
+  private StudentResponse mapStudentToStudentResponse(final Student student) {
+    return StudentResponse.builder()
+        .studentId(student.getStudentId())
+        .firstName(student.getFirstName())
+        .middleName(student.getMiddleName())
+        .lastName(student.getLastName())
+        .email(student.getEmail())
+        .created(student.getCreated())
+        .updated(student.getUpdated())
+        .build();
+  }
 }
