@@ -30,7 +30,6 @@ public class AuthenticationController extends BaseController {
 
   @Post(value = "/login", produces = MediaType.APPLICATION_JSON)
   public HttpResponse<?> login(@RequestBean @Valid LoginRequest request) {
-
     try {
       LoginResponse response = service.login(request);
       return buildOkResponse(request, response);

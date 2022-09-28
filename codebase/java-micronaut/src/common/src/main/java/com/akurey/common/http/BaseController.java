@@ -18,7 +18,6 @@ public class BaseController {
 
   protected <TRequest extends BaseRequest, TResponse extends BaseResponse> HttpResponse<RestResponse<TResponse>> buildOkResponse(
       TRequest request, TResponse responseBody) {
-
     RestResponse<TResponse> response = new RestResponse<TResponse>();
     response.setData(responseBody);
     CustomLogger.logRequestSuccess(this, request);

@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS ${schemaName}.student (
+CREATE TABLE IF NOT EXISTS ${schemaName}.students (
   StudentId BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   FirstName VARCHAR(50) NOT NULL,
   MiddleName VARCHAR(50),

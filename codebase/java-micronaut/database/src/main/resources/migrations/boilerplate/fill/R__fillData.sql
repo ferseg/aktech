@@ -23,7 +23,7 @@ CALL ${schemaName}.TestSPCreateUser(6, 'admin3', '', 2, 'admin123');
 -- ========================
 -- STUDENTS
 -- ========================
-INSERT INTO ${schemaName}.student (
+INSERT INTO ${schemaName}.students (
     FirstName,
     MiddleName,
     LastName,
