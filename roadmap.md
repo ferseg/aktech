@@ -300,6 +300,7 @@ In order to deliver the images to the development team, there is necessary to cr
 - SVG is advisible for logos, icons or images required to scale in/out without loosing resolution 
 
 5. image dimensions / responsiveness
+
 Para website, de ser necesario hay que hacer 3 formatos para cada imagen (mobile, tablet y desktop) y optimizarlas para cada uno de los dispositivos. Hay que tener en cuenta que la misma imagen en desktop podría ser la misma en tablet, dependiendo de la estructura de la imagen y los breakpoints de la página. Pero para  mobile sí es necesario utilizar una imagen con dimensiones más pequeñas. Esto para optimizar el tiempo de carga en los dispositivos móbiles.
 
 
@@ -380,7 +381,7 @@ due date: friday 5th, have the first basic version of the boilerplate ready for 
 
 In the next steps, a list of the practices and architectural patterns will be set. 
 
-Next check Sep 23rd
+
 -----------------------------------
 
 *yeison picado, conditional correctness structure*
@@ -404,8 +405,10 @@ Esteban Navarro, 9/8/2022, Revisados: 15, Sugerencia persona: 1, Sugerencia proy
 Lindsay, PENDIENTE, Revisados: 0, Sugerencia persona: 0, Sugerencia proyecto: 0 
 
 
-Sugerencia persona: codigo creado por la persona
-Sugerencia proyecto: codigo creado por otra persona pero que esta en el proyecto donde se trabaja, asi que ellos lo pueden mejorar
+Sugerencia persona: codigo creado por la persona 
+
+Sugerencia proyecto: codigo creado por otra persona pero que esta en el proyecto donde se trabaja, asi que ellos lo pueden mejorar  
+
 -----------------------------------
 
 # pending technical topics
