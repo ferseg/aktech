@@ -299,9 +299,11 @@ In order to deliver the images to the development team, there is necessary to cr
 - use GIF to simulate animations 
 - SVG is advisible for logos, icons or images required to scale in/out without loosing resolution 
 
-5. image dimensions / responsiveness
-
-Para website, de ser necesario hay que hacer 3 formatos para cada imagen (mobile, tablet y desktop) y optimizarlas para cada uno de los dispositivos. Hay que tener en cuenta que la misma imagen en desktop podría ser la misma en tablet, dependiendo de la estructura de la imagen y los breakpoints de la página. Pero para  mobile sí es necesario utilizar una imagen con dimensiones más pequeñas. Esto para optimizar el tiempo de carga en los dispositivos móbiles.
+5. image dimensions / responsiveness 
+- for websites create 3 device optimized images: mobile, tablet and desktop
+- tablet and desktop image might be the same depending on the image structure and page breakpoints 
+- for mobile smaller images are always required 
+- be aware in optimizing load time because of images weight 
 
 
 -----------------------------------
