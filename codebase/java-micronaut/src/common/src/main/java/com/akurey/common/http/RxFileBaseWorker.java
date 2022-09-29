@@ -5,13 +5,13 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 
-import com.akurey.common.exceptions.BadRequestException;
-import com.akurey.common.exceptions.CustomException;
-import com.akurey.common.exceptions.NotFoundException;
-import com.akurey.common.exceptions.UnauthenticatedException;
-import com.akurey.common.exceptions.UnauthorizedException;
+import com.akurey.common.exceptions.AKBadRequestException;
+import com.akurey.common.exceptions.AKException;
+import com.akurey.common.exceptions.AKNotFoundException;
+import com.akurey.common.exceptions.AKUnauthenticatedException;
+import com.akurey.common.exceptions.AKUnauthorizedException;
 import com.akurey.common.exceptions.errors.CommonError;
-import com.akurey.common.logs.CustomLogger;
+import com.akurey.common.logs.AKLogger;
 import com.akurey.common.models.BaseRequest;
 import com.akurey.common.models.BaseResponse;
 import com.akurey.common.models.RestResponse;
@@ -79,26 +79,26 @@ public abstract class RxFileBaseWorker<TRequest extends BaseRequest> {
   private Mono<HttpResponse<RestResponse<BaseResponse>>> handleError(Throwable error, TRequest request) {
     RestResponse<BaseResponse> response = new RestResponse<BaseResponse>();
 
-    if (error instanceof CustomException) {
-      CustomException e = (CustomException) error;
-      CustomLogger.logRequestFailure(this, e, getFilteredRequest(request));
+    if (error instanceof AKException) {
+      AKException e = (AKException) error;
+      AKLogger.logRequestFailure(this, e, getFilteredRequest(request));
 
-      if (e instanceof BadRequestException) {
+      if (e instanceof AKBadRequestException) {
         response.setErrorResponse(e.getErrorCode(), e.getMessage());
         return Mono.just(HttpResponse.status(HttpStatus.BAD_REQUEST)
             .header("Content-type", MediaType.APPLICATION_JSON).body(response));
       }
-      else if (e instanceof UnauthenticatedException) {
+      else if (e instanceof AKUnauthenticatedException) {
         response.setErrorResponse(e.getErrorCode(), e.getMessage());
         return Mono.just(HttpResponse.status(HttpStatus.UNAUTHORIZED)
             .header("Content-type", MediaType.APPLICATION_JSON).body(response));
       }
-      else if (e instanceof UnauthorizedException) {
+      else if (e instanceof AKUnauthorizedException) {
         response.setErrorResponse(e.getErrorCode(), e.getMessage());
         return Mono.just(HttpResponse.status(HttpStatus.FORBIDDEN)
             .header("Content-type", MediaType.APPLICATION_JSON).body(response));
       }
-      else if (e instanceof NotFoundException) {
+      else if (e instanceof AKNotFoundException) {
         response.setErrorResponse(HttpStatus.NOT_FOUND.getCode(), e.getMessage());
         return Mono.just(HttpResponse.status(HttpStatus.NOT_FOUND)
             .header("Content-type", MediaType.APPLICATION_JSON).body(response));
@@ -110,7 +110,7 @@ public abstract class RxFileBaseWorker<TRequest extends BaseRequest> {
       }
     }
 
-    CustomLogger.logRequestFailure(this, new CustomException(CommonError.NOT_HANDLED_ERROR, error),
+    AKLogger.logRequestFailure(this, new AKException(CommonError.NOT_HANDLED_ERROR, error),
         getFilteredRequest(request));
     response.setErrorResponse(CommonError.NOT_HANDLED_ERROR.getCode(), CommonError.NOT_HANDLED_ERROR.getMessage());
     return Mono.just(HttpResponse.status(HttpStatus.INTERNAL_SERVER_ERROR)

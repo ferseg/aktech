@@ -3,11 +3,11 @@ package com.akurey.common.logs;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.akurey.common.exceptions.CustomException;
+import com.akurey.common.exceptions.AKException;
 
 import static net.logstash.logback.marker.Markers.append;
 
-public final class CustomLogger {
+public final class AKLogger {
 
   private static final String CUSTOM_LOG = "custom_log";
 
@@ -23,7 +23,7 @@ public final class CustomLogger {
     logger.info(event.getMessage(), append(CUSTOM_LOG, marker));
   }
 
-  public static void logRequestFailure(Object caller, CustomException exception, Object request) {
+  public static void logRequestFailure(Object caller, AKException exception, Object request) {
     LogEvent event = LogEvent.REQUEST_EXECUTION_FAILED;
     Logger logger = LoggerFactory.getLogger(caller.getClass());
     LogMarker marker = new LogMarker();

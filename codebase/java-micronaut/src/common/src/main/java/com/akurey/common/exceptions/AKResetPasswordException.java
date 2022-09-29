@@ -2,13 +2,13 @@ package com.akurey.common.exceptions;
 
 import com.akurey.common.exceptions.errors.UnauthenticatedError;
 
-public class ResetPasswordException extends UnauthenticatedException {
+public class AKResetPasswordException extends AKUnauthenticatedException {
 
   private static final long serialVersionUID = 1L;
 
   private String changePasswordToken;
 
-  public ResetPasswordException(UnauthenticatedError error, String changePasswordToken) {
+  public AKResetPasswordException(UnauthenticatedError error, String changePasswordToken) {
     super(error);
     this.setChangePasswordToken(changePasswordToken);
   }

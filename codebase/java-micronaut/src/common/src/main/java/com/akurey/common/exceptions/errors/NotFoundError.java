@@ -1,6 +1,6 @@
 package com.akurey.common.exceptions.errors;
 
-public enum NotFoundError implements CustomError {
+public enum NotFoundError implements AKError {
 
   NOT_FOUND_RESULT(404, "Resource not found"),
   NEXT_CODE(24000, "Placeholder for next error code");

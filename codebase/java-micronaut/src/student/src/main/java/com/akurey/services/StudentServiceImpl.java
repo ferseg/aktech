@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-import com.akurey.common.exceptions.CustomException;
-import com.akurey.common.exceptions.NotFoundException;
+import com.akurey.common.exceptions.AKException;
+import com.akurey.common.exceptions.AKNotFoundException;
 import com.akurey.common.models.MessageResponse;
 import com.akurey.models.StudentRequest;
 import com.akurey.models.StudentResponse;
@@ -49,8 +49,8 @@ public class StudentServiceImpl implements StudentService {
   }
 
   @Override
-  public StudentResponse getStudent(final Long studentId) throws CustomException {
-    final Student student = studentRepository.findById(studentId).orElseThrow(NotFoundException::new);
+  public StudentResponse getStudent(final Long studentId) throws AKException {
+    final Student student = studentRepository.findById(studentId).orElseThrow(AKNotFoundException::new);
     return mapStudentToStudentResponse(student);
   }
 
@@ -69,8 +69,8 @@ public class StudentServiceImpl implements StudentService {
   }
 
   @Override
-  public StudentResponse updateStudent(final Long studentId, final StudentRequest student) throws CustomException {
-    final Student existingStudent = studentRepository.findById(studentId).orElseThrow(NotFoundException::new);
+  public StudentResponse updateStudent(final Long studentId, final StudentRequest student) throws AKException {
+    final Student existingStudent = studentRepository.findById(studentId).orElseThrow(AKNotFoundException::new);
 
     existingStudent.setFirstName(student.getFirstName());
     existingStudent.setMiddleName(Optional.ofNullable(student.getMiddleName()).orElse(StringUtils.EMPTY_STRING));
@@ -82,8 +82,8 @@ public class StudentServiceImpl implements StudentService {
   }
 
   @Override
-  public MessageResponse deleteStudent(final Long studentId) throws CustomException {
-    final Student student = studentRepository.findById(studentId).orElseThrow(NotFoundException::new);
+  public MessageResponse deleteStudent(final Long studentId) throws AKException {
+    final Student student = studentRepository.findById(studentId).orElseThrow(AKNotFoundException::new);
     studentRepository.delete(student);
     return new MessageResponse();
   }

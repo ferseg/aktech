@@ -3,7 +3,7 @@ package com.akurey.repositories;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
-import com.akurey.common.exceptions.CustomException;
+import com.akurey.common.exceptions.AKException;
 import com.akurey.common.repositories.BaseRepository;
 import com.akurey.repositories.entities.Student;
 import com.akurey.repositories.entities.TestParams;
@@ -27,7 +27,7 @@ public abstract class StudentRepository extends BaseRepository implements CrudRe
   }
 
   @Transactional
-  public TestResult test(TestParams params) throws CustomException {
+  public TestResult test(TestParams params) throws AKException {
     return getSingleResult(params, TestResult.class);
   }
 }

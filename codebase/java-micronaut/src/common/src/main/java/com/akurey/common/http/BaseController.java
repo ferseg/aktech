@@ -1,11 +1,11 @@
 package com.akurey.common.http;
 
-import com.akurey.common.exceptions.BadRequestException;
-import com.akurey.common.exceptions.CustomException;
-import com.akurey.common.exceptions.NotFoundException;
-import com.akurey.common.exceptions.UnauthenticatedException;
-import com.akurey.common.exceptions.UnauthorizedException;
-import com.akurey.common.logs.CustomLogger;
+import com.akurey.common.exceptions.AKBadRequestException;
+import com.akurey.common.exceptions.AKException;
+import com.akurey.common.exceptions.AKNotFoundException;
+import com.akurey.common.exceptions.AKUnauthenticatedException;
+import com.akurey.common.exceptions.AKUnauthorizedException;
+import com.akurey.common.logs.AKLogger;
 import com.akurey.common.models.BaseRequest;
 import com.akurey.common.models.BaseResponse;
 import com.akurey.common.models.RestResponse;
@@ -20,7 +20,7 @@ public class BaseController {
       TRequest request, TResponse responseBody) {
     RestResponse<TResponse> response = new RestResponse<TResponse>();
     response.setData(responseBody);
-    CustomLogger.logRequestSuccess(this, request);
+    AKLogger.logRequestSuccess(this, request);
     return HttpResponse.status(HttpStatus.OK).body(response);
   }
 
@@ -28,33 +28,33 @@ public class BaseController {
       TRequest request, TResponse responseBody) {
     RestResponse<TResponse> response = new RestResponse<TResponse>();
     response.setData(responseBody);
-    CustomLogger.logRequestSuccess(this, request);
+    AKLogger.logRequestSuccess(this, request);
     return HttpResponse.status(HttpStatus.CREATED).body(response);
   }
 
   protected <TRequest extends BaseRequest> HttpResponse<?> buildNoContentResponse(TRequest request) {
-    CustomLogger.logRequestSuccess(this, request);
+    AKLogger.logRequestSuccess(this, request);
     return HttpResponse.status(HttpStatus.NO_CONTENT);
   }
 
   protected <TResponse extends BaseResponse> MutableHttpResponse<RestResponse<TResponse>> buildExceptionResponse(
-      CustomException e, Object request) {
-    CustomLogger.logRequestFailure(this, e, request);
+      AKException e, Object request) {
+    AKLogger.logRequestFailure(this, e, request);
 
     RestResponse<TResponse> response = new RestResponse<TResponse>();
     response.setErrorResponse(e.getErrorCode(), e.getMessage());
 
     HttpStatus status;
-    if (e instanceof BadRequestException) {
+    if (e instanceof AKBadRequestException) {
       status = HttpStatus.BAD_REQUEST;
     }
-    else if (e instanceof UnauthenticatedException) {
+    else if (e instanceof AKUnauthenticatedException) {
       status = HttpStatus.UNAUTHORIZED;
     }
-    else if (e instanceof UnauthorizedException) {
+    else if (e instanceof AKUnauthorizedException) {
       status = HttpStatus.FORBIDDEN;
     }
-    else if (e instanceof NotFoundException) {
+    else if (e instanceof AKNotFoundException) {
       status = HttpStatus.NOT_FOUND;
     }
     else {

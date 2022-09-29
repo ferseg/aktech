@@ -13,18 +13,18 @@ import javax.persistence.StoredProcedureQuery;
 
 import org.hibernate.JDBCException;
 
-import com.akurey.common.exceptions.BadRequestException;
-import com.akurey.common.exceptions.CustomException;
-import com.akurey.common.exceptions.NotFoundException;
-import com.akurey.common.exceptions.UnauthenticatedException;
-import com.akurey.common.exceptions.UnauthorizedException;
+import com.akurey.common.exceptions.AKBadRequestException;
+import com.akurey.common.exceptions.AKException;
+import com.akurey.common.exceptions.AKNotFoundException;
+import com.akurey.common.exceptions.AKUnauthenticatedException;
+import com.akurey.common.exceptions.AKUnauthorizedException;
 import com.akurey.common.exceptions.errors.CommonError;
 
 public abstract class BaseRepository {
 
   protected abstract EntityManager getEntityManager();
 
-  protected void executeWithoutResult(BaseSPParams params) throws CustomException {
+  protected void executeWithoutResult(BaseSPParams params) throws AKException {
     EntityManager entityManager = getEntityManager();
     try {
       StoredProcedureQuery storedProcedure = buildStoredProcedure(entityManager, params, null);
@@ -39,7 +39,7 @@ public abstract class BaseRepository {
 
   @SuppressWarnings("unchecked")
   protected <TResult extends BaseSPResult> TResult getSingleResult(BaseSPParams params, Class<TResult> resultClass)
-      throws CustomException {
+      throws AKException {
 
     EntityManager entityManager = getEntityManager();
 
@@ -51,7 +51,7 @@ public abstract class BaseRepository {
       return (TResult) storedProcedure.getSingleResult();
     }
     catch (NoResultException e) {
-      throw new NotFoundException(e);
+      throw new AKNotFoundException(e);
     }
     catch (PersistenceException e) {
       throw createHEDBException(e);
@@ -60,7 +60,7 @@ public abstract class BaseRepository {
 
   @SuppressWarnings("unchecked")
   protected <TResult extends BaseSPResult> List<TResult> getResultList(BaseSPParams params, Class<TResult> resultClass)
-      throws CustomException {
+      throws AKException {
 
     EntityManager entityManager = getEntityManager();
     try {
@@ -76,10 +76,10 @@ public abstract class BaseRepository {
   }
 
   private StoredProcedureQuery buildStoredProcedure(EntityManager entityManager, BaseSPParams params,
-      Class<? extends BaseSPResult> resultClass) throws CustomException {
+      Class<? extends BaseSPResult> resultClass) throws AKException {
 
     if (isStoredProcedure(entityManager, params)) {
-      throw new CustomException(CommonError.DB_EXECUTION_ERROR);
+      throw new AKException(CommonError.DB_EXECUTION_ERROR);
     }
 
     Class<?> paramsClass = params.getClass();
@@ -109,7 +109,7 @@ public abstract class BaseRepository {
   }
 
   private void registerStoredProcedureParameters(BaseSPParams params, Class<?> paramsClass,
-      StoredProcedureQuery storedProcedure) throws CustomException {
+      StoredProcedureQuery storedProcedure) throws AKException {
     for (Field field : paramsClass.getDeclaredFields()) {
       if (field.isAnnotationPresent(StoredProcedureParam.class)) {
         StoredProcedureParam param = field.getAnnotation(StoredProcedureParam.class);
@@ -127,19 +127,19 @@ public abstract class BaseRepository {
               storedProcedure.setParameter(param.name(), propertyValue);
             }
             else {
-              throw new CustomException(CommonError.DB_EXECUTION_ERROR);
+              throw new AKException(CommonError.DB_EXECUTION_ERROR);
             }
           }
           catch (Exception e) {
-            throw new CustomException(CommonError.DB_EXECUTION_ERROR, e);
+            throw new AKException(CommonError.DB_EXECUTION_ERROR, e);
           }
         }
       }
     }
   }
 
-  private CustomException createHEDBException(PersistenceException e) {
-    CustomException exception;
+  private AKException createHEDBException(PersistenceException e) {
+    AKException exception;
     String returnMessage = null;
     int errorCode = 0;
 
@@ -159,20 +159,20 @@ public abstract class BaseRepository {
 
     if (returnMessage != null) {
       if ((errorCode >= 50000) && (errorCode <= 50999)) {
-        exception = new BadRequestException(returnMessage, e, errorCode);
+        exception = new AKBadRequestException(returnMessage, e, errorCode);
       }
       else if ((errorCode >= 51000) && (errorCode <= 51999)) {
-        exception = new UnauthenticatedException(returnMessage, e, errorCode);
+        exception = new AKUnauthenticatedException(returnMessage, e, errorCode);
       }
       else if ((errorCode >= 53000) && (errorCode <= 53999)) {
-        exception = new UnauthorizedException(returnMessage, e, errorCode);
+        exception = new AKUnauthorizedException(returnMessage, e, errorCode);
       }
       else {
-        exception = new CustomException(returnMessage, e, errorCode);
+        exception = new AKException(returnMessage, e, errorCode);
       }
     }
     else {
-      exception = new CustomException(CommonError.DB_EXECUTION_ERROR, e);
+      exception = new AKException(CommonError.DB_EXECUTION_ERROR, e);
     }
 
     return exception;

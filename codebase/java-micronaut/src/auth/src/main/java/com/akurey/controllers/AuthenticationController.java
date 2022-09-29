@@ -2,7 +2,7 @@ package com.akurey.controllers;
 
 import javax.validation.Valid;
 
-import com.akurey.common.exceptions.CustomException;
+import com.akurey.common.exceptions.AKException;
 import com.akurey.common.http.BaseController;
 import com.akurey.models.LoginRequest;
 import com.akurey.models.LoginResponse;
@@ -34,7 +34,7 @@ public class AuthenticationController extends BaseController {
       LoginResponse response = service.login(request);
       return buildOkResponse(request, response);
     }
-    catch (CustomException e) {
+    catch (AKException e) {
       return buildExceptionResponse(e, request);
     }
   }
@@ -46,7 +46,7 @@ public class AuthenticationController extends BaseController {
       LogoutResponse response = service.logout(request);
       return buildOkResponse(request, response);
     }
-    catch (CustomException e) {
+    catch (AKException e) {
       return buildExceptionResponse(e, request);
     }
   }
@@ -57,7 +57,7 @@ public class AuthenticationController extends BaseController {
       RefreshAuthTokenResponse response = service.refreshAuthToken(request);
       return buildOkResponse(request, response);
     }
-    catch (CustomException e) {
+    catch (AKException e) {
       return buildExceptionResponse(e, request);
     }
   }

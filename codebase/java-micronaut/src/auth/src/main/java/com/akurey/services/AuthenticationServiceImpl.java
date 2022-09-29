@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-import com.akurey.common.exceptions.CustomException;
-import com.akurey.common.exceptions.ResetPasswordException;
-import com.akurey.common.exceptions.UnauthorizedException;
+import com.akurey.common.exceptions.AKException;
+import com.akurey.common.exceptions.AKResetPasswordException;
+import com.akurey.common.exceptions.AKUnauthorizedException;
 import com.akurey.common.exceptions.errors.CommonError;
 import com.akurey.common.exceptions.errors.UnauthenticatedError;
 import com.akurey.common.exceptions.errors.UnauthorizedError;
@@ -44,7 +44,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
   private AuthenticationRepository repository;
 
   @Override
-  public LoginResponse login(LoginRequest request) throws CustomException {
+  public LoginResponse login(LoginRequest request) throws AKException {
 
     // Login
     LoginParams params = new LoginParams()
@@ -55,11 +55,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     if (!result.getRoleCode().contentEquals(UserRole.ROLE_USER.getCode()) &&
         !result.getRoleCode().contentEquals(UserRole.ROLE_ADMIN.getCode())) {
-      throw new UnauthorizedException(UnauthorizedError.LOGIN_USER_ERROR);
+      throw new AKUnauthorizedException(UnauthorizedError.LOGIN_USER_ERROR);
     }
 
     if (result.getChangePasswordToken() != null) {
-      throw new ResetPasswordException(UnauthenticatedError.PASSWORD_RESET_ERROR, result.getChangePasswordToken());
+      throw new AKResetPasswordException(UnauthenticatedError.PASSWORD_RESET_ERROR, result.getChangePasswordToken());
     }
 
     // Generate JWT token
@@ -88,12 +88,12 @@ public class AuthenticationServiceImpl implements AuthenticationService {
           .setRefreshToken(token.getRefreshToken());
     }
     else {
-      throw new CustomException(CommonError.LOGIN_ERROR);
+      throw new AKException(CommonError.LOGIN_ERROR);
     }
   }
 
   @Override
-  public LogoutResponse logout(LogoutRequest request) throws CustomException {
+  public LogoutResponse logout(LogoutRequest request) throws AKException {
 
     String authorizationHeader = request.getAuthorizationHeader();
     authorizationHeader = authorizationHeader.replaceFirst("Bearer ", "");
@@ -107,14 +107,14 @@ public class AuthenticationServiceImpl implements AuthenticationService {
   }
 
   @Override
-  public RefreshAuthTokenResponse refreshAuthToken(RefreshAuthTokenRequest request) throws CustomException {
+  public RefreshAuthTokenResponse refreshAuthToken(RefreshAuthTokenRequest request) throws AKException {
 
     String refreshToken = request.getAuthorizationHeader().replaceFirst("Bearer ", "");
 
     Optional<String> validRefreshToken = refreshTokenValidator.validate(refreshToken);
     if (validRefreshToken.isEmpty()) {
       // Signature of refresh token is not valid
-      throw new UnauthorizedException(UnauthorizedError.REFRESH_TOKEN_ERROR);
+      throw new AKUnauthorizedException(UnauthorizedError.REFRESH_TOKEN_ERROR);
     }
 
     GetUserWithRefreshTokenParams params = new GetUserWithRefreshTokenParams()
@@ -146,7 +146,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
           .setRefreshToken(token.getRefreshToken());
     }
     else {
-      throw new CustomException(CommonError.REFRESH_TOKEN_ERROR);
+      throw new AKException(CommonError.REFRESH_TOKEN_ERROR);
     }
   }
 }

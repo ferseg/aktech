@@ -12,6 +12,7 @@ import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.HttpStatus;
 import io.micronaut.http.annotation.Produces;
+import io.micronaut.http.server.exceptions.ExceptionHandler;
 import io.micronaut.security.authentication.AuthorizationException;
 import io.micronaut.security.authentication.DefaultAuthorizationExceptionHandler;
 import jakarta.inject.Singleton;
@@ -19,12 +20,12 @@ import jakarta.inject.Singleton;
 @SuppressWarnings("rawtypes")
 @Produces
 @Singleton
-@Requires(classes = { AuthorizationException.class, io.micronaut.http.server.exceptions.ExceptionHandler.class })
+@Requires(classes = { AuthorizationException.class, ExceptionHandler.class })
 @Replaces(DefaultAuthorizationExceptionHandler.class)
-public class AuthorizationExceptionHandler extends ExceptionHandler
-    implements io.micronaut.http.server.exceptions.ExceptionHandler<AuthorizationException, HttpResponse> {
+public class AKAuthorizationExceptionHandler extends AKExceptionHandler
+    implements ExceptionHandler<AuthorizationException, HttpResponse> {
 
-  Logger logger = LoggerFactory.getLogger(AuthorizationExceptionHandler.class);
+  Logger logger = LoggerFactory.getLogger(AKAuthorizationExceptionHandler.class);
 
   /**
    * This handler replaces default DefaultAuthorizationExceptionHandler, which

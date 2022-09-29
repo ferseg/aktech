@@ -1,6 +1,6 @@
 package com.akurey.services;
 
-import com.akurey.common.exceptions.CustomException;
+import com.akurey.common.exceptions.AKException;
 import com.akurey.common.models.MessageResponse;
 import com.akurey.models.StudentRequest;
 import com.akurey.models.StudentResponse;
@@ -10,11 +10,11 @@ public interface StudentService {
 
   StudentsResponse getStudents();
 
-  StudentResponse getStudent(Long studentId) throws CustomException;
+  StudentResponse getStudent(Long studentId) throws AKException;
 
   StudentResponse createStudent(StudentRequest student);
 
-  StudentResponse updateStudent(Long studentId, StudentRequest student) throws CustomException;
+  StudentResponse updateStudent(Long studentId, StudentRequest student) throws AKException;
 
-  MessageResponse deleteStudent(Long studentId) throws CustomException;
+  MessageResponse deleteStudent(Long studentId) throws AKException;
 }

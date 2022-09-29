@@ -1,6 +1,6 @@
 package com.akurey.common.exceptions.errors;
 
-public interface CustomError {
+public interface AKError {
 
   int getCode();
 

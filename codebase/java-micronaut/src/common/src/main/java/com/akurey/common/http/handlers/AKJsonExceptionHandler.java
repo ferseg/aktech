@@ -7,15 +7,17 @@ import io.micronaut.context.annotation.Requires;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Produces;
+import io.micronaut.http.server.exceptions.ExceptionHandler;
+import io.micronaut.http.server.exceptions.JsonExceptionHandler;
 import jakarta.inject.Singleton;
 
 @SuppressWarnings("rawtypes")
 @Produces
 @Singleton
-@Requires(classes = { JsonProcessingException.class, io.micronaut.http.server.exceptions.ExceptionHandler.class })
-@Replaces(io.micronaut.http.server.exceptions.JsonExceptionHandler.class)
-public class JsonExceptionHandler extends ExceptionHandler
-    implements io.micronaut.http.server.exceptions.ExceptionHandler<JsonProcessingException, HttpResponse> {
+@Requires(classes = { JsonProcessingException.class, ExceptionHandler.class })
+@Replaces(JsonExceptionHandler.class)
+public class AKJsonExceptionHandler extends AKExceptionHandler
+    implements ExceptionHandler<JsonProcessingException, HttpResponse> {
 
   @Override
   public HttpResponse handle(HttpRequest request, JsonProcessingException exception) {

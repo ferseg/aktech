@@ -3,7 +3,7 @@ package com.akurey.repositories;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
-import com.akurey.common.exceptions.CustomException;
+import com.akurey.common.exceptions.AKException;
 import com.akurey.common.repositories.BaseRepository;
 import com.akurey.repositories.entities.CreateUserSessionParams;
 import com.akurey.repositories.entities.GetUserWithRefreshTokenParams;
@@ -31,32 +31,32 @@ public class AuthenticationRepositoryImpl extends BaseRepository implements Auth
 
   @Override
   @Transactional
-  public LoginResult login(LoginParams params) throws CustomException {
+  public LoginResult login(LoginParams params) throws AKException {
     return getSingleResult(params, LoginResult.class);
   }
 
   @Override
   @Transactional
-  public void createUserSession(CreateUserSessionParams params) throws CustomException {
+  public void createUserSession(CreateUserSessionParams params) throws AKException {
     executeWithoutResult(params);
   }
 
   @Override
   @Transactional
-  public void logoutUserSession(LogoutParams params) throws CustomException {
+  public void logoutUserSession(LogoutParams params) throws AKException {
     executeWithoutResult(params);
   }
 
   @Override
   @Transactional
   public GetUserWithRefreshTokenResult getUserWithRefreshToken(GetUserWithRefreshTokenParams params)
-      throws CustomException {
+      throws AKException {
     return getSingleResult(params, GetUserWithRefreshTokenResult.class);
   }
 
   @Override
   @Transactional
-  public void refreshSession(RefreshSessionParams params) throws CustomException {
+  public void refreshSession(RefreshSessionParams params) throws AKException {
     executeWithoutResult(params);
   }
 }

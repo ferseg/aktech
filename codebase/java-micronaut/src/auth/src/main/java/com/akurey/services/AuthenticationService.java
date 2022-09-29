@@ -1,6 +1,6 @@
 package com.akurey.services;
 
-import com.akurey.common.exceptions.CustomException;
+import com.akurey.common.exceptions.AKException;
 import com.akurey.models.LoginRequest;
 import com.akurey.models.LoginResponse;
 import com.akurey.models.LogoutRequest;
@@ -10,9 +10,9 @@ import com.akurey.models.RefreshAuthTokenResponse;
 
 public interface AuthenticationService {
 
-  LoginResponse login(LoginRequest request) throws CustomException;
+  LoginResponse login(LoginRequest request) throws AKException;
 
-  LogoutResponse logout(LogoutRequest request) throws CustomException;
+  LogoutResponse logout(LogoutRequest request) throws AKException;
 
-  RefreshAuthTokenResponse refreshAuthToken(RefreshAuthTokenRequest request) throws CustomException;
+  RefreshAuthTokenResponse refreshAuthToken(RefreshAuthTokenRequest request) throws AKException;
 }
