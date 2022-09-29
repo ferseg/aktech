@@ -271,9 +271,9 @@ revision, 09-29-2022
 
 1. File management
 
-In order to deliver the images to the development team, there is necessary to create a file where they can find the images easily. The path structure to place the images should be hierarchical. The recommendation is to use screens as the main files.
+    In order to deliver the images to the development team, there is necessary to create a file where they can find the images easily. The path structure to place the images should be hierarchical. The recommendation is to use screens as the main files.
 
-*Main Screen 1 / Section / Image*
+    *Main Screen 1 / Section / Image*
 
 - create a folder for all the images
 - design a hierarchical path
