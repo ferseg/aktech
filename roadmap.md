@@ -252,11 +252,56 @@ the-a-team, in charge of odoo, website and the internal apps of the company star
 
 *velvet, ana elena, maría jesús, michelle lacouture, pablo calderon, victoria. standard to export assets to dev team*
 
-design the order, schema, values, outputs and organization of how the assets must be released to dev team for mobile and web apps.
+design the order, schema, values, outputs and organization of how the assets must be released to dev team for mobile and web apps. use this guideline to check how you as a designer is releasing assets to devs, but also devs, to detect missing parts
 
-In the next steps, for every information unit detected,  the team will define what and how the assets must be released, taking in consideration fonts, sizes, color, brand book, cross-platform, cross browsing, quality and performance requirements. 
+sharing best practices is an excellent way to improve the performance and productivity of our team. It can help us fill knowledge gaps, improve efficiency, encourage leadership, and more. 
 
-First version of such standard will be release by Sep 20th
+Benefits of applying best practices
+
+- improve our workflow as a team.
+- fill information gaps.
+- smooth project handoff from one designer to another.
+- avoid miscommunication issues with the team and client.
+- reduces meetings' time.
+- improve efficiency and project understanding.
+
+revision, 09-29-2022
+
+## asset - images
+
+1. File management
+
+In order to deliver the images to the development team, there is necessary to create a file where they can find the images easily. The path structure to place the images should be hierarchical. The recommendation is to use screens as the main files.
+
+*Main Screen 1 / Section / Image*
+
+- create a folder for all the images
+- design a hierarchical path
+- for websites, at the end of the path, make 3 folders: *_Mobile, Tablet, Desktop_*
+
+2. name conventions
+
+- image name must describe content in general, such file names will serve for SEO purposes
+- words in the image name separated by -, 
+    ex: image-name.jpg, 
+    home-green-backyard-and-akurey-house.jpg 
+- all letters in lowercase
+
+3. image content structure
+
+- explore the image structure, checking what elements sorrounding the image can be place within the image, reducing extra lines of development code 
+
+4. image format
+
+- JPG format is priority, easy to compress, good quality image, reduced image size
+- when the image has rounded borders or is a circular image, use the normal JPG and the devs will code the round effect by css 
+- use PNG only when transparent background is required
+- use GIF to simulate animations 
+- SVG is advisible for logos, icons or images required to scale in/out without loosing resolution 
+
+5. image dimensions / responsiveness
+Para website, de ser necesario hay que hacer 3 formatos para cada imagen (mobile, tablet y desktop) y optimizarlas para cada uno de los dispositivos. Hay que tener en cuenta que la misma imagen en desktop podría ser la misma en tablet, dependiendo de la estructura de la imagen y los breakpoints de la página. Pero para  mobile sí es necesario utilizar una imagen con dimensiones más pequeñas. Esto para optimizar el tiempo de carga en los dispositivos móbiles.
+
 
 -----------------------------------
 

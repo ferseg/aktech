@@ -33,11 +33,6 @@ git clone --branch 14.0 --depth 1 https://github.com/OCA/timesheet.git
 git clone --branch 14.0 --depth 1 https://github.com/OCA/web.git
 git clone --branch 14.0 --depth 1 https://github.com/OCA/website.git
 
-cp /home/setup/requirements.txt /home/setup/odoo/odoo14/odoo/
-
-pip3 install -r odoo/requirements.txt
-pip3 install -r AK-Odoo/requirements.txt
-pip3 install -r l10n_cr/requirements.txt
 
 cp -R AK-Odoo/Utilities/vscode odoo/.vscode .
 cp AK-Odoo/Utilities/odoo14.code-workspace .

@@ -47,35 +47,24 @@ RUN mkdir /home/setup/odoo && \
 
 WORKDIR /home/setup/odoo/odoo14
 
-## this credential needs to be updated time to time, you can generate your own token as soon you get access to the github repo
-RUN git config --global url."https://api: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@github.com/".insteadOf "https://github.com/"
-RUN git config --global url."https://ssh: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@github.com/".insteadOf "ssh://git@github.com/"
-RUN git config --global url."https://git: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@github.com/".insteadOf "git@github.com:"
-RUN git clone --branch 14.0 --depth 1 https://github.com/akurey/AK-Odoo.git 
-RUN chmod +x AK-Odoo/Utilities/install_odoo.sh
+RUN apt-get install postgresql postgresql-contrib -y 
 
 COPY requirements.txt /home/setup
-COPY install_odoo.sh odooserver:/home/setup/odoo/odoo14/AK-Odoo/Utilities/
-
-#RUN ./AK-Odoo/Utilities/install_odoo.sh
-#RUN apt-get install postgresql postgresql-contrib -y 
-
+COPY ak-odoo.requirements.txt /home/setup
+COPY l10n_cr.requirements.txt /home/setup
+COPY install_odoo.sh /home/setup
+COPY psql.sql /home/setup
 COPY init.sh /home/setup
 
 WORKDIR /home/setup
 
-#CMD ./init.sh
+RUN pip3 install -r requirements.txt
+RUN pip3 install -r ak-odoo.requirements.txt
+RUN pip3 install -r l10n_cr.requirements.txt
+
+CMD ./init.sh
 
 
-# ver en el lunch.json lo que se hace para levnatar el ambiente
-# en el conf file esta el puerto
-
-#python3.8 odoo-bin -c ../AK-Odoo/Utilities/odoo.conf
-#8070
-#8072
-#5432 
-
-#docker run -it --rm --name odooserver -p 8070:8070 -p 8072:8072 -p 5432:5432 odoo 
-
-#-v vol_cfgplaya:/data/configdb 
+#docker run -it --rm --name odooserver -v C:\dev\test:/home/setup/odoo/odoo14/ -p 8070:8070 -p 8072:8072 -p 5432:5432 odoo 
+#docker run -it --rm --name odooserver -v C:\dev\test:/home/setup/odoo/odoo14/ -p 8070:8070 -p 8072:8072 -p 5432:5432 odoo 
   
