@@ -17,7 +17,7 @@ public class StudentRequest extends BaseRequest {
 
   @Nullable
   @PathVariable
-  private Long studentId;
+  private Long id;
 
   private String firstName;
 

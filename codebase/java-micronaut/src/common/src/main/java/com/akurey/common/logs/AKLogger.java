@@ -11,6 +11,17 @@ public final class AKLogger {
 
   private static final String CUSTOM_LOG = "custom_log";
 
+  public static void logInfo(Object caller, String message) {
+    Logger logger = LoggerFactory.getLogger(caller.getClass());
+    LogMarker marker = new LogMarker();
+    LogEvent event = LogEvent.INFORMATION_LOG;
+    marker.setEventType(event.getEventType());
+    marker.setEventCode(event.getCode());
+    marker.setEventMessage(message != null ? message : event.getMessage());
+
+    logger.info(event.getMessage(), append(CUSTOM_LOG, marker));
+  }
+
   public static void logRequestSuccess(Object caller, Object request) {
     Logger logger = LoggerFactory.getLogger(caller.getClass());
     LogMarker marker = new LogMarker();

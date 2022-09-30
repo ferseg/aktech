@@ -17,8 +17,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class TestResult extends BaseSPResult {
+public class EntityResult extends BaseSPResult {
 
   @Id
   private Integer id;
+
+  private Integer entityCount;
+
+  private String description;
 }

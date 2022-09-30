@@ -14,7 +14,6 @@ import com.akurey.services.StudentService;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.HttpStatus;
 import io.micronaut.http.MediaType;
-import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Delete;
 import io.micronaut.http.annotation.Get;
@@ -45,12 +44,12 @@ public class StudentController extends BaseController {
   }
 
   @Secured({ "ROLE_USER", "ROLE_ADMIN" })
-  @Get(value = "/{studentId}", produces = MediaType.APPLICATION_JSON)
-  public HttpResponse<?> getStudent(final Long studentId, Authentication authentication) {
+  @Get(value = "/{id}", produces = MediaType.APPLICATION_JSON)
+  public HttpResponse<?> getStudent(final Long id, Authentication authentication) {
     try {
-      EntityIdRequest request = EntityIdRequest.builder().id(studentId).build();
+      EntityIdRequest request = EntityIdRequest.builder().id(id).build();
       setupRequest(request, authentication);
-      StudentResponse response = studentService.getStudent(studentId);
+      StudentResponse response = studentService.getStudent(id);
       return buildOkResponse(request, response);
     }
     catch (Exception error) {
@@ -72,7 +71,7 @@ public class StudentController extends BaseController {
   }
 
   @Secured({ "ROLE_ADMIN" })
-  @Put(value = "/{studentId}", produces = MediaType.APPLICATION_JSON)
+  @Put(value = "/{id}", produces = MediaType.APPLICATION_JSON)
   public HttpResponse<?> updateStudent(@RequestBean @Valid StudentRequest request, Authentication authentication) {
     try {
       setupRequest(request, authentication);
@@ -85,12 +84,12 @@ public class StudentController extends BaseController {
   }
 
   @Secured({ "ROLE_ADMIN", "ROLE_USER" })
-  @Delete(value = "/{studentId}", processes = MediaType.APPLICATION_JSON)
-  public HttpResponse<?> deleteStudent(final Long studentId, Authentication authentication) {
+  @Delete(value = "/{id}", processes = MediaType.APPLICATION_JSON)
+  public HttpResponse<?> deleteStudent(final Long id, Authentication authentication) {
     try {
-      EntityIdRequest request = EntityIdRequest.builder().id(studentId).build();
+      EntityIdRequest request = EntityIdRequest.builder().id(id).build();
       setupRequest(request, authentication);
-      MessageResponse response = studentService.deleteStudent(studentId);
+      MessageResponse response = studentService.deleteStudent(id);
       return buildOkResponse(request, response);
     }
     catch (Exception error) {

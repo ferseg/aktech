@@ -8,7 +8,7 @@ import com.akurey.models.StudentsResponse;
 
 public interface StudentService {
 
-  StudentsResponse getStudents();
+  StudentsResponse getStudents() throws AKException;
 
   StudentResponse getStudent(Long studentId) throws AKException;
 

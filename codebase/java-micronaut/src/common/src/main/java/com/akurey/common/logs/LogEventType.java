@@ -5,5 +5,6 @@ public enum LogEventType {
   CREATE,
   EDIT,
   DELETE,
-  ACCESS
+  ACCESS,
+  INFORMATION
 }

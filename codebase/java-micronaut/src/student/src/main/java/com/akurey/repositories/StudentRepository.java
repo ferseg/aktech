@@ -1,19 +1,22 @@
 package com.akurey.repositories;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 import com.akurey.common.exceptions.AKException;
-import com.akurey.common.repositories.BaseRepository;
+import com.akurey.common.repositories.BaseRepository2;
+import com.akurey.common.repositories.SPParam;
+import com.akurey.repositories.entities.EntityResult;
 import com.akurey.repositories.entities.Student;
-import com.akurey.repositories.entities.TestParams;
-import com.akurey.repositories.entities.TestResult;
+import com.google.common.collect.ImmutableList;
 
 import io.micronaut.data.annotation.Repository;
 import io.micronaut.data.repository.CrudRepository;
 
 @Repository
-public abstract class StudentRepository extends BaseRepository implements CrudRepository<Student, Long> {
+public abstract class StudentRepository extends BaseRepository2 implements CrudRepository<Student, Long> {
 
   private final EntityManager entityManager;
 
@@ -27,7 +30,13 @@ public abstract class StudentRepository extends BaseRepository implements CrudRe
   }
 
   @Transactional
-  public TestResult test(TestParams params) throws AKException {
-    return getSingleResult(params, TestResult.class);
+  public EntityResult test(Integer entityCount, String description) throws AKException {
+
+    List<SPParam> params = ImmutableList.of(
+        SPParam.builder().paramName("pEntityCount").value(entityCount.toString()).build(),
+        SPParam.builder().paramName("pDescription").value(description).build()
+    );
+
+    return getSingleResult("CoreSPTestAddEntityCount", params, EntityResult.class);
   }
 }

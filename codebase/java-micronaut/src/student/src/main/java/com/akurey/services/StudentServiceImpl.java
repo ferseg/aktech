@@ -6,14 +6,14 @@ import java.util.Optional;
 
 import com.akurey.common.exceptions.AKException;
 import com.akurey.common.exceptions.AKNotFoundException;
+import com.akurey.common.logs.AKLogger;
 import com.akurey.common.models.MessageResponse;
 import com.akurey.models.StudentRequest;
 import com.akurey.models.StudentResponse;
 import com.akurey.models.StudentsResponse;
 import com.akurey.repositories.StudentRepository;
+import com.akurey.repositories.entities.EntityResult;
 import com.akurey.repositories.entities.Student;
-import com.akurey.repositories.entities.TestParams;
-import com.akurey.repositories.entities.TestResult;
 import com.google.common.collect.ImmutableList;
 
 import io.micronaut.core.util.StringUtils;
@@ -29,14 +29,12 @@ public class StudentServiceImpl implements StudentService {
   }
 
   @Override
-  public StudentsResponse getStudents() {
-    try {
-      TestResult result = studentRepository.test(new TestParams());
-      System.out.println("id: " + result.getId());
-    }
-    catch (Exception e) {
-      System.out.println("ERROR");
-    }
+  public StudentsResponse getStudents() throws AKException {
+
+    EntityResult spResult = studentRepository.test(20, "The description");
+    AKLogger.logInfo(this, "id: " + spResult.getId());
+    AKLogger.logInfo(this, "entityCount: " + spResult.getEntityCount());
+    AKLogger.logInfo(this, "description: " + spResult.getDescription());
 
     final List<Student> result = ImmutableList.copyOf(studentRepository.findAll());
     final List<StudentResponse> students = result.stream()
@@ -70,7 +68,7 @@ public class StudentServiceImpl implements StudentService {
 
   @Override
   public StudentResponse updateStudent(final StudentRequest student) throws AKException {
-    final Student existingStudent = studentRepository.findById(student.getStudentId())
+    final Student existingStudent = studentRepository.findById(student.getId())
         .orElseThrow(AKNotFoundException::new);
 
     existingStudent.setFirstName(student.getFirstName());

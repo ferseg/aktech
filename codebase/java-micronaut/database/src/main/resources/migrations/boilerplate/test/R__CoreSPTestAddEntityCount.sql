@@ -1,6 +1,8 @@
 DELIMITER //
-DROP PROCEDURE IF EXISTS ${schemaName}.CoreSPTest //
-CREATE PROCEDURE ${schemaName}.CoreSPTest(
+DROP PROCEDURE IF EXISTS ${schemaName}.CoreSPTestAddEntityCount //
+CREATE PROCEDURE ${schemaName}.CoreSPTestAddEntityCount(
+  IN pEntityCount INT,
+  IN pDescription VARCHAR(255)
 )
 BEGIN
 
@@ -13,6 +15,9 @@ BEGIN
     RESIGNAL SET MESSAGE_TEXT = @message, CONSTRAINT_CATALOG=@type;
   END;
   
-  SELECT 12 AS Id;
+  SELECT
+    1 AS Id,
+    pEntityCount + 100 AS EntityCount,
+    pDescription AS Description;
 
 END //
