@@ -69,8 +69,9 @@ public class StudentServiceImpl implements StudentService {
   }
 
   @Override
-  public StudentResponse updateStudent(final Long studentId, final StudentRequest student) throws AKException {
-    final Student existingStudent = studentRepository.findById(studentId).orElseThrow(AKNotFoundException::new);
+  public StudentResponse updateStudent(final StudentRequest student) throws AKException {
+    final Student existingStudent = studentRepository.findById(student.getStudentId())
+        .orElseThrow(AKNotFoundException::new);
 
     existingStudent.setFirstName(student.getFirstName());
     existingStudent.setMiddleName(Optional.ofNullable(student.getMiddleName()).orElse(StringUtils.EMPTY_STRING));

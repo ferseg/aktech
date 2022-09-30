@@ -1,7 +1,10 @@
 package com.akurey.controllers;
 
+import javax.validation.Valid;
+
 import com.akurey.common.http.BaseController;
 import com.akurey.common.models.EmptyRequest;
+import com.akurey.common.models.EntityIdRequest;
 import com.akurey.common.models.MessageResponse;
 import com.akurey.models.StudentRequest;
 import com.akurey.models.StudentResponse;
@@ -17,21 +20,24 @@ import io.micronaut.http.annotation.Delete;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Post;
 import io.micronaut.http.annotation.Put;
+import io.micronaut.http.annotation.RequestBean;
 import io.micronaut.security.annotation.Secured;
+import io.micronaut.security.authentication.Authentication;
 import jakarta.inject.Inject;
 
 @Controller("/v1/students")
 public class StudentController extends BaseController {
 
   @Inject
-  StudentService studentService;
+  private StudentService studentService;
 
   @Secured({ "ROLE_USER", "ROLE_ADMIN" })
   @Get(value = "/", produces = MediaType.APPLICATION_JSON)
-  public HttpResponse<?> getStudents() {
+  public HttpResponse<?> getStudents(@RequestBean @Valid EmptyRequest request, Authentication authentication) {
     try {
+      setupRequest(request, authentication);
       StudentsResponse response = studentService.getStudents();
-      return buildOkResponse(new EmptyRequest(), response);
+      return buildOkResponse(request, response);
     }
     catch (Exception error) {
       return HttpResponse.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error.getMessage());
@@ -40,10 +46,12 @@ public class StudentController extends BaseController {
 
   @Secured({ "ROLE_USER", "ROLE_ADMIN" })
   @Get(value = "/{studentId}", produces = MediaType.APPLICATION_JSON)
-  public HttpResponse<?> getStudent(final Long studentId) {
+  public HttpResponse<?> getStudent(final Long studentId, Authentication authentication) {
     try {
+      EntityIdRequest request = EntityIdRequest.builder().id(studentId).build();
+      setupRequest(request, authentication);
       StudentResponse response = studentService.getStudent(studentId);
-      return buildOkResponse(new EmptyRequest(), response);
+      return buildOkResponse(request, response);
     }
     catch (Exception error) {
       return HttpResponse.status(HttpStatus.NOT_FOUND).body(error.getMessage());
@@ -52,8 +60,9 @@ public class StudentController extends BaseController {
 
   @Secured({ "ROLE_ADMIN" })
   @Post(value = "/", produces = MediaType.APPLICATION_JSON)
-  public HttpResponse<?> createStudent(@Body StudentRequest request) {
+  public HttpResponse<?> createStudent(@RequestBean @Valid StudentRequest request, Authentication authentication) {
     try {
+      setupRequest(request, authentication);
       StudentResponse response = studentService.createStudent(request);
       return buildCreatedResponse(request, response);
     }
@@ -64,9 +73,10 @@ public class StudentController extends BaseController {
 
   @Secured({ "ROLE_ADMIN" })
   @Put(value = "/{studentId}", produces = MediaType.APPLICATION_JSON)
-  public HttpResponse<?> updateStudent(@Body StudentRequest request, final Long studentId) {
+  public HttpResponse<?> updateStudent(@RequestBean @Valid StudentRequest request, Authentication authentication) {
     try {
-      StudentResponse response = studentService.updateStudent(studentId, request);
+      setupRequest(request, authentication);
+      StudentResponse response = studentService.updateStudent(request);
       return buildOkResponse(request, response);
     }
     catch (Exception error) {
@@ -76,10 +86,12 @@ public class StudentController extends BaseController {
 
   @Secured({ "ROLE_ADMIN", "ROLE_USER" })
   @Delete(value = "/{studentId}", processes = MediaType.APPLICATION_JSON)
-  public HttpResponse<?> deleteStudent(final Long studentId) {
+  public HttpResponse<?> deleteStudent(final Long studentId, Authentication authentication) {
     try {
+      EntityIdRequest request = EntityIdRequest.builder().id(studentId).build();
+      setupRequest(request, authentication);
       MessageResponse response = studentService.deleteStudent(studentId);
-      return buildOkResponse(new EmptyRequest(), response);
+      return buildOkResponse(request, response);
     }
     catch (Exception error) {
       return HttpResponse.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error.getMessage());

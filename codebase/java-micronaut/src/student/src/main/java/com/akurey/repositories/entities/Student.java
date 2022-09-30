@@ -16,24 +16,30 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@Entity
-@Table(name = "students")
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name = "students")
 public class Student {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long studentId;
+
   @NotNull
   private String firstName;
+
   private String middleName;
+
   @NotNull
   private String lastName;
+
   @NotNull
   private String email;
+
   @NotNull
   private LocalDateTime created;
+
   @NotNull
   private LocalDateTime updated;
 }

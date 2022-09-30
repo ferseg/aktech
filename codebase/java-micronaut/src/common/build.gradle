@@ -11,6 +11,8 @@ repositories {
 }
 
 dependencies {
+    implementation("org.projectlombok:lombok:1.18.22")
+    annotationProcessor("org.projectlombok:lombok:1.18.22")
     annotationProcessor('io.micronaut:micronaut-inject-java:3.5.4')
     implementation('io.micronaut:micronaut-management:3.5.4')
 

@@ -29,9 +29,10 @@ public abstract class BaseWorker<TRequest extends BaseRequest, TResponse extends
   public final HttpResponse<?> execute(TRequest request, Authentication authentication) {
 
     if (authentication != null) {
-      UserAuth user = new UserAuth()
-          .setUserIdentifier(authentication.getName())
-          .setRoles(new ArrayList<String>(authentication.getRoles()));
+      UserAuth user = UserAuth.builder()
+          .userIdentifier(authentication.getName())
+          .roles(new ArrayList<>(authentication.getRoles()))
+          .build();
 
       request.setUser(user);
     }

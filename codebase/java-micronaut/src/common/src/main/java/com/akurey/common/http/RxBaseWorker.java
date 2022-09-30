@@ -27,14 +27,11 @@ public abstract class RxBaseWorker<TRequest extends BaseRequest, TResponse exten
 
   public final Mono<HttpResponse<?>> execute(TRequest request, Authentication authentication) {
     if (authentication != null) {
-      UserAuth user = new UserAuth()
-          .setUserIdentifier(authentication.getName())
-          .setRoles(new ArrayList<String>(authentication.getRoles()));
+      UserAuth user = UserAuth.builder()
+          .userIdentifier(authentication.getName())
+          .roles(new ArrayList<>(authentication.getRoles()))
+          .build();
 
-      if ((authentication.getAttributes() != null)
-          && authentication.getAttributes().containsKey(UserAuth.DEVICE_ID_KEY)) {
-        user.setDeviceId(authentication.getAttributes().get(UserAuth.DEVICE_ID_KEY).toString());
-      }
       request.setUser(user);
     }
 

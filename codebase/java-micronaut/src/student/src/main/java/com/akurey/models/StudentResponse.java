@@ -8,19 +8,27 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
-@Builder(toBuilder = true)
+@Builder
+@EqualsAndHashCode(callSuper = true)
 public class StudentResponse extends BaseResponse {
 
   private Long studentId;
+
   private String firstName;
+
   @JsonInclude
   private String middleName;
+
   private String lastName;
+
   private String email;
+
   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   private LocalDateTime created;
+
   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   private LocalDateTime updated;
 }

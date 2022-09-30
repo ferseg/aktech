@@ -14,7 +14,7 @@ public interface StudentService {
 
   StudentResponse createStudent(StudentRequest student);
 
-  StudentResponse updateStudent(Long studentId, StudentRequest student) throws AKException;
+  StudentResponse updateStudent(StudentRequest student) throws AKException;
 
   MessageResponse deleteStudent(Long studentId) throws AKException;
 }
