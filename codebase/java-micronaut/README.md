@@ -38,7 +38,7 @@ export DATABASE_USER=mysql
 
 Create the docker container database instance
 ```
-make database-up
+make database-create
 ```
 
 Then create the schemas, tables, SPs and filling queries
@@ -51,9 +51,19 @@ Now, you can connect to the database
 make database-connect
 ```
 
+If you need to stop the instance
+```
+make database-stop
+```
+
+If you need to start the instance
+```
+make database-start
+```
+
 If for some reason, you need to delete your database instance, run the following
 ```
-make database-down
+make database-stop
 make database-remove
 ```
 **Important note:** Take into account that all the data stored will be deleted.
