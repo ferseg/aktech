@@ -33,6 +33,3 @@ git clone --branch 14.0 --depth 1 https://github.com/OCA/timesheet.git
 git clone --branch 14.0 --depth 1 https://github.com/OCA/web.git
 git clone --branch 14.0 --depth 1 https://github.com/OCA/website.git
 
-
-cp -R AK-Odoo/Utilities/vscode odoo/.vscode .
-cp AK-Odoo/Utilities/odoo14.code-workspace .

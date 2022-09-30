@@ -63,8 +63,4 @@ RUN pip3 install -r ak-odoo.requirements.txt
 RUN pip3 install -r l10n_cr.requirements.txt
 
 CMD ./init.sh
-
-
-#docker run -it --rm --name odooserver -v C:\dev\test:/home/setup/odoo/odoo14/ -p 8070:8070 -p 8072:8072 -p 5432:5432 odoo 
-#docker run -it --rm --name odooserver -v C:\dev\test:/home/setup/odoo/odoo14/ -p 8070:8070 -p 8072:8072 -p 5432:5432 odoo 
   

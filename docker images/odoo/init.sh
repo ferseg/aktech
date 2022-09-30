@@ -5,7 +5,7 @@ DIR="/home/setup/odoo/odoo14/"
 
 # check if this is an empty folder or not
 if [ "$(ls -A $DIR)" ]; then
-    echo "code folder is NOT empty, odoo is already here"
+    echo "code folder is NOT empty, odoo is already here, listen on ports 8070, 8072, 5432"
 else
     echo "code folder empty, cloning repositories from github"
 
@@ -19,6 +19,10 @@ else
     RUN chmod +x AK-Odoo/Utilities/install_odoo.sh
 
     ./AK-Odoo/Utilities/install_odoo.sh
+
+    cd /home/setup/odoo/odoo14/
+    cp -R AK-Odoo/Utilities/vscode odoo/.vscode .
+    cp AK-Odoo/Utilities/odoo14.code-workspace .
 
     su postgres -c '/usr/lib/postgresql/14/bin/createuser -s -i -d -r -l -w odoo'
     su postgres -c '/usr/lib/postgresql/14/bin/psql -f /home/setup/psql.sql'
