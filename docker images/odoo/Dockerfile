@@ -55,6 +55,7 @@ COPY l10n_cr.requirements.txt /home/setup
 COPY install_odoo.sh /home/setup
 COPY psql.sql /home/setup
 COPY init.sh /home/setup
+RUN mkdir /home/setup/pgdata
 
 WORKDIR /home/setup
 
@@ -63,4 +64,5 @@ RUN pip3 install -r ak-odoo.requirements.txt
 RUN pip3 install -r l10n_cr.requirements.txt
 
 CMD ./init.sh
-  
+
+#docker run -it --rm --name odooserver -v c:\dev\test:/home/setup/odoo/odoo14/ -v pg_data:/home/setup/pg_data -p 8070:8070 -p 8072:8072 -p 5432:5432 odoo 

@@ -1,11 +1,11 @@
 cd /home/setup/odoo/odoo14/
-su postgres service postgresql start 
 
 DIR="/home/setup/odoo/odoo14/"
 
 # check if this is an empty folder or not
 if [ "$(ls -A $DIR)" ]; then
     echo "code folder is NOT empty, odoo is already here, listen on ports 8070, 8072, 5432"
+    su postgres service postgresql start 
 else
     echo "code folder empty, cloning repositories from github"
 
@@ -24,6 +24,11 @@ else
     cp -R AK-Odoo/Utilities/vscode odoo/.vscode .
     cp AK-Odoo/Utilities/odoo14.code-workspace .
 
+    mv /var/lib/postgresql/14/main /home/setup/pg_data
+    chown -R postgres /home/setup/pg_data
+    chmod 700 /home/setup/pg_data
+    ln -s /home/setup/pg_data/main /var/lib/postgresql/14/main
+    su postgres service postgresql start 
     su postgres -c '/usr/lib/postgresql/14/bin/createuser -s -i -d -r -l -w odoo'
     su postgres -c '/usr/lib/postgresql/14/bin/psql -f /home/setup/psql.sql'
 fi
