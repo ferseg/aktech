@@ -312,7 +312,124 @@ revision, 09-29-2022
 
 have a settings standard file in web projects to have measures, colors and others to be use by all the web components keeping consistency.
 
-after a research about what and how the general settings of a web projected have been managed by others, a minimum list of settings are set as akurey standard by Sep 20th.
+after a research about what and how the general settings of a web projected have been managed by others, a minimum settings structure is suggested by akurey standards on October 3rd, 2022.
+
+## Base scss/css
+Given the fact that many projets use different languages and structures, there isn't an unique way to define how the scss/css is handled across them. But there are some basics to every project lead should consider to include at the beginning.
+
+## Having a base styles folder
+Within the project structure there should be a *Base/Settings* folder where the general webapp measures, colors, breakingpoints and so on, are defined. Here is a basic structure (can grow depending on the project). 
+
+```
+sass/
+|- base/
+| |- _common.scss
+| |- _measurements.scss
+| |- _colors.scss
+| |- _breakpoints.scss
+| |- main.scss
+```
+
+those are quick examples of the expected general information in such of files 
+
+```
+//-- common.scss --//
+
+//_ font _//
+.small{font-size: 10px !important;}
+.big{font-size: 14px !important;}
+.le{text-align:left !important;}
+.ri{text-align:right !important;}
+.bold{font-weight:bold !important;}
+
+//_ display _//
+.none{display: none ;}
+.none_i{display: none !important;}
+.block{display: block !important;}
+.inline{display: inline !important;}
+...
+
+// depends on project size and needs //
+```
+
+
+```
+//-- measurements.scss --//
+$spacing-block: 4px;
+$grid-block: $spacing-block * 2;
+$grid-block-2x: $grid-block * 2;
+$grid-block-4x: $grid-block * 4;
+...
+```
+
+```
+//-- _colors.scss --//
+
+//- Basic Colors -//
+$transparent: transparent;
+$black: #000;
+$white: #fff;
+$error-red: #EE4B2B;
+$success-green: #33FF38;
+...
+
+//- Primary -//
+...
+
+//- Secondary -//
+...
+```
+
+```
+//-- breakingpoints.scss --//
+
+$mid-phone-upper = 670px;
+$big-phone-upper = 860px;
+$tablet-upper: 1024px;
+$desktop-upper: 1280px;
+...
+```
+
+considering a bigger project, you could go for something that includes a reset, icons and other important settings, separating them into two main subfolders /config (general) and /local (project specific) structured as so: 
+
+```
+sass/
+|- config/
+| |- _common.scss
+| |- _cdn.scss
+| |- _colors.scss
+| |- _directions.scss
+| |- _breakpoints.scss
+| |- _layers.scss
+|- local/
+| |- _mixins.scss        
+| |- _resets.scss     // normalize + resets + typography
+| |- _fonts.scss      
+| |- _icons.scss
+| |- _utilities.scss
+| |- _grids.scss
+|- _config.scss
+|- _local.scss
+|- main.scss
+``` 
+
+*In this case there will be two files created at the end called config.scss and local.scss that import every scss within the two folders.*
+
+## Single import 
+
+Having everything under a single folder simplifies the looking for base styles, but still doesn't simplify the importing of styles across the project, therefore, all files defined in the base folder should be imported in a single scss file 
+
+***main.scss*** as: 
+
+```
+@import "colors";
+@import "breakpoints";
+...
+@import "local";
+```
+
+Then, inside other project files it will be as easy as calling this main.scss and using whatever is needed from the styles defined previously.  
+
 
 
 -----------------------------------
@@ -346,16 +463,59 @@ Final guideline by September 30th
 
 perform an assessment of developed mobile apps in akurey to list vulnerabilities and establish a set of minimum security practices for the dev team.
 
-Three apps were check. 
+By friday 08/19th, three apps were check: 
 
-PureHealth, check with Alejandro Arce
-Joypath, check with Alejandro Arce
-Unimart, check with Wilson Lopez
+- PureHealth, check with Alejandro Arce
+- Joypath, check with Alejandro Arce
+- Unimart, check with Wilson Lopez
 
-due date: friday 19th, assessment performed of at least 3 apps. 
-In the next steps, based on the assessment result, extract the minimum set of practices and organice with rodrigo how this is going to be spread in the company. 
+a workshop to improve mobile security will be perform in 2023, based on the HonoredEd experience. in the mean time, akurey decides to become pro owasp practices to secure mobile apps againts the most common vulnerabilities.
 
-Mobile security workshop based on HonoredEd app will be perform in 2023. 
+please use this checklist wise to improve your solution deliverable and your team experience in creating more secure apps.
+
+the OWASP Top 10 provides rankings of—and remediation guidance for—the top 10 most critical mobile application security risks. Leveraging the extensive knowledge and experience of the OWASP’s open community contributors, the report is based on a consensus among security experts from around the world. Risks are ranked according to the frequency of discovered security defects, the severity of the uncovered vulnerabilities, and the magnitude of their potential impacts. 
+
+![](/assets/images/owasp-mobile-top-10.png)
+
+1. *improper platform usage* 
+
+iOS, android, or windows phone provide different capabilities and features that you can use. If the app does not use an existing function or even uses it incorrectly, this is called improper use. This can be, for example, a violation of published guidelines that affects the security of the app. read and be aware of the platform guidelines. 
+
+2. *insecure data storage* 
+
+insecure data storage as well as unintentional data leaks. mobile application penetration testing tools help uncover such grievances, including databases, manifest file, logs, cookies, clound sync and more. 
+
+3. *insecure communication*
+
+Your app transports data from point A to point B, ff this transport is insecure, the risk increases. the main mobile application penetration testing tools will support you in detecting faulty app-to-server or mobile-to-mobile communication. make sure the channel is secure to transport encryptions, passwords, account details or private user information. 
+
+4. *insecure authentication*
+
+there are many different ways that the app can provide insecure authentication. a classic example is a back-end API service request that the mobile app executes anonymously without relying on an access token. additionally, there are still apps that store passwords locally in clear text. 
+
+5. *lack of cryptography* 
+
+the insecure use of cryptography can be observed in most app applications. this is almost always one of two problems: a fundamentally flawed process behind the encryption mechanisms or the implementation of a weak algorithm.
+
+6. *insecure authorization* 
+
+authorization deals with the verification of an identified person. It verifies that the necessary authorizations are in place to perform certain actions. you need to secure these vulnerabilities as soon as possible to protect your sensitive corporate data from unwanted access.
+
+7. *poor client code quality* 
+
+all vulnerabilities from code-level errors can provide attackers with a way inside. The main risk lies in the need to make localized changes to the code. In particular, insecure API usage or insecure language constructs are common problems that you need to fix directly at the code level.
+
+8. *code manipulation* 
+
+from a technical perspective, any code on a mobile device is vulnerable to tampering. this is because the mobile code is running in a foreign environment. it is no longer under the control of your organization. Therefore, there are numerous ways to modify it at will. you should always consider these unauthorized changes in the context of business implications.
+
+9. *reverse engineering* 
+
+attackers who want to understand how your app works can use reverse-engineering to access all the information they need. especially metadata, which is supposed to be a relief for your programmers, is a high risk. basically, if you can clearly understand the string table of the binary or cross-functional analysis is possible, the app is considered at risk.
+
+10. *Extraneous Functionality* 
+
+hidden backdoor functionality or internal security controls are a common problem in mobile applications. The problem with them is that they are not only useful for developers, but also for hackers. This allows them, for example, to disable 2-factor authentication or change basic functionality.
 
 -----------------------------------
 

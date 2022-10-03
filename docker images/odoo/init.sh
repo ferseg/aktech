@@ -10,18 +10,19 @@ else
     echo "code folder empty, cloning repositories from github"
 
     ## this credential needs to be updated time to time, you can generate your own token as soon you get access to the github repo
-    git config --global url."https://api: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@github.com/".insteadOf "https://github.com/"
-    git config --global url."https://ssh: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@github.com/".insteadOf "ssh://git@github.com/"
-    git config --global url."https://git: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@github.com/".insteadOf "git@github.com:"
+    git config --global url."https://api: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@github.com/".insteadOf "https://github.com/"
+    git config --global url."https://ssh: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@github.com/".insteadOf "ssh://git@github.com/"
+    git config --global url."https://git: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@github.com/".insteadOf "git@github.com:"
     git clone --branch 14.0 --depth 1 https://github.com/akurey/AK-Odoo.git 
 
     cp /home/setup/install_odoo.sh /home/setup/odoo/odoo14/AK-Odoo/Utilities/
-    RUN chmod +x AK-Odoo/Utilities/install_odoo.sh
+    chmod +x AK-Odoo/Utilities/install_odoo.sh
 
     ./AK-Odoo/Utilities/install_odoo.sh
 
     cd /home/setup/odoo/odoo14/
-    cp -R AK-Odoo/Utilities/vscode odoo/.vscode .
+    mkdir odoo/.vscode
+    cp -R AK-Odoo/Utilities/vscode/* odoo/.vscode
     cp AK-Odoo/Utilities/odoo14.code-workspace .
 
     mv /var/lib/postgresql/14/main /home/setup/pg_data

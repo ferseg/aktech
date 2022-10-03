@@ -25,5 +25,6 @@ docker run -it --rm --name odooserver -v /home/user/dev/odoo:/home/setup/odoo/od
 
 to perform linux level odoo maintenance run
 ```
-docker run -it --rm --name odooserver -v <your odoo code repository folder>:/home/setup/odoo/odoo14/ -v pg_data:/home/setup/pg_data -p 8070:8070 -p 8072:8072 -p 5432:5432 odoo bash
+docker run -it --rm --name odooserver -v <your odoo code repository folder>:/home/setup/odoo/odoo14/ -v pg_data:/home/setup/pg_data -p 8070:8070 -p 8072:8072 -p 5432:5432 odoo
 ```
+
