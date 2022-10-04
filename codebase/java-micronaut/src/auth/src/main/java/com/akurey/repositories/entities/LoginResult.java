@@ -5,6 +5,17 @@ import javax.persistence.Id;
 
 import com.akurey.common.repositories.BaseSPResult;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class LoginResult extends BaseSPResult {
 
@@ -12,21 +23,4 @@ public class LoginResult extends BaseSPResult {
   private String roleCode;
 
   private String changePasswordToken;
-
-  public String getRoleCode() {
-    return roleCode;
-  }
-
-  public void setRoleCode(String roleCode) {
-    this.roleCode = roleCode;
-  }
-
-  public String getChangePasswordToken() {
-    return this.changePasswordToken;
-  }
-
-  public LoginResult setChangePasswordToken(String value) {
-    this.changePasswordToken = value;
-    return this;
-  }
 }

@@ -19,6 +19,10 @@ import io.micronaut.http.annotation.Post;
 import io.micronaut.http.annotation.RequestBean;
 import io.micronaut.security.annotation.Secured;
 import io.micronaut.security.rules.SecurityRule;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.inject.Inject;
 
 @Controller("/v1/auth")
@@ -28,6 +32,12 @@ public class AuthenticationController extends BaseController {
   @Inject
   private AuthenticationService service;
 
+  @Operation(description = "Authenticates a user using username and password")
+  @ApiResponse(
+      responseCode = "200",
+      description = "Access and refresh tokens",
+      content = @Content(mediaType = "application/json", schema = @Schema(implementation = LoginResponse.class))
+  )
   @Post(value = "/login", produces = MediaType.APPLICATION_JSON)
   public HttpResponse<?> login(@RequestBean @Valid LoginRequest request) {
     try {
@@ -39,6 +49,12 @@ public class AuthenticationController extends BaseController {
     }
   }
 
+  @Operation(description = "Logs out a user")
+  @ApiResponse(
+      responseCode = "200",
+      description = "Success message",
+      content = @Content(mediaType = "application/json", schema = @Schema(implementation = LogoutResponse.class))
+  )
   @Secured(SecurityRule.IS_AUTHENTICATED)
   @Post(value = "/logout", produces = MediaType.APPLICATION_JSON)
   public HttpResponse<?> logoutStudent(@RequestBean @Valid LogoutRequest request) {
@@ -51,6 +67,12 @@ public class AuthenticationController extends BaseController {
     }
   }
 
+  @Operation(description = "Refreshes the access token for a user")
+  @ApiResponse(
+      responseCode = "200",
+      description = "Access and refresh tokens",
+      content = @Content(mediaType = "application/json", schema = @Schema(implementation = RefreshAuthTokenResponse.class))
+  )
   @Post(value = "/token/refresh", produces = MediaType.APPLICATION_JSON)
   public HttpResponse<?> refreshAuthToken(@RequestBean @Valid RefreshAuthTokenRequest request) {
     try {

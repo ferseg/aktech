@@ -13,6 +13,8 @@ repositories {
 dependencies {
     implementation project(":common")
 
+    compileOnly("org.projectlombok:lombok:1.18.22")
+    annotationProcessor("org.projectlombok:lombok:1.18.22")
     annotationProcessor("io.micronaut:micronaut-http-validation")
     implementation("io.micronaut:micronaut-http-client")
     implementation("io.micronaut:micronaut-jackson-databind")
@@ -26,6 +28,9 @@ dependencies {
     implementation("io.micronaut.data:micronaut-data-hibernate-jpa")
 
     runtimeOnly("mysql:mysql-connector-java")
+
+    annotationProcessor("io.micronaut.openapi:micronaut-openapi:4.2.1")
+    implementation("io.swagger.core.v3:swagger-annotations")
 }
 
 application {
@@ -44,4 +49,9 @@ micronaut {
         incremental(true)
         annotations("com.akurey.*")
     }
+}
+
+tasks.withType(JavaCompile) {
+    options.fork = true
+    options.forkOptions.jvmArgs << '-Dmicronaut.openapi.views.spec=rapidoc.enabled=true,swagger-ui.enabled=true,swagger-ui.theme=flattop'
 }

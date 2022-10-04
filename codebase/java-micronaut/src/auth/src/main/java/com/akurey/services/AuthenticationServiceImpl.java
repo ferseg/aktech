@@ -47,9 +47,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
   public LoginResponse login(LoginRequest request) throws AKException {
 
     // Login
-    LoginParams params = new LoginParams()
-        .setUserIdentifier(request.getUsername())
-        .setPassword(request.getPassword());
+    LoginParams params = LoginParams.builder()
+        .userIdentifier(request.getUsername())
+        .password(request.getPassword())
+        .build();
 
     LoginResult result = repository.login(params);
 
@@ -76,16 +77,18 @@ public class AuthenticationServiceImpl implements AuthenticationService {
       AccessRefreshToken token = tokenOptional.get();
 
       // Create session
-      CreateUserSessionParams sessionParams = new CreateUserSessionParams()
-          .setAccessToken(token.getAccessToken())
-          .setRefreshToken(token.getRefreshToken())
-          .setUserIdentifier(request.getUsername());
+      CreateUserSessionParams sessionParams = CreateUserSessionParams.builder()
+          .accessToken(token.getAccessToken())
+          .refreshToken(token.getRefreshToken())
+          .userIdentifier(request.getUsername())
+          .build();
 
       repository.createUserSession(sessionParams);
 
-      return new LoginResponse()
-          .setAccessToken(token.getAccessToken())
-          .setRefreshToken(token.getRefreshToken());
+      return LoginResponse.builder()
+          .accessToken(token.getAccessToken())
+          .refreshToken(token.getRefreshToken())
+          .build();
     }
     else {
       throw new AKException(CommonError.LOGIN_ERROR);
@@ -98,8 +101,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     String authorizationHeader = request.getAuthorizationHeader();
     authorizationHeader = authorizationHeader.replaceFirst("Bearer ", "");
 
-    LogoutParams params = new LogoutParams()
-        .setAccessToken(authorizationHeader);
+    LogoutParams params = LogoutParams.builder()
+        .accessToken(authorizationHeader)
+        .build();
 
     repository.logoutUserSession(params);
 
@@ -117,8 +121,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
       throw new AKUnauthorizedException(UnauthorizedError.REFRESH_TOKEN_ERROR);
     }
 
-    GetUserWithRefreshTokenParams params = new GetUserWithRefreshTokenParams()
-        .setRefreshToken(refreshToken);
+    GetUserWithRefreshTokenParams params = GetUserWithRefreshTokenParams.builder()
+        .refreshToken(refreshToken)
+        .build();
 
     GetUserWithRefreshTokenResult userData = repository.getUserWithRefreshToken(params);
 
@@ -132,18 +137,20 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     if (tokenOptional.isPresent()) {
       AccessRefreshToken token = tokenOptional.get();
 
-      RefreshSessionParams refreshSessionParams = new RefreshSessionParams()
-          .setOldRefreshToken(refreshToken)
-          .setSessionId(userData.getSessionId())
-          .setUserId(userData.getUserId())
-          .setNewAuthToken(token.getAccessToken())
-          .setNewRefreshToken(token.getRefreshToken());
+      RefreshSessionParams refreshSessionParams = RefreshSessionParams.builder()
+          .oldRefreshToken(refreshToken)
+          .sessionId(userData.getSessionId())
+          .userId(userData.getUserId())
+          .newAuthToken(token.getAccessToken())
+          .newRefreshToken(token.getRefreshToken())
+          .build();
 
       repository.refreshSession(refreshSessionParams);
 
-      return new RefreshAuthTokenResponse()
-          .setAccessToken(token.getAccessToken())
-          .setRefreshToken(token.getRefreshToken());
+      return RefreshAuthTokenResponse.builder()
+          .accessToken(token.getAccessToken())
+          .refreshToken(token.getRefreshToken())
+          .build();
     }
     else {
       throw new AKException(CommonError.REFRESH_TOKEN_ERROR);

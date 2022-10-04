@@ -4,6 +4,13 @@ import com.akurey.common.repositories.BaseSPParams;
 import com.akurey.common.repositories.StoredProcedureParam;
 import com.akurey.common.repositories.StoredProcedureParams;
 
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+@Data
+@Builder
+@EqualsAndHashCode(callSuper = true)
 @StoredProcedureParams(storeProcedureName = "CoreSPLoginUser")
 public class LoginParams extends BaseSPParams {
 
@@ -12,22 +19,4 @@ public class LoginParams extends BaseSPParams {
 
   @StoredProcedureParam(name = "pPassword")
   private String password;
-
-  public String getUserIdentifier() {
-    return userIdentifier;
-  }
-
-  public LoginParams setUserIdentifier(String userIdentifier) {
-    this.userIdentifier = userIdentifier;
-    return this;
-  }
-
-  public String getPassword() {
-    return password;
-  }
-
-  public LoginParams setPassword(String password) {
-    this.password = password;
-    return this;
-  }
 }

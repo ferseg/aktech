@@ -6,7 +6,13 @@ import javax.validation.constraints.Size;
 import com.akurey.common.models.BaseRequest;
 
 import io.micronaut.core.annotation.Introspected;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@Data
+@Builder
+@EqualsAndHashCode(callSuper = true)
 @Introspected
 public class LoginRequest extends BaseRequest {
 
@@ -17,22 +23,4 @@ public class LoginRequest extends BaseRequest {
   @NotBlank
   @Size(min = 1, max = 255)
   private String password;
-
-  public String getUsername() {
-    return username;
-  }
-
-  public LoginRequest setUsername(String username) {
-    this.username = username;
-    return this;
-  }
-
-  public String getPassword() {
-    return password;
-  }
-
-  public LoginRequest setPassword(String password) {
-    this.password = password;
-    return this;
-  }
 }
