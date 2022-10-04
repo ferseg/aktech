@@ -533,6 +533,16 @@ counters , next count Octobr 18th
     Esteban: 12
     Wilson: 10
     Kris: 0
+
+counters , next count October 25th
+
+- 10/04/2022
+    Jona: 0
+    Luis: 0  , agrega 5 al proyecto de rescate animal
+    Esteban: 2
+    Wilson: 0
+    Kris: 0
+
 -----------------------------------
 
 *roy cordero, jonathan avalos, arturo padilla, jason solano. micronaut microservices boilerplate*
