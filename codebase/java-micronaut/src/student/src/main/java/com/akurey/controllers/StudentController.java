@@ -22,6 +22,10 @@ import io.micronaut.http.annotation.Put;
 import io.micronaut.http.annotation.RequestBean;
 import io.micronaut.security.annotation.Secured;
 import io.micronaut.security.authentication.Authentication;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.inject.Inject;
 
 @Controller("/v1/students")
@@ -30,6 +34,12 @@ public class StudentController extends BaseController {
   @Inject
   private StudentService studentService;
 
+  @Operation(description = "Get a list of students")
+  @ApiResponse(
+      responseCode = "200",
+      description = "The list of students",
+      content = @Content(mediaType = "application/json", schema = @Schema(implementation = StudentsResponse.class))
+  )
   @Secured({ "ROLE_USER", "ROLE_ADMIN" })
   @Get(value = "/", produces = MediaType.APPLICATION_JSON)
   public HttpResponse<?> getStudents(@RequestBean @Valid EmptyRequest request, Authentication authentication) {
@@ -43,9 +53,15 @@ public class StudentController extends BaseController {
     }
   }
 
+  @Operation(description = "Get a single student")
+  @ApiResponse(
+      responseCode = "200",
+      description = "The data of a single student",
+      content = @Content(mediaType = "application/json", schema = @Schema(implementation = StudentResponse.class))
+  )
   @Secured({ "ROLE_USER", "ROLE_ADMIN" })
   @Get(value = "/{id}", produces = MediaType.APPLICATION_JSON)
-  public HttpResponse<?> getStudent(final Long id, Authentication authentication) {
+  public HttpResponse<?> getStudent(Long id, Authentication authentication) {
     try {
       EntityIdRequest request = EntityIdRequest.builder().id(id).build();
       setupRequest(request, authentication);
@@ -57,6 +73,12 @@ public class StudentController extends BaseController {
     }
   }
 
+  @Operation(description = "Create a student")
+  @ApiResponse(
+      responseCode = "200",
+      description = "The data of the new student",
+      content = @Content(mediaType = "application/json", schema = @Schema(implementation = StudentResponse.class))
+  )
   @Secured({ "ROLE_ADMIN" })
   @Post(value = "/", produces = MediaType.APPLICATION_JSON)
   public HttpResponse<?> createStudent(@RequestBean @Valid StudentRequest request, Authentication authentication) {
@@ -70,10 +92,18 @@ public class StudentController extends BaseController {
     }
   }
 
+  @Operation(description = "Update a student")
+  @ApiResponse(
+      responseCode = "200",
+      description = "The data of the updated student",
+      content = @Content(mediaType = "application/json", schema = @Schema(implementation = StudentResponse.class))
+  )
   @Secured({ "ROLE_ADMIN" })
   @Put(value = "/{id}", produces = MediaType.APPLICATION_JSON)
-  public HttpResponse<?> updateStudent(@RequestBean @Valid StudentRequest request, Authentication authentication) {
+  public HttpResponse<?> updateStudent(Long id, @RequestBean @Valid StudentRequest request,
+      Authentication authentication) {
     try {
+      request.setId(id);
       setupRequest(request, authentication);
       StudentResponse response = studentService.updateStudent(request);
       return buildOkResponse(request, response);
@@ -83,9 +113,15 @@ public class StudentController extends BaseController {
     }
   }
 
+  @Operation(description = "Delete a student")
+  @ApiResponse(
+      responseCode = "200",
+      description = "Success message",
+      content = @Content(mediaType = "application/json", schema = @Schema(implementation = MessageResponse.class))
+  )
   @Secured({ "ROLE_ADMIN", "ROLE_USER" })
   @Delete(value = "/{id}", processes = MediaType.APPLICATION_JSON)
-  public HttpResponse<?> deleteStudent(final Long id, Authentication authentication) {
+  public HttpResponse<?> deleteStudent(Long id, Authentication authentication) {
     try {
       EntityIdRequest request = EntityIdRequest.builder().id(id).build();
       setupRequest(request, authentication);

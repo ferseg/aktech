@@ -16,7 +16,6 @@ import lombok.EqualsAndHashCode;
 public class StudentRequest extends BaseRequest {
 
   @Nullable
-  @PathVariable
   private Long id;
 
   private String firstName;

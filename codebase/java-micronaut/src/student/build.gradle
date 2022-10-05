@@ -1,6 +1,6 @@
 plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2"
-    id("io.micronaut.application") version "3.4.1"
+    id("io.micronaut.application") version "3.5.1"
 }
 
 version = "0.1"
@@ -30,6 +30,9 @@ dependencies {
     implementation("com.google.guava:guava:31.1-jre")
 
     runtimeOnly("mysql:mysql-connector-java")
+
+    annotationProcessor("io.micronaut.openapi:micronaut-openapi:4.2.1")
+    implementation("io.swagger.core.v3:swagger-annotations")
 }
 
 application {
@@ -48,4 +51,9 @@ micronaut {
         incremental(true)
         annotations("com.akurey.*")
     }
+}
+
+tasks.withType(JavaCompile) {
+    options.fork = true
+    options.forkOptions.jvmArgs << '-Dmicronaut.openapi.views.spec=rapidoc.enabled=true,swagger-ui.enabled=true,swagger-ui.theme=flattop'
 }
