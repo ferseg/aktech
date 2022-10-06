@@ -1,0 +1,23 @@
+plugins {
+    id "application"
+    id "org.flywaydb.flyway" version "7.9.2"
+}
+
+version = "0.1"
+group = "com.honored"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.21'
+}
+
+flyway {
+    url = 'jdbc:mysql://' + System.getenv('DATABASE_ENDPOINT') + ':3306/' + System.getenv('DATABASE_NAME')
+    user = System.getenv('DATABASE_USER')
+    password = System.getenv('DATABASE_PASSWORD')
+    locations = ['filesystem:src/main/resources/migrations/honored']
+}
+

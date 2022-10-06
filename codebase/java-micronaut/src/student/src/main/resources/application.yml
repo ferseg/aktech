@@ -1,0 +1,69 @@
+micronaut:
+  application:
+    name: student
+  router:
+    static-resources:
+      swagger:
+        paths:
+          - classpath:META-INF/swagger
+        mapping: /swagger/*
+      swagger-ui:
+        paths:
+          - classpath:META-INF/swagger/views/swagger-ui
+        mapping: /swagger-ui/**
+  security:
+    intercept-url-map:
+      - pattern: /swagger/**
+        access:
+          - isAnonymous()
+      - pattern: /swagger-ui/**
+        access:
+          - isAnonymous()
+---
+micronaut:
+  security:
+    authentication: bearer
+    endpoints:
+      login:
+        enabled: false
+      oauth:
+        enabled: false
+    token:
+      jwt:
+        signatures:
+          secret:
+            generator:
+              secret: ${ACCESS_TOKEN_SECRET}
+        generator:
+          access-token:
+            expiration: 2629746
+          refresh-token:
+            secret: ${REFRESH_TOKEN_SECRET}
+---
+jpa:
+  default:
+    properties:
+      hibernate:
+        physical_naming_strategy: "org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl"
+        proc:
+          param_null_passing: true
+        hbm2ddl:
+          auto: none
+        show_sql: true
+---
+netty:
+  default:
+    allocator:
+      max-order: 3
+---
+jackson:
+  serializationInclusion: ALWAYS
+---
+datasources:
+  default:
+    pool-name: he-hikari-pool
+    maximum-pool-size: 2
+    url: jdbc:mysql://${DATABASE_ENDPOINT}:3306/${DATABASE_NAME}
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
