@@ -19,13 +19,8 @@ import com.akurey.models.LogoutResponse;
 import com.akurey.models.RefreshAuthTokenRequest;
 import com.akurey.models.RefreshAuthTokenResponse;
 import com.akurey.repositories.AuthenticationRepository;
-import com.akurey.repositories.entities.CreateUserSessionParams;
-import com.akurey.repositories.entities.GetUserWithRefreshTokenParams;
 import com.akurey.repositories.entities.GetUserWithRefreshTokenResult;
-import com.akurey.repositories.entities.LoginParams;
 import com.akurey.repositories.entities.LoginResult;
-import com.akurey.repositories.entities.LogoutParams;
-import com.akurey.repositories.entities.RefreshSessionParams;
 
 import io.micronaut.security.authentication.Authentication;
 import io.micronaut.security.authentication.ServerAuthentication;
@@ -47,12 +42,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
   public LoginResponse login(LoginRequest request) throws AKException {
 
     // Login
-    LoginParams params = LoginParams.builder()
-        .userIdentifier(request.getUsername())
-        .password(request.getPassword())
-        .build();
-
-    LoginResult result = repository.login(params);
+    LoginResult result = repository.login(request.getUsername(), request.getPassword());
 
     if (!result.getRoleCode().contentEquals(UserRole.ROLE_USER.getCode()) &&
         !result.getRoleCode().contentEquals(UserRole.ROLE_ADMIN.getCode())) {
@@ -77,13 +67,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
       AccessRefreshToken token = tokenOptional.get();
 
       // Create session
-      CreateUserSessionParams sessionParams = CreateUserSessionParams.builder()
-          .accessToken(token.getAccessToken())
-          .refreshToken(token.getRefreshToken())
-          .userIdentifier(request.getUsername())
-          .build();
-
-      repository.createUserSession(sessionParams);
+      repository.createUserSession(request.getUsername(), token.getAccessToken(), token.getRefreshToken());
 
       return LoginResponse.builder()
           .accessToken(token.getAccessToken())
@@ -101,11 +85,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     String authorizationHeader = request.getAuthorizationHeader();
     authorizationHeader = authorizationHeader.replaceFirst("Bearer ", "");
 
-    LogoutParams params = LogoutParams.builder()
-        .accessToken(authorizationHeader)
-        .build();
-
-    repository.logoutUserSession(params);
+    repository.logoutUserSession(authorizationHeader);
 
     return new LogoutResponse();
   }
@@ -121,11 +101,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
       throw new AKUnauthorizedException(UnauthorizedError.REFRESH_TOKEN_ERROR);
     }
 
-    GetUserWithRefreshTokenParams params = GetUserWithRefreshTokenParams.builder()
-        .refreshToken(refreshToken)
-        .build();
-
-    GetUserWithRefreshTokenResult userData = repository.getUserWithRefreshToken(params);
+    GetUserWithRefreshTokenResult userData = repository.getUserWithRefreshToken(refreshToken);
 
     ArrayList<String> roles = new ArrayList<>();
     roles.add(userData.getRoleCodes());
@@ -137,15 +113,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     if (tokenOptional.isPresent()) {
       AccessRefreshToken token = tokenOptional.get();
 
-      RefreshSessionParams refreshSessionParams = RefreshSessionParams.builder()
-          .oldRefreshToken(refreshToken)
-          .sessionId(userData.getSessionId())
-          .userId(userData.getUserId())
-          .newAuthToken(token.getAccessToken())
-          .newRefreshToken(token.getRefreshToken())
-          .build();
-
-      repository.refreshSession(refreshSessionParams);
+      repository.refreshSession(refreshToken, userData.getSessionId(), userData.getUserId(), token.getAccessToken(),
+          token.getRefreshToken());
 
       return RefreshAuthTokenResponse.builder()
           .accessToken(token.getAccessToken())

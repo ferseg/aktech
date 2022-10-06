@@ -18,7 +18,7 @@ brew install docker
 
 ### Setup the environment variables:
 
-In the [application.yaml](src/auth/src/main/resources/application.yml) file in the `auth` microservice, you need to set the following environment variables:
+You need to set the following environment variables that are used by the different services:
 ```
 ACCESS_TOKEN_SECRET: {you can add whatever token you want for local development}
 REFRESH_TOKEN_SECRET: {you can add whatever token you want for local development}
@@ -69,3 +69,15 @@ make database-remove
 **Important note:** Take into account that all the data stored will be deleted.
 
 You can find all these definitions in the [Makefile](./Makefile).
+
+### Running the project
+
+To run the project, just go to the folder of the service and run
+```
+./gradlew clean run
+```
+
+If you need to run the project in a specific port (To run multiple services at the same time for example), run
+```
+MICRONAUT_SERVER_PORT=8081 ./gradlew clean run
+```

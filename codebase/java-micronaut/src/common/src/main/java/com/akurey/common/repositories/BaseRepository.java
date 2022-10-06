@@ -1,7 +1,5 @@
 package com.akurey.common.repositories;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -24,10 +22,10 @@ public abstract class BaseRepository {
 
   protected abstract EntityManager getEntityManager();
 
-  protected void executeWithoutResult(BaseSPParams params) throws AKException {
+  protected void executeWithoutResult(String spName, List<SPParam> params) throws AKException {
     EntityManager entityManager = getEntityManager();
     try {
-      StoredProcedureQuery storedProcedure = buildStoredProcedure(entityManager, params, null);
+      StoredProcedureQuery storedProcedure = buildStoredProcedure(entityManager, spName, params, null);
 
       storedProcedure.execute();
 
@@ -38,13 +36,14 @@ public abstract class BaseRepository {
   }
 
   @SuppressWarnings("unchecked")
-  protected <TResult extends BaseSPResult> TResult getSingleResult(BaseSPParams params, Class<TResult> resultClass)
+  protected <TResult extends BaseSPResult> TResult getSingleResult(String spName, List<SPParam> params,
+      Class<TResult> resultClass)
       throws AKException {
 
     EntityManager entityManager = getEntityManager();
 
     try {
-      StoredProcedureQuery storedProcedure = buildStoredProcedure(entityManager, params, resultClass);
+      StoredProcedureQuery storedProcedure = buildStoredProcedure(entityManager, spName, params, resultClass);
 
       storedProcedure.execute();
 
@@ -59,12 +58,13 @@ public abstract class BaseRepository {
   }
 
   @SuppressWarnings("unchecked")
-  protected <TResult extends BaseSPResult> List<TResult> getResultList(BaseSPParams params, Class<TResult> resultClass)
+  protected <TResult extends BaseSPResult> List<TResult> getResultList(String spName, List<SPParam> params,
+      Class<TResult> resultClass)
       throws AKException {
 
     EntityManager entityManager = getEntityManager();
     try {
-      StoredProcedureQuery storedProcedure = buildStoredProcedure(entityManager, params, resultClass);
+      StoredProcedureQuery storedProcedure = buildStoredProcedure(entityManager, spName, params, resultClass);
 
       storedProcedure.execute();
 
@@ -75,66 +75,40 @@ public abstract class BaseRepository {
     }
   }
 
-  private StoredProcedureQuery buildStoredProcedure(EntityManager entityManager, BaseSPParams params,
+  private StoredProcedureQuery buildStoredProcedure(EntityManager entityManager, String spName, List<SPParam> params,
       Class<? extends BaseSPResult> resultClass) throws AKException {
 
-    if (isStoredProcedure(entityManager, params)) {
+    if (!isStoredProcedure(entityManager, spName)) {
       throw new AKException(CommonError.DB_EXECUTION_ERROR);
     }
 
-    Class<?> paramsClass = params.getClass();
-    StoredProcedureQuery storedProcedure = createStoredProcedureQuery(entityManager, paramsClass, resultClass);
+    StoredProcedureQuery storedProcedure = createStoredProcedureQuery(entityManager, spName, resultClass);
 
-    registerStoredProcedureParameters(params, paramsClass, storedProcedure);
+    registerStoredProcedureParameters(params, storedProcedure);
 
     return storedProcedure;
   }
 
-  private boolean isStoredProcedure(EntityManager entityManager, BaseSPParams params) {
-    return (entityManager == null) || (params == null)
-        || !params.getClass().isAnnotationPresent(StoredProcedureParams.class);
+  private boolean isStoredProcedure(EntityManager entityManager, String spName) {
+    return entityManager != null && spName != null;
   }
 
-  private StoredProcedureQuery createStoredProcedureQuery(EntityManager entityManager, Class<?> paramsClass,
+  private StoredProcedureQuery createStoredProcedureQuery(EntityManager entityManager, String spName,
       Class<?> resultClass) {
-    StoredProcedureParams spParams = paramsClass.getAnnotation(StoredProcedureParams.class);
     StoredProcedureQuery storedProcedure;
     if (resultClass != null) {
-      storedProcedure = entityManager.createStoredProcedureQuery(spParams.storeProcedureName(), resultClass);
+      storedProcedure = entityManager.createStoredProcedureQuery(spName, resultClass);
     }
     else {
-      storedProcedure = entityManager.createStoredProcedureQuery(spParams.storeProcedureName());
+      storedProcedure = entityManager.createStoredProcedureQuery(spName);
     }
     return storedProcedure;
   }
 
-  private void registerStoredProcedureParameters(BaseSPParams params, Class<?> paramsClass,
-      StoredProcedureQuery storedProcedure) throws AKException {
-    for (Field field : paramsClass.getDeclaredFields()) {
-      if (field.isAnnotationPresent(StoredProcedureParam.class)) {
-        StoredProcedureParam param = field.getAnnotation(StoredProcedureParam.class);
-        storedProcedure.registerStoredProcedureParameter(param.name(), field.getType(), param.mode());
-
-        if (param.mode().equals(ParameterMode.IN) || param.mode().equals(ParameterMode.INOUT)) {
-          try {
-
-            String capitalizedName = field.getName().substring(0, 1).toUpperCase() + field.getName().substring(1);
-            String getter = "get" + capitalizedName;
-            Method method = paramsClass.getDeclaredMethod(getter);
-
-            if ((method != null) && method.canAccess(params)) {
-              Object propertyValue = method.invoke(params);
-              storedProcedure.setParameter(param.name(), propertyValue);
-            }
-            else {
-              throw new AKException(CommonError.DB_EXECUTION_ERROR);
-            }
-          }
-          catch (Exception e) {
-            throw new AKException(CommonError.DB_EXECUTION_ERROR, e);
-          }
-        }
-      }
+  private void registerStoredProcedureParameters(List<SPParam> params, StoredProcedureQuery storedProcedure) {
+    for (SPParam param : params) {
+      storedProcedure.registerStoredProcedureParameter(param.getParamName(), String.class, ParameterMode.IN);
+      storedProcedure.setParameter(param.getParamName(), param.getValue());
     }
   }
 

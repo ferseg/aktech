@@ -40,11 +40,6 @@ micronaut:
           refresh-token:
             secret: ${REFRESH_TOKEN_SECRET}
 ---
-netty:
-  default:
-    allocator:
-      max-order: 3
----
 jpa:
   default:
     properties:
@@ -55,6 +50,14 @@ jpa:
         hbm2ddl:
           auto: none
         show_sql: true
+---
+netty:
+  default:
+    allocator:
+      max-order: 3
+---
+jackson:
+  serializationInclusion: ALWAYS
 ---
 datasources:
   default:

@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 import com.akurey.common.exceptions.AKException;
-import com.akurey.common.repositories.BaseRepository2;
+import com.akurey.common.repositories.BaseRepository;
 import com.akurey.common.repositories.SPParam;
 import com.akurey.repositories.entities.EntityResult;
 import com.akurey.repositories.entities.Student;
@@ -16,7 +16,7 @@ import io.micronaut.data.annotation.Repository;
 import io.micronaut.data.repository.CrudRepository;
 
 @Repository
-public abstract class StudentRepository extends BaseRepository2 implements CrudRepository<Student, Long> {
+public abstract class StudentRepository extends BaseRepository implements CrudRepository<Student, Long> {
 
   private final EntityManager entityManager;
 
