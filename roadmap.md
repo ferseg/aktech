@@ -336,17 +336,17 @@ those are quick examples of the expected general information in such of files
 //-- common.scss --//
 
 //_ font _//
-.small{font-size: 10px !important;}
-.big{font-size: 14px !important;}
-.le{text-align:left !important;}
-.ri{text-align:right !important;}
-.bold{font-weight:bold !important;}
+.small{font-size: 10px;}
+.big{font-size: 14px;}
+.le{text-align:left;}
+.ri{text-align:right;}
+.bold{font-weight:bold;}
 
 //_ display _//
 .none{display: none ;}
-.none_i{display: none !important;}
-.block{display: block !important;}
-.inline{display: inline !important;}
+.none_i{display: none ;}
+.block{display: block ;}
+.inline{display: inline ;}
 ...
 
 // depends on project size and needs //
