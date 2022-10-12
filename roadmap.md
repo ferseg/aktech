@@ -320,7 +320,7 @@ Given the fact that many projets use different languages and structures, there i
 ## Having a base styles folder
 Within the project structure there should be a *Base/Settings* folder where the general webapp measures, colors, breakingpoints and so on, are defined. Here is a basic structure (can grow depending on the project). 
 
-```s
+```css
 sass/
 |- base/
 | |- _common.scss
@@ -332,7 +332,7 @@ sass/
 
 those are quick examples of the expected general information in such of files 
 
-```s
+```css
 //-- common.scss --//
 
 //_ font _//
@@ -353,7 +353,7 @@ those are quick examples of the expected general information in such of files
 ```
 
 
-```s
+```css
 //-- measurements.scss --//
 $spacing-block: 4px;
 $grid-block: $spacing-block * 2;
@@ -362,7 +362,7 @@ $grid-block-4x: $grid-block * 4;
 ...
 ```
 
-```s
+```css
 //-- _colors.scss --//
 
 //- Basic Colors -//
@@ -380,7 +380,7 @@ $success-green: #33FF38;
 ...
 ```
 
-```s
+```css
 //-- breakingpoints.scss --//
 
 $mid-phone-upper = 670px;
@@ -392,7 +392,7 @@ $desktop-upper: 1280px;
 
 considering a bigger project, you could go for something that includes a reset, icons and other important settings, separating them into two main subfolders /config (general) and /local (project specific) structured as so: 
 
-```s
+```css
 sass/
 |- config/
 | |- _common.scss
@@ -421,7 +421,7 @@ Having everything under a single folder simplifies the looking for base styles, 
 
 ***main.scss*** as: 
 
-```s
+```css
 @import "colors";
 @import "breakpoints";
 ...
