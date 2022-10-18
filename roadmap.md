@@ -436,14 +436,14 @@ Then, inside other project files it will be as easy as calling this main.scss an
 
 *fabricio alvarado, guro in github desktop*
 
-increase productivity and github conflicts by becoming a guru en github desktop to then spread such practices in the company.
+increase productivity and reduce github conflicts by becoming excersise time consuming situations under visual github tools. people is using commmand line, github desktop and some other visual tools for this purpose. the goal is to teach people how easy specific cases when using such tools:
 
-people in akurey are using commmand lines, github desktop and other visual tools for this purpose. fabricio identify who wants to learn an specific tool to perform a workshop or mentoring on this. 
+use cases to explore 
+1. how to visualize changes before a commit or merge, comparing branches 
+2. how to solve merge conflicts on visual tools 
 
-Casos de uso:
-Funcionalidades visuales como mostrar cambios antes de commits y merge, comparación de branches
-Mostrar como resolver conflictos
-Fecha entrega: 10 noviembre
+expected date, nov 10th
+
 
 -----------------------------------
 
