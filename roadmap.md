@@ -83,6 +83,8 @@ Ticket Template
 
 ![](/assets/images/ticket_step_1.png) 
 
+<img src="/assets/images/ticket_step_1.png"  width=50% height=50%>
+
 2. select issue types 
 
 ![](/assets/images/ticket_step_2.png) 
