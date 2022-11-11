@@ -81,17 +81,15 @@ Ticket Template
 
 1. go yo your project in Jira, on the left, select project settings 
 
-![](/assets/images/ticket_step_1.png) 
-
-<img src="/assets/images/ticket_step_1.png"  width=50% height=50%>
+<img src="/assets/images/ticket_step_1.png" width=50% height=50%> 
 
 2. select issue types 
 
-![](/assets/images/ticket_step_2.png) 
+<img src="/assets/images/ticket_step_2.png" width=50% height=50%> 
 
 3. In the following page, edit each kind of ticket and add the appropriate template in the description. then save the changes. 
 
-![](/assets/images/ticket_step_3.png) 
+<img src="/assets/images/ticket_step_3.png" width=50% height=50%> 
 
 
 *Front End Bug Template (Jira steps)*  
@@ -104,37 +102,37 @@ https://docs.google.com/document/d/1YhcdHOAOyjwA-ZgbPbRyCJq1Vsp11ErK/edit
 
 2. on the issue types page, check if the bug issue type is enabled, if not add it. click on add issue type, then, select the type “Bug” from the modal and click on “add” 
 
-![](/assets/images/ticket_step_4.png)  
-![](/assets/images/ticket_step_5.png)  
+<img src="/assets/images/ticket_step_4.png" width=50% height=50%> 
+<img src="/assets/images/ticket_step_5.png" width=50% height=50%> 
 
 3. let’s assume that the issue type added in the step 2 is going to be for FE bugs, so change the name and description accordingly 
 
-![](/assets/images/ticket_step_6.png)  
+<img src="/assets/images/ticket_step_6.png" width=50% height=50%>   
 
 4. in the description field add the following sections: bug type, description of the bug, steps to reproduce, possible cause and evidence 
 
-![](/assets/images/ticket_step_7.png)  
+<img src="/assets/images/ticket_step_7.png" width=50% height=50%>   
 
 5. drag and drop or simply click on a paragraph field to create one for specifying the devices in which the bug happened. then opy and paste the devices specification from the template 
 
-![](/assets/images/ticket_step_8.png)  
-![](/assets/images/ticket_step_9.png)  
+<img src="/assets/images/ticket_step_8.png" width=50% height=50%>   
+<img src="/assets/images/ticket_step_9.png" width=50% height=50%>   
 
 6. drag and drop or simply click on a dropdown field to create one for selecting the environment in which the bug happened. then, create each environment option 
 
-![](/assets/images/ticket_step_10.png)  
+<img src="/assets/images/ticket_step_10.png" width=50% height=50%>   
 
 7. from previously-created fields, select the priority field and then select the default priority, for example “medium”
 
-![](/assets/images/ticket_step_11.png)  
+<img src="/assets/images/ticket_step_11.png" width=50% height=50%>   
 
 8. click on a dropdown field for creating a new one for specifying the risk level of the bug. For example: 
 
-![](/assets/images/ticket_step_12.png)  
+<img src="/assets/images/ticket_step_12.png" width=50% height=50%>   
 
 9. now it’s time to save the changes and enjoy the new and wonderful template for FE bugs. suggestion: mark the “required” checkbox in each field for avoiding missing important parts while writing an FE bug. 
 
-![](/assets/images/ticket_step_13.png)  
+<img src="/assets/images/ticket_step_13.png" width=50% height=50%>   
 
 *API Bug Template (Jira steps)*  
 
@@ -145,40 +143,40 @@ templates for FE and API defects are documented in the following document: https
 
 1. on the issue types page, check if the bug issue type is enabled, if not add it. first, click on add issue type, then, select the type “Bug” from the modal and click on “add”
 
-![](/assets/images/ticket_step_4.png)  
-![](/assets/images/ticket_step_5.png)  
+<img src="/assets/images/ticket_step_4.png" width=50% height=50%>   
+<img src="/assets/images/ticket_step_5.png" width=50% height=50%>   
 
 2. let’s assume that the issue type added in the step 2 is going to be for API bugs, so change the name and description accordingly 
 
-![](/assets/images/ticket_step_14.png)  
+<img src="/assets/images/ticket_step_14.png" width=50% height=50%>   
 
 3. in the description field add the following sections: bug type, description of the bug, the tool used to test, base URL, EP path, params (could be none), headers (could be none), body (could be none), possible cause and evidence
 
-![](/assets/images/ticket_step_15.png)  
+<img src="/assets/images/ticket_step_15.png" width=50% height=50%>   
 
 4. drag and drop or simply click on a dropdown field to create one for selecting the environment in which the bug happened. then, create each environment option
 
-![](/assets/images/ticket_step_16.png)  
-![](/assets/images/ticket_step_17.png)  
+<img src="/assets/images/ticket_step_16.png" width=50% height=50%>   
+<img src="/assets/images/ticket_step_17.png" width=50% height=50%>   
 
 
 5. drag and drop or simply click on a dropdown field to create one for specify the type of request that is failing and create an option for each type of request
 
-![](/assets/images/ticket_step_16.png)  
+<img src="/assets/images/ticket_step_16.png" width=50% height=50%>   
 
-![](/assets/images/ticket_step_18.png)  
+<img src="/assets/images/ticket_step_18.png" width=50% height=50%>   
 
 6. from previously-created fields, select the priority field, and then select the default priority, for example “medium”
 
-![](/assets/images/ticket_step_11.png)  
+<img src="/assets/images/ticket_step_11.png" width=50% height=50%>   
 
 7. click on a dropdown field for creating a new one for specifying the risk level of the bug. for example: 
 
-![](/assets/images/ticket_step_12.png)  
+<img src="/assets/images/ticket_step_12.png" width=50% height=50%>   
 
 8. now it’s time to save the template 
 
-![](/assets/images/ticket_step_19.png)   
+<img src="/assets/images/ticket_step_19.png" width=50% height=50%>    
 
 
 -----------------------------------
