@@ -61,9 +61,123 @@
 automate in Jira a template to create bug report tickets, such automation will be implemented in the jira projects under akurey's control and the ones when the client agrees to add it.
 
 *rodrigo navarro. automatic standard template for tickets in jira*
-automate in Jira a template for tickets having a minimum set of information fields such as problem, acceptance criteria, what-to-do or solution explained, and point of contact.
+automate in Jira a template for tickets having a minimum set of information fields such as problem, acceptance criteria, what-to-do or solution explained, and point of contact. 
 
-due date: michelle alvarado and rodrigo navarro are going to research the best way to implement such ticket automation in Jira, making it easy to export or install such templates within Jira environments. Be aware of how to keep versioning such templates. Check in date sep 15th.
+## Ticket template
+
+Ticket Template
+
+*Problem:* state the problem that needs to be solved. Be as descriptive as possible. Tag figmas, code, screenshots, or anything else that could help the reader understand the issue. 
+
+*Solution:* high level description of the solution of the problem. Can be as descriptive as needed, like a step-by-step description of the code changes needed to implement the solution, or liberty can be given to the person building the ticket. 
+
+*Acceptance Criteria:* sort of high level test cases that will need to be tested before this ticket can be considered done and closed. 
+
+*Resources:* links to useful resources 
+
+*POC (Point of contact):* person to contact in case you have some doubts with the ticket. 
+
+*Jira steps* 
+
+1. go yo your project in Jira, on the left, select project settings 
+
+![](/assets/images/ticket_step_1.png) 
+
+2. select issue types 
+
+![](/assets/images/ticket_step_2.png) 
+
+3. In the following page, edit each kind of ticket and add the appropriate template in the description. then save the changes. 
+
+![](/assets/images/ticket_step_3.png) 
+
+
+*Front End Bug Template (Jira steps)*  
+
+to access the templates from the official qa document follow this link: 
+
+https://docs.google.com/document/d/1YhcdHOAOyjwA-ZgbPbRyCJq1Vsp11ErK/edit 
+
+1. follow previous steps  1 and 2 
+
+2. on the issue types page, check if the bug issue type is enabled, if not add it. click on add issue type, then, select the type “Bug” from the modal and click on “add” 
+
+![](/assets/images/ticket_step_4.png)  
+![](/assets/images/ticket_step_5.png)  
+
+3. let’s assume that the issue type added in the step 2 is going to be for FE bugs, so change the name and description accordingly 
+
+![](/assets/images/ticket_step_6.png)  
+
+4. in the description field add the following sections: bug type, description of the bug, steps to reproduce, possible cause and evidence 
+
+![](/assets/images/ticket_step_7.png)  
+
+5. drag and drop or simply click on a paragraph field to create one for specifying the devices in which the bug happened. then opy and paste the devices specification from the template 
+
+![](/assets/images/ticket_step_8.png)  
+![](/assets/images/ticket_step_9.png)  
+
+6. drag and drop or simply click on a dropdown field to create one for selecting the environment in which the bug happened. then, create each environment option 
+
+![](/assets/images/ticket_step_10.png)  
+
+7. from previously-created fields, select the priority field and then select the default priority, for example “medium”
+
+![](/assets/images/ticket_step_11.png)  
+
+8. click on a dropdown field for creating a new one for specifying the risk level of the bug. For example: 
+
+![](/assets/images/ticket_step_12.png)  
+
+9. now it’s time to save the changes and enjoy the new and wonderful template for FE bugs. suggestion: mark the “required” checkbox in each field for avoiding missing important parts while writing an FE bug. 
+
+![](/assets/images/ticket_step_13.png)  
+
+*API Bug Template (Jira steps)*  
+
+prerequisites: follow steps  1, 2 from the Jira Steps
+
+templates for FE and API defects are documented in the following document: https://docs.google.com/document/d/1YhcdHOAOyjwA-ZgbPbRyCJq1Vsp11ErK/edit
+
+
+1. on the issue types page, check if the bug issue type is enabled, if not add it. first, click on add issue type, then, select the type “Bug” from the modal and click on “add”
+
+![](/assets/images/ticket_step_4.png)  
+![](/assets/images/ticket_step_5.png)  
+
+2. let’s assume that the issue type added in the step 2 is going to be for API bugs, so change the name and description accordingly 
+
+![](/assets/images/ticket_step_14.png)  
+
+3. in the description field add the following sections: bug type, description of the bug, the tool used to test, base URL, EP path, params (could be none), headers (could be none), body (could be none), possible cause and evidence
+
+![](/assets/images/ticket_step_15.png)  
+
+4. drag and drop or simply click on a dropdown field to create one for selecting the environment in which the bug happened. then, create each environment option
+
+![](/assets/images/ticket_step_16.png)  
+![](/assets/images/ticket_step_17.png)  
+
+
+5. drag and drop or simply click on a dropdown field to create one for specify the type of request that is failing and create an option for each type of request
+
+![](/assets/images/ticket_step_16.png)  
+
+![](/assets/images/ticket_step_18.png)  
+
+6. from previously-created fields, select the priority field, and then select the default priority, for example “medium”
+
+![](/assets/images/ticket_step_11.png)  
+
+7. click on a dropdown field for creating a new one for specifying the risk level of the bug. for example: 
+
+![](/assets/images/ticket_step_12.png)  
+
+8. now it’s time to save the template 
+
+![](/assets/images/ticket_step_19.png)   
+
 
 -----------------------------------
 
@@ -573,15 +687,27 @@ improve general code quality and reduce errors by the constant practice of corre
 
 on revision keep a log with revision date, person, amount of ifs reviewed, amount of ifs fixed
 
-Mainor Sancho, 24/8/2022, Revisados: 15, Sugerencia persona: 2, Suerencias proyecto: 1 
-Fernando Segovia, 24/8/2022, Revisados: 15, Sugerencia persona: 0, Suerencias proyecto: 2 
-Andrey Sanchez, 9/9/2022, Revisados: 10, Sugerencia persona: 1, Sugerencia proyecto: 1 
-Esteban Navarro, 9/8/2022, Revisados: 15, Sugerencia persona: 1, Sugerencia proyecto: 1 
-Lindsay, PENDIENTE, Revisados: 0, Sugerencia persona: 0, Sugerencia proyecto: 0 
+Mainor Sancho 
+24/8/2022, Revisados: 15, Sugerencia persona: 2, Suerencias proyecto: 1 
+18/10/2022, Revisados: 20, Sugerencia persona: 3, Suerencias proyecto: 0
 
+Fernando Segovia 
+24/8/2022, Revisados: 15, Sugerencia persona: 0, Suerencias proyecto: 2 
+18/10/2022, Revisados: 26, Sugerencia persona: 0, Suerencias proyecto: 8
+
+Andrey Sanchez
+9/9/2022, Revisados: 10, Sugerencia persona: 1, Sugerencia proyecto: 1 
+20/10/2022, Revisados: 18, Sugerencia persona: 0, Sugerencia proyecto: 0
+
+Esteban Navarro
+9/8/2022, Revisados: 15, Sugerencia persona: 1, Sugerencia proyecto: 1 
+18/10/2022, Revisados: 18, Sugerencia persona: 0, Sugerencia proyecto: 4
+
+Lindsay 
+PENDIENTE, Revisados: 0, Sugerencia persona: 0, Sugerencia proyecto: 0 
+PENDIENTE, Revisados: 0, Sugerencia persona: 0, Sugerencia proyecto: 0 
 
 Sugerencia persona: codigo creado por la persona 
-
 Sugerencia proyecto: codigo creado por otra persona pero que esta en el proyecto donde se trabaja, asi que ellos lo pueden mejorar  
 
 -----------------------------------
