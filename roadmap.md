@@ -85,7 +85,7 @@ Ticket Template
 
 2. select issue types 
 
-<img src="/assets/images/ticket_step_2.png" width=50% height=50%> 
+<img src="/assets/images/ticket_step_2.png" width=20% height=20%> 
 
 3. In the following page, edit each kind of ticket and add the appropriate template in the description. then save the changes. 
 
@@ -102,7 +102,7 @@ https://docs.google.com/document/d/1YhcdHOAOyjwA-ZgbPbRyCJq1Vsp11ErK/edit
 
 2. on the issue types page, check if the bug issue type is enabled, if not add it. click on add issue type, then, select the type “Bug” from the modal and click on “add” 
 
-<img src="/assets/images/ticket_step_4.png" width=50% height=50%> 
+<img src="/assets/images/ticket_step_4.png" width=20% height=20%> 
 <img src="/assets/images/ticket_step_5.png" width=50% height=50%> 
 
 3. let’s assume that the issue type added in the step 2 is going to be for FE bugs, so change the name and description accordingly 
@@ -115,7 +115,7 @@ https://docs.google.com/document/d/1YhcdHOAOyjwA-ZgbPbRyCJq1Vsp11ErK/edit
 
 5. drag and drop or simply click on a paragraph field to create one for specifying the devices in which the bug happened. then opy and paste the devices specification from the template 
 
-<img src="/assets/images/ticket_step_8.png" width=50% height=50%>   
+<img src="/assets/images/ticket_step_8.png" width=20% height=20%>   
 <img src="/assets/images/ticket_step_9.png" width=50% height=50%>   
 
 6. drag and drop or simply click on a dropdown field to create one for selecting the environment in which the bug happened. then, create each environment option 
@@ -143,7 +143,7 @@ templates for FE and API defects are documented in the following document: https
 
 1. on the issue types page, check if the bug issue type is enabled, if not add it. first, click on add issue type, then, select the type “Bug” from the modal and click on “add”
 
-<img src="/assets/images/ticket_step_4.png" width=50% height=50%>   
+<img src="/assets/images/ticket_step_4.png" width=20% height=20%>   
 <img src="/assets/images/ticket_step_5.png" width=50% height=50%>   
 
 2. let’s assume that the issue type added in the step 2 is going to be for API bugs, so change the name and description accordingly 
@@ -156,13 +156,13 @@ templates for FE and API defects are documented in the following document: https
 
 4. drag and drop or simply click on a dropdown field to create one for selecting the environment in which the bug happened. then, create each environment option
 
-<img src="/assets/images/ticket_step_16.png" width=50% height=50%>   
+<img src="/assets/images/ticket_step_16.png" width=20% height=20%>   
 <img src="/assets/images/ticket_step_17.png" width=50% height=50%>   
 
 
 5. drag and drop or simply click on a dropdown field to create one for specify the type of request that is failing and create an option for each type of request
 
-<img src="/assets/images/ticket_step_16.png" width=50% height=50%>   
+<img src="/assets/images/ticket_step_16.png" width=20% height=20%>   
 
 <img src="/assets/images/ticket_step_18.png" width=50% height=50%>   
 
