@@ -575,10 +575,47 @@ rodrigo navarro -> fernanda porras, randall moya, franco
 
 roy cordero -> andrey sanchez, oscar chavarría
 
-Final guideline by September 30th
+## Peer review guideline
+
+Created: September 27, 2022 8:42 AM
+Last Edited Time: September 30, 2022 2:45 PM
+Type: Documentation
+
+### Introduction
+
+When dealing with code reviews, you are also ensuring that what is being reviewed is meeting the current code standards, solves the problem and it does it in the proper manner, sometimes ensuring those statements (between others) is not that easy and efficient task to do, there are a lot of things that can slow us down like having to deal too much back and forth, trying to get the exact idea of the author at the time of solving the issue and the interaction between different pieces of the code or any other service.
+
+Doing a peer review is a powerful tool when it is done correctly and it can save us so much time and also help us understand better the intention of the author. Some people could consider peer reviews as a waste of time or a tedious task, and that can be truth when it is not done correctly.
+
+This guideline will list some points that can help you take the decision of doing a peer review.
+
+### When to make a peer review?
+
+The following list has some points that can help you determine when to do a peer review (although there is no magic formula) and hopefully prevent you from unnecessarily waste some of your time.
+
+- [ ]  Author’s maturity level: The maturity level of the author can influence the decision of making a peer review, usually more junior colleagues tend to require more guidance when solving an issues, consider the performance of the solution and interaction with every piece of the program along with the code styling.
+- [ ]  Length of the code review: Bigger code reviews are hard to follow, if the code review is unusually big, this could mean that there is something the author might be missing. Try to spend some time finding out whats happening but not too much time to decipher everything, ask the author instead.
+- [ ]  Complexity of the code review: Sometimes the problem that is being solved is complex, trying to understand the solution can take time and can even be hard to determine the intention, do not dedicate more than 20 minutes trying to figure out what’s happening, meet with the author and let him explain it to you.
+- [ ]  Complexity of the proposed changes: When explaining our point of view for a desired solution finding the right words to explain it, could be harder than just meet with the author, if there are a lot of changes or the change is critical, this could be a good opportunity to meet with the author and go over the solution together.
+- [ ]  Too many comments related to the same code portion: When simple section of the code will end up in a lot of comments (and possibly in a lot back and forth) that might be a sign of a solution design issue, talk with the author to understand its point of view and explain yours.
+- [ ]  When it will take you more than 20 mins understanding the code changed/added: Do not spend too much time trying to get the author’s perspective, ask him instead.
+- [ ]  Lots of back and forth: Sometimes it is better to meet with the author instead of exchanging an extensive written conversation that can consume too much time, and the initial point can be lost.
+
+### How to make a peer review?
+
+How to make a code review shares the same characteristic as when to make them… There is no magic formula to ensure it is good, but following you’ll find out some points that will help you doing them better.
+
+- [ ]  Schedule some time with the author: Make sure you reserve some time to do the review without interruption, this meeting should not take too much time, more than 30 minutes will probably indicate that you are not doing a proper peer review.
+- [ ]  Be familiar with the code: You should use the meeting to clarify certain pieces of the MR, not the whole development from the start, it is important to you have dedicated some time previously to go over the code review.
+- [ ]  Take notes: Take notes that will be useful and will reduce the peer review time, point out important sections of the code, things that you don’t understand and suggestions.
+- [ ]  Use the time to go over the code review: Go straight to the point, explain your point of view, what needs some clarification and the suggestions you have, the meeting is not for the author to explain everything from the beginning but to clarify and suggest.
+- [ ]  Do not socialize: Reinforcing the previous point, the peer review should be meant for code review related topics not to talk about life, socializing can help lose focus and not take advantage of the peer review.
+- [ ]  You can group code reviews for the same author: Be careful about this point, it could make you loose focus and confuse things between code reviews. If doing this, make sure they are al related. 
 
 
 -----------------------------------
+
+## mobile security
 
 *juan josé alpizar, security practices for mobile apps*
 
@@ -640,11 +677,16 @@ hidden backdoor functionality or internal security controls are a common problem
 
 -----------------------------------
 
+## toDO standard
+
 *wilson lopez, jonathan salazar, esteban navarro, luis diego aguilar, kristal duran,  standardize toDo format*
 
 team is going to design a format for toDOs in code, look if search or any other tool within the code editor to display all the toDos.
 
 the implementation of the toDo format is ready, starting in september the team we'll collect the extension of its use in the current project.
+
+//ToDo:<What needs to be done>
+//By:<username> || Date: <Date> || TicketRelated : <NumberOfTicket>
 
 counters , next count Octobr 18th
 
@@ -666,14 +708,15 @@ counters , next count October 25th
 
 -----------------------------------
 
+## micronaut boilerplate for java microservies
+
 *roy cordero, jonathan avalos, arturo padilla, jason solano. micronaut microservices boilerplate*
 
 build, test and release a boilerplate for micronaut microservices architecture, following within multiple best practices and architectural patterns.
 
 due date: friday 5th, have the first basic version of the boilerplate ready for projects from scratch. 
 
-In the next steps, a list of the practices and architectural patterns will be set. 
-
+the boilerplate is on active use for agex project. 
 
 -----------------------------------
 
