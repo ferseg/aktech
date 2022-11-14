@@ -53,8 +53,6 @@
 
 # best practices in action
 
-**control management**
-
 
 *michelle alvarado. automatic bug template in jira*
 
@@ -341,9 +339,6 @@ another useful option in this section is the team roster table
 
 -----------------------------------
 
-**operations**
-
-
 *heiner leon, improve slack communication productivity over slack*
 
 reinforce the slack guide for the correctness practice in the company, channels refactoring, improve searching for info and insisist in practicing the guideline.
@@ -355,16 +350,23 @@ The first two task will be completed by Sep 30rd
 
 -----------------------------------
 
+## daily standups by slack 
+
 *esteban damazio, async stand-up updates*
 
 when performing daily stand-ups send in slack a 3 part message with the Most Important Thing Yesterday (MITY), Today (MITT), and blockers using short sentences. If needed, a subject can be expanded on a Slack thread or similar. Also tag concerned people on specific updates. 
 
-the-a-team, in charge of odoo, website and the internal apps of the company started using this format and async updates in slack since Sep 1st.  
+using the slack workflow builder is possible to remind people within the channel to report the status following the designed format in particular days of the week.  
+
+teams currently using it:
+- a-team, in charge of the odoo platform, mobile app and website
+- doodles, a blog web application to provide pets information and shop articles
+- agex, project to easy how people get loans to transact cows 
+
 
 -----------------------------------
 
-**technical**
-
+## picture assets to dev team 
 
 *velvet, ana elena, maría jesús, michelle lacouture, pablo calderon, victoria. standard to export assets to dev team*
 
@@ -382,8 +384,6 @@ Benefits of applying best practices
 - improve efficiency and project understanding.
 
 revision, 09-29-2022
-
-## asset - images
 
 1. File management
 
@@ -423,6 +423,7 @@ revision, 09-29-2022
 
 
 -----------------------------------
+## web app general settings 
 
 *esteban jiménez, reduce potential errors by having general settings in web projects*
 
@@ -430,10 +431,12 @@ have a settings standard file in web projects to have measures, colors and other
 
 after a research about what and how the general settings of a web projected have been managed by others, a minimum settings structure is suggested by akurey standards on October 3rd, 2022.
 
-## Base scss/css
+*Base scss/css* 
+
 Given the fact that many projets use different languages and structures, there isn't an unique way to define how the scss/css is handled across them. But there are some basics to every project lead should consider to include at the beginning.
 
-## Having a base styles folder
+*Having a base styles folder* 
+
 Within the project structure there should be a *Base/Settings* folder where the general webapp measures, colors, breakingpoints and so on, are defined. Here is a basic structure (can grow depending on the project). 
 
 ```css
@@ -531,7 +534,7 @@ sass/
 
 *In this case there will be two files created at the end called config.scss and local.scss that import every scss within the two folders.*
 
-## Single import 
+*ingle import* 
 
 Having everything under a single folder simplifies the looking for base styles, but still doesn't simplify the importing of styles across the project, therefore, all files defined in the base folder should be imported in a single scss file 
 
@@ -547,7 +550,6 @@ Having everything under a single folder simplifies the looking for base styles, 
 Then, inside other project files it will be as easy as calling this main.scss and using whatever is needed from the styles defined previously.  
 
 
-
 -----------------------------------
 
 *fabricio alvarado, guro in github desktop*
@@ -559,7 +561,7 @@ use cases to explore
 2. how to solve merge conflicts on visual tools 
 
 expected date, nov 10th
-
+got the videos, now are getting refined
 
 -----------------------------------
 
