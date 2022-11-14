@@ -181,6 +181,8 @@ templates for FE and API defects are documented in the following document: https
 
 -----------------------------------
 
+## Structured project documentation content
+
 *lindsay morales, soledad kooper, diego cantillo. clear content structures and project documentation*
 
 this is the definition and example of a concept map, the account manager is encouraged to build a concept map of the starting project and then analyze it in detail along with the team members. the maintenance of such map is not mandatory. the technological tool to build it, store it and share is also an account manager criteria.  
