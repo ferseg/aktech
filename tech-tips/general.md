@@ -66,7 +66,7 @@ then finally write back the pdf to disk, buffer or send it as an http response.
 
 [explanatory video](https://1drv.ms/v/s!ApqDVCYL8CG8jdpO3PXF6sjGLKURJQ)
 
-[code example to test the problem ](/typescript/LetTester.ts)
+[code example to test the problem ](https://github.com/akurey/aktech/blob/master/tech-tips/typescript/LetTester.ts)
 
 
 > msc. rodrigo nunez
@@ -75,7 +75,7 @@ then finally write back the pdf to disk, buffer or send it as an http response.
 
 [explanatory video](https://1drv.ms/v/s!ApqDVCYL8CG8jdpPF8HN2xP_Hx5ZiQ)
 
-[code example to test the problem ](/typescript/AnyTester.ts)
+[code example to test the problem ](https://github.com/akurey/aktech/blob/master/tech-tips/typescript/AnyTester.ts)
 
 
 > msc. rodrigo nunez
