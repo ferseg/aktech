@@ -1,0 +1,39 @@
+
+query compareCars($plateA: String!, $plateB: String!)
+{
+  firstCar: car(platenumber: $plateA) {
+    year
+    transmission
+    combustible
+    brand
+    ...mediaFields
+  }
+  secondCar: car(platenumber: $plateB) {
+    year
+    transmission
+    combustible
+    brand
+    ...mediaFields
+  }
+}
+
+fragment mediaFields on CarMedia {
+  fotos {
+    picturl
+  }
+  crautosreviews {
+    author
+    comment
+  }
+  puromotorreviews {
+    autopart
+    comment
+    rate
+  }
+}
+
+{
+  "plateA" : "BMT-619",
+  "plateB" : "YKZ-024"
+}
+

@@ -62,3 +62,28 @@ then finally write back the pdf to disk, buffer or send it as an http response.
 
 > ing. luis diego aguilar
 
+## on typescript use let instead of var 
+
+explanatory video
+![](https://1drv.ms/v/s!ApqDVCYL8CG8jYgiFl4thvty4XZsSA?e=ZzMXAo)
+
+code example to test the problem 
+
+![](/typescript/LetTester.ts)
+
+
+> msc. rodrigo nunez
+
+## on typescript avoid the use of any
+
+explanatory video
+![](https://1drv.ms/v/s!ApqDVCYL8CG8jYgiFl4thvty4XZsSA?e=ZzMXAo)
+
+code example to test the problem 
+
+![](/typescript/AnyTester.ts)
+
+
+> msc. rodrigo nunez
+
+
