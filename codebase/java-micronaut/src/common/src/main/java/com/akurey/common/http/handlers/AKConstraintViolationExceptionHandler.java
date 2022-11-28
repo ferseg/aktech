@@ -22,7 +22,7 @@ import jakarta.inject.Singleton;
 @Singleton
 @Requires(classes = { ConstraintViolationException.class, ExceptionHandler.class })
 @Replaces(ConstraintExceptionHandler.class)
-public class AKConstraintViolationExceptionHandler extends AKExceptionHandler
+public class AKConstraintViolationExceptionHandler extends BaseExceptionHandler
     implements ExceptionHandler<ConstraintViolationException, HttpResponse> {
 
   @Override

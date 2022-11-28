@@ -15,7 +15,7 @@ import jakarta.inject.Singleton;
 @Singleton
 @Requires(classes = { ConversionErrorException.class, ExceptionHandler.class })
 @Replaces(ConversionErrorHandler.class)
-public class AKConversionErrorHandler extends AKExceptionHandler
+public class AKConversionErrorHandler extends BaseExceptionHandler
     implements ExceptionHandler<ConversionErrorException, HttpResponse> {
 
   @Override
