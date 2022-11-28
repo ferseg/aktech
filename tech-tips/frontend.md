@@ -257,3 +257,100 @@ a:focus-visible {
 
 > ing. alejandro arce
 
+
+## Higher-Order Components in React
+
+It’s an advanced technique in React which allows reusing component logic inside the render method.For example, we might need to show some components when the user is logged in. To check this, you need to add the same code with each component. Here comes the use of the Higher-Order Component where the logic to check the user is logged in and keep your code under one app component. While the other components are wrapped inside this 
+
+examples: 
+
+HOC example: using a HOC to show a placeholder while data is ready to being fetched 
+
+```js
+//List.js
+const List = (props) => {
+  const { items } = props;
+  if (!items || !items.length) {return <p>No items to show</p>};
+  const listItems = items.map(({id, full_name}) => {
+        return <li key={id}>{full_name}</li>;
+      })
+  return (
+    <ul>
+      {listItems}
+    </ul>
+  );
+};
+```
+
+HOC (naming convention withXXXXX):
+
+```js
+//withLoading.js
+const WithLoading = (Component) => {
+  return function WihLoadingComponent({ isLoading, ...props }) {
+    if (!isLoading) return <Component {...props} />;
+    return <p>Please wait, fetching data...</p>;
+  };
+}
+```
+
+Usage:
+
+```js
+//app.js
+import List from './components/List.js';
+import WithLoading from './components/withLoading.js';
+
+const ListWithLoading = WithLoading(List);
+
+const App = () =>  {  
+  
+  // .
+  // .
+  // get Items Asynchronously
+  // .
+  // .
+  
+  return <ListWithLoading isLoading={loading}
+        items={items}
+      />
+}
+```
+
+> ing. franco quiros
+
+## folder layout in react
+
+recomended basic folder layout for react projects, group the files per type. in this, the same type of files is kept under one folder. 
+
+<img src="/assets/images/reactFolderLayout.png">
+
+**components:** 
+**constants:** 
+**containers:** 
+**hooks:** 
+**pages:** 
+
+> ing. franco quiros
+
+## Dynamic Rendering with && and the Ternary Operator
+
+In React, it is possible to perform conditional renderings the same as a variable declaration. 
+
+```js
+import VerifiedIcon from './components/VerifiedIcon.js';
+
+const UserMessage = ({name, isVerified}) => {
+  
+  const greetingMsg = name ?
+        `Hello ${name}, welcome back!`:
+        'Hi there, please log in';
+  
+  return (
+    <div>
+      <span>{greetingMsg}</span>
+      <span>{isVerified && <VerifiedIcon/>}</span>
+    </div>
+  )
+}
+```

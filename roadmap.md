@@ -53,19 +53,133 @@
 
 # best practices in action
 
-**control management**
-
 
 *michelle alvarado. automatic bug template in jira*
 
 automate in Jira a template to create bug report tickets, such automation will be implemented in the jira projects under akurey's control and the ones when the client agrees to add it.
 
 *rodrigo navarro. automatic standard template for tickets in jira*
-automate in Jira a template for tickets having a minimum set of information fields such as problem, acceptance criteria, what-to-do or solution explained, and point of contact.
+automate in Jira a template for tickets having a minimum set of information fields such as problem, acceptance criteria, what-to-do or solution explained, and point of contact. 
 
-due date: michelle alvarado and rodrigo navarro are going to research the best way to implement such ticket automation in Jira, making it easy to export or install such templates within Jira environments. Be aware of how to keep versioning such templates. Check in date sep 15th.
+## Ticket template
+
+Ticket Template
+
+*Problem:* state the problem that needs to be solved. Be as descriptive as possible. Tag figmas, code, screenshots, or anything else that could help the reader understand the issue. 
+
+*Solution:* high level description of the solution of the problem. Can be as descriptive as needed, like a step-by-step description of the code changes needed to implement the solution, or liberty can be given to the person building the ticket. 
+
+*Acceptance Criteria:* sort of high level test cases that will need to be tested before this ticket can be considered done and closed. 
+
+*Resources:* links to useful resources 
+
+*POC (Point of contact):* person to contact in case you have some doubts with the ticket. 
+
+*Jira steps* 
+
+1. go yo your project in Jira, on the left, select project settings 
+
+<img src="/assets/images/ticket_step_1.png" width=50% height=50%> 
+
+2. select issue types 
+
+<img src="/assets/images/ticket_step_2.png" width=20% height=20%> 
+
+3. In the following page, edit each kind of ticket and add the appropriate template in the description. then save the changes. 
+
+<img src="/assets/images/ticket_step_3.png" width=50% height=50%> 
+
+
+*Front End Bug Template (Jira steps)*  
+
+to access the templates from the official qa document follow this link: 
+
+https://docs.google.com/document/d/1YhcdHOAOyjwA-ZgbPbRyCJq1Vsp11ErK/edit 
+
+1. follow previous steps  1 and 2 
+
+2. on the issue types page, check if the bug issue type is enabled, if not add it. click on add issue type, then, select the type “Bug” from the modal and click on “add” 
+
+<img src="/assets/images/ticket_step_4.png" width=20% height=20%> 
+<img src="/assets/images/ticket_step_5.png" width=50% height=50%> 
+
+3. let’s assume that the issue type added in the step 2 is going to be for FE bugs, so change the name and description accordingly 
+
+<img src="/assets/images/ticket_step_6.png" width=50% height=50%>   
+
+4. in the description field add the following sections: bug type, description of the bug, steps to reproduce, possible cause and evidence 
+
+<img src="/assets/images/ticket_step_7.png" width=50% height=50%>   
+
+5. drag and drop or simply click on a paragraph field to create one for specifying the devices in which the bug happened. then opy and paste the devices specification from the template 
+
+<img src="/assets/images/ticket_step_8.png" width=20% height=20%>   
+<img src="/assets/images/ticket_step_9.png" width=50% height=50%>   
+
+6. drag and drop or simply click on a dropdown field to create one for selecting the environment in which the bug happened. then, create each environment option 
+
+<img src="/assets/images/ticket_step_10.png" width=50% height=50%>   
+
+7. from previously-created fields, select the priority field and then select the default priority, for example “medium”
+
+<img src="/assets/images/ticket_step_11.png" width=50% height=50%>   
+
+8. click on a dropdown field for creating a new one for specifying the risk level of the bug. For example: 
+
+<img src="/assets/images/ticket_step_12.png" width=50% height=50%>   
+
+9. now it’s time to save the changes and enjoy the new and wonderful template for FE bugs. suggestion: mark the “required” checkbox in each field for avoiding missing important parts while writing an FE bug. 
+
+<img src="/assets/images/ticket_step_13.png" width=50% height=50%>   
+
+*API Bug Template (Jira steps)*  
+
+prerequisites: follow steps  1, 2 from the Jira Steps
+
+templates for FE and API defects are documented in the following document: https://docs.google.com/document/d/1YhcdHOAOyjwA-ZgbPbRyCJq1Vsp11ErK/edit
+
+
+1. on the issue types page, check if the bug issue type is enabled, if not add it. first, click on add issue type, then, select the type “Bug” from the modal and click on “add”
+
+<img src="/assets/images/ticket_step_4.png" width=20% height=20%>   
+<img src="/assets/images/ticket_step_5.png" width=50% height=50%>   
+
+2. let’s assume that the issue type added in the step 2 is going to be for API bugs, so change the name and description accordingly 
+
+<img src="/assets/images/ticket_step_14.png" width=50% height=50%>   
+
+3. in the description field add the following sections: bug type, description of the bug, the tool used to test, base URL, EP path, params (could be none), headers (could be none), body (could be none), possible cause and evidence
+
+<img src="/assets/images/ticket_step_15.png" width=50% height=50%>   
+
+4. drag and drop or simply click on a dropdown field to create one for selecting the environment in which the bug happened. then, create each environment option
+
+<img src="/assets/images/ticket_step_16.png" width=20% height=20%>   
+<img src="/assets/images/ticket_step_17.png" width=50% height=50%>   
+
+
+5. drag and drop or simply click on a dropdown field to create one for specify the type of request that is failing and create an option for each type of request
+
+<img src="/assets/images/ticket_step_16.png" width=20% height=20%>   
+
+<img src="/assets/images/ticket_step_18.png" width=50% height=50%>   
+
+6. from previously-created fields, select the priority field, and then select the default priority, for example “medium”
+
+<img src="/assets/images/ticket_step_11.png" width=50% height=50%>   
+
+7. click on a dropdown field for creating a new one for specifying the risk level of the bug. for example: 
+
+<img src="/assets/images/ticket_step_12.png" width=50% height=50%>   
+
+8. now it’s time to save the template 
+
+<img src="/assets/images/ticket_step_19.png" width=50% height=50%>    
+
 
 -----------------------------------
+
+## Structured project documentation content
 
 *lindsay morales, soledad kooper, diego cantillo. clear content structures and project documentation*
 
@@ -225,9 +339,6 @@ another useful option in this section is the team roster table
 
 -----------------------------------
 
-**operations**
-
-
 *heiner leon, improve slack communication productivity over slack*
 
 reinforce the slack guide for the correctness practice in the company, channels refactoring, improve searching for info and insisist in practicing the guideline.
@@ -239,16 +350,23 @@ The first two task will be completed by Sep 30rd
 
 -----------------------------------
 
+## daily standups by slack 
+
 *esteban damazio, async stand-up updates*
 
 when performing daily stand-ups send in slack a 3 part message with the Most Important Thing Yesterday (MITY), Today (MITT), and blockers using short sentences. If needed, a subject can be expanded on a Slack thread or similar. Also tag concerned people on specific updates. 
 
-the-a-team, in charge of odoo, website and the internal apps of the company started using this format and async updates in slack since Sep 1st.  
+using the slack workflow builder is possible to remind people within the channel to report the status following the designed format in particular days of the week.  
+
+teams currently using it:
+- a-team, in charge of the odoo platform, mobile app and website
+- doodles, a blog web application to provide pets information and shop articles
+- agex, project to easy how people get loans to transact cows 
+
 
 -----------------------------------
 
-**technical**
-
+## picture assets to dev team 
 
 *velvet, ana elena, maría jesús, michelle lacouture, pablo calderon, victoria. standard to export assets to dev team*
 
@@ -266,8 +384,6 @@ Benefits of applying best practices
 - improve efficiency and project understanding.
 
 revision, 09-29-2022
-
-## asset - images
 
 1. File management
 
@@ -307,6 +423,7 @@ revision, 09-29-2022
 
 
 -----------------------------------
+## web app general settings 
 
 *esteban jiménez, reduce potential errors by having general settings in web projects*
 
@@ -314,13 +431,15 @@ have a settings standard file in web projects to have measures, colors and other
 
 after a research about what and how the general settings of a web projected have been managed by others, a minimum settings structure is suggested by akurey standards on October 3rd, 2022.
 
-## Base scss/css
+*Base scss/css* 
+
 Given the fact that many projets use different languages and structures, there isn't an unique way to define how the scss/css is handled across them. But there are some basics to every project lead should consider to include at the beginning.
 
-## Having a base styles folder
+*Having a base styles folder* 
+
 Within the project structure there should be a *Base/Settings* folder where the general webapp measures, colors, breakingpoints and so on, are defined. Here is a basic structure (can grow depending on the project). 
 
-```
+```css
 sass/
 |- base/
 | |- _common.scss
@@ -332,28 +451,28 @@ sass/
 
 those are quick examples of the expected general information in such of files 
 
-```
+```css
 //-- common.scss --//
 
 //_ font _//
-.small{font-size: 10px !important;}
-.big{font-size: 14px !important;}
-.le{text-align:left !important;}
-.ri{text-align:right !important;}
-.bold{font-weight:bold !important;}
+.small{font-size: 10px;}
+.big{font-size: 14px;}
+.le{text-align:left;}
+.ri{text-align:right;}
+.bold{font-weight:bold;}
 
 //_ display _//
 .none{display: none ;}
-.none_i{display: none !important;}
-.block{display: block !important;}
-.inline{display: inline !important;}
+.none_i{display: none ;}
+.block{display: block ;}
+.inline{display: inline ;}
 ...
 
 // depends on project size and needs //
 ```
 
 
-```
+```css
 //-- measurements.scss --//
 $spacing-block: 4px;
 $grid-block: $spacing-block * 2;
@@ -362,7 +481,7 @@ $grid-block-4x: $grid-block * 4;
 ...
 ```
 
-```
+```css
 //-- _colors.scss --//
 
 //- Basic Colors -//
@@ -380,7 +499,7 @@ $success-green: #33FF38;
 ...
 ```
 
-```
+```css
 //-- breakingpoints.scss --//
 
 $mid-phone-upper = 670px;
@@ -392,7 +511,7 @@ $desktop-upper: 1280px;
 
 considering a bigger project, you could go for something that includes a reset, icons and other important settings, separating them into two main subfolders /config (general) and /local (project specific) structured as so: 
 
-```
+```css
 sass/
 |- config/
 | |- _common.scss
@@ -415,13 +534,13 @@ sass/
 
 *In this case there will be two files created at the end called config.scss and local.scss that import every scss within the two folders.*
 
-## Single import 
+*ingle import* 
 
 Having everything under a single folder simplifies the looking for base styles, but still doesn't simplify the importing of styles across the project, therefore, all files defined in the base folder should be imported in a single scss file 
 
 ***main.scss*** as: 
 
-```
+```css
 @import "colors";
 @import "breakpoints";
 ...
@@ -431,16 +550,18 @@ Having everything under a single folder simplifies the looking for base styles, 
 Then, inside other project files it will be as easy as calling this main.scss and using whatever is needed from the styles defined previously.  
 
 
-
 -----------------------------------
 
 *fabricio alvarado, guro in github desktop*
 
-increase productivity and github conflicts by becoming a guru en github desktop to then spread such practices in the company.
+increase productivity and reduce github conflicts by becoming excersise time consuming situations under visual github tools. people is using commmand line, github desktop and some other visual tools for this purpose. the goal is to teach people how easy specific cases when using such tools:
 
-people in akurey are using commmand lines, github desktop and other visual tools for this purpose. fabricio identify who wants to learn an specific tool to perform a workshop or mentoring on this. 
+use cases to explore 
+1. how to visualize changes before a commit or merge, comparing branches 
+2. how to solve merge conflicts on visual tools 
 
-final decision will take place on october 4th. 
+expected date, nov 10th
+got the videos, now are getting refined
 
 -----------------------------------
 
@@ -454,10 +575,47 @@ rodrigo navarro -> fernanda porras, randall moya, franco
 
 roy cordero -> andrey sanchez, oscar chavarría
 
-Final guideline by September 30th
+## Peer review guideline
+
+Created: September 27, 2022 8:42 AM
+Last Edited Time: September 30, 2022 2:45 PM
+Type: Documentation
+
+### Introduction
+
+When dealing with code reviews, you are also ensuring that what is being reviewed is meeting the current code standards, solves the problem and it does it in the proper manner, sometimes ensuring those statements (between others) is not that easy and efficient task to do, there are a lot of things that can slow us down like having to deal too much back and forth, trying to get the exact idea of the author at the time of solving the issue and the interaction between different pieces of the code or any other service.
+
+Doing a peer review is a powerful tool when it is done correctly and it can save us so much time and also help us understand better the intention of the author. Some people could consider peer reviews as a waste of time or a tedious task, and that can be truth when it is not done correctly.
+
+This guideline will list some points that can help you take the decision of doing a peer review.
+
+### When to make a peer review?
+
+The following list has some points that can help you determine when to do a peer review (although there is no magic formula) and hopefully prevent you from unnecessarily waste some of your time.
+
+- [ ]  Author’s maturity level: The maturity level of the author can influence the decision of making a peer review, usually more junior colleagues tend to require more guidance when solving an issues, consider the performance of the solution and interaction with every piece of the program along with the code styling.
+- [ ]  Length of the code review: Bigger code reviews are hard to follow, if the code review is unusually big, this could mean that there is something the author might be missing. Try to spend some time finding out whats happening but not too much time to decipher everything, ask the author instead.
+- [ ]  Complexity of the code review: Sometimes the problem that is being solved is complex, trying to understand the solution can take time and can even be hard to determine the intention, do not dedicate more than 20 minutes trying to figure out what’s happening, meet with the author and let him explain it to you.
+- [ ]  Complexity of the proposed changes: When explaining our point of view for a desired solution finding the right words to explain it, could be harder than just meet with the author, if there are a lot of changes or the change is critical, this could be a good opportunity to meet with the author and go over the solution together.
+- [ ]  Too many comments related to the same code portion: When simple section of the code will end up in a lot of comments (and possibly in a lot back and forth) that might be a sign of a solution design issue, talk with the author to understand its point of view and explain yours.
+- [ ]  When it will take you more than 20 mins understanding the code changed/added: Do not spend too much time trying to get the author’s perspective, ask him instead.
+- [ ]  Lots of back and forth: Sometimes it is better to meet with the author instead of exchanging an extensive written conversation that can consume too much time, and the initial point can be lost.
+
+### How to make a peer review?
+
+How to make a code review shares the same characteristic as when to make them… There is no magic formula to ensure it is good, but following you’ll find out some points that will help you doing them better.
+
+- [ ]  Schedule some time with the author: Make sure you reserve some time to do the review without interruption, this meeting should not take too much time, more than 30 minutes will probably indicate that you are not doing a proper peer review.
+- [ ]  Be familiar with the code: You should use the meeting to clarify certain pieces of the MR, not the whole development from the start, it is important to you have dedicated some time previously to go over the code review.
+- [ ]  Take notes: Take notes that will be useful and will reduce the peer review time, point out important sections of the code, things that you don’t understand and suggestions.
+- [ ]  Use the time to go over the code review: Go straight to the point, explain your point of view, what needs some clarification and the suggestions you have, the meeting is not for the author to explain everything from the beginning but to clarify and suggest.
+- [ ]  Do not socialize: Reinforcing the previous point, the peer review should be meant for code review related topics not to talk about life, socializing can help lose focus and not take advantage of the peer review.
+- [ ]  You can group code reviews for the same author: Be careful about this point, it could make you loose focus and confuse things between code reviews. If doing this, make sure they are al related. 
 
 
 -----------------------------------
+
+## mobile security
 
 *juan josé alpizar, security practices for mobile apps*
 
@@ -519,11 +677,16 @@ hidden backdoor functionality or internal security controls are a common problem
 
 -----------------------------------
 
+## toDO standard
+
 *wilson lopez, jonathan salazar, esteban navarro, luis diego aguilar, kristal duran,  standardize toDo format*
 
 team is going to design a format for toDOs in code, look if search or any other tool within the code editor to display all the toDos.
 
 the implementation of the toDo format is ready, starting in september the team we'll collect the extension of its use in the current project.
+
+//ToDo:<What needs to be done>
+//By:<username> || Date: <Date> || TicketRelated : <NumberOfTicket>
 
 counters , next count Octobr 18th
 
@@ -545,14 +708,15 @@ counters , next count October 25th
 
 -----------------------------------
 
+## micronaut boilerplate for java microservies
+
 *roy cordero, jonathan avalos, arturo padilla, jason solano. micronaut microservices boilerplate*
 
 build, test and release a boilerplate for micronaut microservices architecture, following within multiple best practices and architectural patterns.
 
 due date: friday 5th, have the first basic version of the boilerplate ready for projects from scratch. 
 
-In the next steps, a list of the practices and architectural patterns will be set. 
-
+the boilerplate is on active use for agex project. 
 
 -----------------------------------
 
@@ -570,15 +734,27 @@ improve general code quality and reduce errors by the constant practice of corre
 
 on revision keep a log with revision date, person, amount of ifs reviewed, amount of ifs fixed
 
-Mainor Sancho, 24/8/2022, Revisados: 15, Sugerencia persona: 2, Suerencias proyecto: 1 
-Fernando Segovia, 24/8/2022, Revisados: 15, Sugerencia persona: 0, Suerencias proyecto: 2 
-Andrey Sanchez, 9/9/2022, Revisados: 10, Sugerencia persona: 1, Sugerencia proyecto: 1 
-Esteban Navarro, 9/8/2022, Revisados: 15, Sugerencia persona: 1, Sugerencia proyecto: 1 
-Lindsay, PENDIENTE, Revisados: 0, Sugerencia persona: 0, Sugerencia proyecto: 0 
+Mainor Sancho 
+24/8/2022, Revisados: 15, Sugerencia persona: 2, Suerencias proyecto: 1 
+18/10/2022, Revisados: 20, Sugerencia persona: 3, Suerencias proyecto: 0
 
+Fernando Segovia 
+24/8/2022, Revisados: 15, Sugerencia persona: 0, Suerencias proyecto: 2 
+18/10/2022, Revisados: 26, Sugerencia persona: 0, Suerencias proyecto: 8
+
+Andrey Sanchez
+9/9/2022, Revisados: 10, Sugerencia persona: 1, Sugerencia proyecto: 1 
+20/10/2022, Revisados: 18, Sugerencia persona: 0, Sugerencia proyecto: 0
+
+Esteban Navarro
+9/8/2022, Revisados: 15, Sugerencia persona: 1, Sugerencia proyecto: 1 
+18/10/2022, Revisados: 18, Sugerencia persona: 0, Sugerencia proyecto: 4
+
+Lindsay 
+PENDIENTE, Revisados: 0, Sugerencia persona: 0, Sugerencia proyecto: 0 
+PENDIENTE, Revisados: 0, Sugerencia persona: 0, Sugerencia proyecto: 0 
 
 Sugerencia persona: codigo creado por la persona 
-
 Sugerencia proyecto: codigo creado por otra persona pero que esta en el proyecto donde se trabaja, asi que ellos lo pueden mejorar  
 
 -----------------------------------
