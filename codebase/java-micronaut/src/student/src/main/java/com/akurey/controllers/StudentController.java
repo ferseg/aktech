@@ -47,6 +47,7 @@ public class StudentController extends BaseController {
 
     setupRequest(request, authentication);
     StudentsResponse response = studentService.getStudents();
+
     return buildOkResponse(request, response);
   }
 
@@ -63,6 +64,7 @@ public class StudentController extends BaseController {
     EntityIdRequest request = EntityIdRequest.builder().id(id).build();
     setupRequest(request, authentication);
     StudentResponse response = studentService.getStudent(id);
+
     return buildOkResponse(request, response);
   }
 
@@ -78,6 +80,7 @@ public class StudentController extends BaseController {
 
     setupRequest(request, authentication);
     StudentResponse response = studentService.createStudent(request);
+
     return buildCreatedResponse(request, response);
   }
 
@@ -95,6 +98,7 @@ public class StudentController extends BaseController {
     request.setId(id);
     setupRequest(request, authentication);
     StudentResponse response = studentService.updateStudent(request);
+
     return buildOkResponse(request, response);
   }
 
@@ -111,6 +115,7 @@ public class StudentController extends BaseController {
     EntityIdRequest request = EntityIdRequest.builder().id(id).build();
     setupRequest(request, authentication);
     MessageResponse response = studentService.deleteStudent(id);
+
     return buildOkResponse(request, response);
   }
 }
