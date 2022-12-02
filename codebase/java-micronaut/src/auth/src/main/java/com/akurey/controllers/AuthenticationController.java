@@ -39,14 +39,10 @@ public class AuthenticationController extends BaseController {
       content = @Content(mediaType = "application/json", schema = @Schema(implementation = LoginResponse.class))
   )
   @Post(value = "/login", produces = MediaType.APPLICATION_JSON)
-  public HttpResponse<?> login(@RequestBean @Valid LoginRequest request) {
-    try {
-      LoginResponse response = service.login(request);
-      return buildOkResponse(request, response);
-    }
-    catch (AKException e) {
-      return buildExceptionResponse(e, request);
-    }
+  public HttpResponse<?> login(@RequestBean @Valid LoginRequest request) throws AKException {
+
+    LoginResponse response = service.login(request);
+    return buildOkResponse(request, response);
   }
 
   @Operation(description = "Logs out a user")
@@ -57,14 +53,10 @@ public class AuthenticationController extends BaseController {
   )
   @Secured(SecurityRule.IS_AUTHENTICATED)
   @Post(value = "/logout", produces = MediaType.APPLICATION_JSON)
-  public HttpResponse<?> logoutStudent(@RequestBean @Valid LogoutRequest request) {
-    try {
-      LogoutResponse response = service.logout(request);
-      return buildOkResponse(request, response);
-    }
-    catch (AKException e) {
-      return buildExceptionResponse(e, request);
-    }
+  public HttpResponse<?> logoutStudent(@RequestBean @Valid LogoutRequest request) throws AKException {
+
+    LogoutResponse response = service.logout(request);
+    return buildOkResponse(request, response);
   }
 
   @Operation(description = "Refreshes the access token for a user")
@@ -74,14 +66,10 @@ public class AuthenticationController extends BaseController {
       content = @Content(mediaType = "application/json", schema = @Schema(implementation = RefreshAuthTokenResponse.class))
   )
   @Post(value = "/token/refresh", produces = MediaType.APPLICATION_JSON)
-  public HttpResponse<?> refreshAuthToken(@RequestBean @Valid RefreshAuthTokenRequest request) {
-    try {
-      RefreshAuthTokenResponse response = service.refreshAuthToken(request);
-      return buildOkResponse(request, response);
-    }
-    catch (AKException e) {
-      return buildExceptionResponse(e, request);
-    }
+  public HttpResponse<?> refreshAuthToken(@RequestBean @Valid RefreshAuthTokenRequest request) throws AKException {
+
+    RefreshAuthTokenResponse response = service.refreshAuthToken(request);
+    return buildOkResponse(request, response);
   }
 
   // TODO: Add forgot password flow

@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.akurey.common.exceptions.AKException;
+import com.akurey.common.exceptions.errors.CommonError;
 
 import static net.logstash.logback.marker.Markers.append;
 
@@ -40,6 +41,20 @@ public final class AKLogger {
     LogMarker marker = new LogMarker();
     marker.setRequest(request);
     marker.setErrorCode(exception.getErrorCode());
+    marker.setErrorMessage(getMessageFromStack(exception));
+    marker.setEventType(event.getEventType());
+    marker.setEventCode(event.getCode());
+    marker.setEventMessage(event.getMessage());
+
+    logger.error(event.getMessage(), append(CUSTOM_LOG, marker));
+  }
+
+  public static void logRequestFailure(Object caller, Exception exception, Object request) {
+    LogEvent event = LogEvent.REQUEST_EXECUTION_FAILED;
+    Logger logger = LoggerFactory.getLogger(caller.getClass());
+    LogMarker marker = new LogMarker();
+    marker.setRequest(request);
+    marker.setErrorCode(CommonError.NOT_HANDLED_ERROR.getCode());
     marker.setErrorMessage(getMessageFromStack(exception));
     marker.setEventType(event.getEventType());
     marker.setEventCode(event.getCode());

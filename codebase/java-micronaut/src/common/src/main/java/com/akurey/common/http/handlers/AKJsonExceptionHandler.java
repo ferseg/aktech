@@ -16,7 +16,7 @@ import jakarta.inject.Singleton;
 @Singleton
 @Requires(classes = { JsonProcessingException.class, ExceptionHandler.class })
 @Replaces(JsonExceptionHandler.class)
-public class AKJsonExceptionHandler extends AKExceptionHandler
+public class AKJsonExceptionHandler extends BaseExceptionHandler
     implements ExceptionHandler<JsonProcessingException, HttpResponse> {
 
   @Override

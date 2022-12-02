@@ -1,7 +1,5 @@
 package com.akurey.common.http.handlers;
 
-import com.akurey.common.exceptions.AKException;
-
 import io.micronaut.context.annotation.Requires;
 import io.micronaut.core.bind.exceptions.UnsatisfiedArgumentException;
 import io.micronaut.http.HttpRequest;
@@ -14,10 +12,10 @@ import jakarta.inject.Singleton;
 @Produces
 @Singleton
 @Requires(classes = { UnsatisfiedArgumentException.class, ExceptionHandler.class })
-public class AKExceptionHandler extends BaseExceptionHandler implements ExceptionHandler<AKException, HttpResponse> {
+public class AKRuntimeExceptionHandler extends BaseExceptionHandler implements ExceptionHandler<RuntimeException, HttpResponse> {
 
   @Override
-  public HttpResponse handle(HttpRequest request, AKException exception) {
+  public HttpResponse handle(HttpRequest request, RuntimeException exception) {
 
     return buildExceptionResponse(exception, request);
   }

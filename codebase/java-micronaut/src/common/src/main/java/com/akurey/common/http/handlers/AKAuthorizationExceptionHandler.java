@@ -22,7 +22,7 @@ import jakarta.inject.Singleton;
 @Singleton
 @Requires(classes = { AuthorizationException.class, ExceptionHandler.class })
 @Replaces(DefaultAuthorizationExceptionHandler.class)
-public class AKAuthorizationExceptionHandler extends AKExceptionHandler
+public class AKAuthorizationExceptionHandler extends BaseExceptionHandler
     implements ExceptionHandler<AuthorizationException, HttpResponse> {
 
   Logger logger = LoggerFactory.getLogger(AKAuthorizationExceptionHandler.class);

@@ -15,7 +15,7 @@ import jakarta.inject.Singleton;
 @Singleton
 @Requires(classes = { UnsatisfiedArgumentException.class, ExceptionHandler.class })
 @Replaces(UnsatisfiedArgumentHandler.class)
-public class AKUnsatisfiedArgumentHandler extends AKExceptionHandler
+public class AKUnsatisfiedArgumentHandler extends BaseExceptionHandler
     implements ExceptionHandler<UnsatisfiedArgumentException, HttpResponse> {
 
   @Override
