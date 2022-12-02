@@ -737,22 +737,25 @@ on revision keep a log with revision date, person, amount of ifs reviewed, amoun
 Mainor Sancho 
 24/8/2022, Revisados: 15, Sugerencia persona: 2, Suerencias proyecto: 1 
 18/10/2022, Revisados: 20, Sugerencia persona: 3, Suerencias proyecto: 0
+16/11/2022 , Revisados: 29, Sugerencia persona: 0, Suerencias proyecto: 0
 
 Fernando Segovia 
 24/8/2022, Revisados: 15, Sugerencia persona: 0, Suerencias proyecto: 2 
 18/10/2022, Revisados: 26, Sugerencia persona: 0, Suerencias proyecto: 8
+1/12/2022 , Revisados: 0, Sugerencia persona: 0, Suerencias proyecto: 0
 
 Andrey Sanchez
 9/9/2022, Revisados: 10, Sugerencia persona: 1, Sugerencia proyecto: 1 
 20/10/2022, Revisados: 18, Sugerencia persona: 0, Sugerencia proyecto: 0
+30/11/2022, Revisados: 24, Sugerencia persona: 2, Sugerencia proyecto: 0
 
 Esteban Navarro
 9/8/2022, Revisados: 15, Sugerencia persona: 1, Sugerencia proyecto: 1 
 18/10/2022, Revisados: 18, Sugerencia persona: 0, Sugerencia proyecto: 4
+30/11/2022, Revisados: 20, Sugerencia persona: 0, Sugerencia proyecto: 1
 
 Lindsay 
-PENDIENTE, Revisados: 0, Sugerencia persona: 0, Sugerencia proyecto: 0 
-PENDIENTE, Revisados: 0, Sugerencia persona: 0, Sugerencia proyecto: 0 
+23/11/2022, Revisados: 21, Sugerencia persona: 1, Sugerencia proyecto: 0
 
 Sugerencia persona: codigo creado por la persona 
 Sugerencia proyecto: codigo creado por otra persona pero que esta en el proyecto donde se trabaja, asi que ellos lo pueden mejorar  
