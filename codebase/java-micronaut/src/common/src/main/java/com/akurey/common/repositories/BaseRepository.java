@@ -71,7 +71,7 @@ public abstract class BaseRepository {
             Class<? extends BaseSPResult> resultClass) throws AKException {
 
         if (!isStoredProcedure(entityManager, spName)) {
-            throw new AKDatabaseException(CommonError.DB_EXECUTION_ERROR);
+            throw new AKDatabseException(CommonError.DB_EXECUTION_ERROR);
         }
 
         StoredProcedureQuery storedProcedure = createStoredProcedureQuery(entityManager, spName, resultClass);
@@ -118,11 +118,11 @@ public abstract class BaseRepository {
         }
 
         if (returnMessage == null) {
-            return new AKDatabaseException(CommonError.DB_EXECUTION_ERROR, e);
+            return new AKDatabseException(CommonError.DB_EXECUTION_ERROR, e);
         }
 
         if (errorCode < 50000 || errorCode >= 54000) {
-            return new AKDatabaseException(returnMessage, e, errorCode);
+            return new AKDatabseException(returnMessage, e, errorCode);
         }
 
         if (errorCode < 51000) {
@@ -132,7 +132,7 @@ public abstract class BaseRepository {
             return new AKUnauthenticatedException(returnMessage, e, errorCode);
         }
         if (errorCode < 53000) {
-            return new AKDatabaseException(returnMessage, e, errorCode);
+            return new AKDatabseException(returnMessage, e, errorCode);
         }
         return new AKUnauthorizedException(returnMessage, e, errorCode);
     }
