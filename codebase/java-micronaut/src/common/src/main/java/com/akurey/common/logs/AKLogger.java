@@ -3,6 +3,8 @@ package com.akurey.common.logs;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Optional;
+
 import com.akurey.common.exceptions.AKException;
 import com.akurey.common.exceptions.errors.CommonError;
 
@@ -18,7 +20,7 @@ public final class AKLogger {
     LogEvent event = LogEvent.INFORMATION_LOG;
     marker.setEventType(event.getEventType());
     marker.setEventCode(event.getCode());
-    marker.setEventMessage(message != null ? message : event.getMessage());
+    marker.setEventMessage(Optional.ofNullable(message).orElse(event.getMessage()));
 
     logger.info(event.getMessage(), append(CUSTOM_LOG, marker));
   }

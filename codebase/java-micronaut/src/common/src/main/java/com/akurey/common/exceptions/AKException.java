@@ -2,7 +2,9 @@ package com.akurey.common.exceptions;
 
 import com.akurey.common.exceptions.errors.AKError;
 
-public class AKException extends Exception {
+import io.micronaut.http.HttpStatus;
+
+public abstract class AKException extends Exception {
 
   private static final long serialVersionUID = 1L;
 
@@ -34,4 +36,6 @@ public class AKException extends Exception {
   public void setErrorCode(int errorCode) {
     this.errorCode = errorCode;
   }
+
+  public abstract HttpStatus getHttpStatus();
 }

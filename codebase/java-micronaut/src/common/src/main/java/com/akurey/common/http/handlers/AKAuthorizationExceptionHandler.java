@@ -34,8 +34,7 @@ public class AKAuthorizationExceptionHandler extends BaseExceptionHandler
   @Override
   public HttpResponse handle(HttpRequest request, AuthorizationException exception) {
 
-    // request.getBody().isPresent() ? request.getBody().get() : null);
-    logger.error(UnauthenticatedError.UNAUTHENTICATED_ERROR.getMessage() + exception.getMessage());
+    logger.error("{} {}", UnauthenticatedError.UNAUTHENTICATED_ERROR.getMessage(),  exception.getMessage());
 
     RestResponse<?> response = new RestResponse<>();
 
