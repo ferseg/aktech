@@ -10,32 +10,33 @@ repositories {
     jcenter()
 }
 
+ext {
+    lombokVersion = "1.18.22"
+}
+
 dependencies {
-    implementation("org.projectlombok:lombok:1.18.22")
-    annotationProcessor("org.projectlombok:lombok:1.18.22")
-    annotationProcessor('io.micronaut:micronaut-inject-java:3.5.4')
-    implementation('io.micronaut:micronaut-management:3.5.4')
+    implementation platform("io.micronaut:micronaut-bom:3.8.5")
+    implementation("org.projectlombok:lombok:$lombokVersion")
+    annotationProcessor("org.projectlombok:lombok:$lombokVersion")
+    annotationProcessor("io.micronaut:micronaut-inject-java:3.8.5")
+    implementation("io.micronaut:micronaut-management")
 
-    implementation('io.micronaut:micronaut-runtime:3.5.1')
-    implementation('io.micronaut:micronaut-session:3.5.1')
+    implementation("io.micronaut:micronaut-runtime")
+    implementation("io.micronaut:micronaut-session")
 
-    implementation('io.micronaut.sql:micronaut-hibernate-jpa:4.6.2')
-    implementation('io.micronaut.sql:micronaut-jdbc-hikari:4.6.2')
-    implementation('io.micronaut.data:micronaut-data-hibernate-jpa:3.7.0')
+    implementation("io.micronaut.sql:micronaut-jdbc-hikari")
+    implementation("io.micronaut.sql:micronaut-hibernate-jpa")
+    implementation("io.micronaut.data:micronaut-data-hibernate-jpa")
 
-    implementation('io.micronaut.security:micronaut-security-annotations:3.6.3')
-    implementation('io.micronaut.security:micronaut-security-jwt:3.6.3')
+    implementation("io.micronaut.security:micronaut-security-annotations")
+    implementation("io.micronaut.security:micronaut-security-jwt")
 
-    implementation('com.google.code.findbugs:jsr305:3.0.2')
+    implementation("com.google.code.findbugs:jsr305:3.0.2")
     implementation("com.google.guava:guava:31.1-jre")
 
-    implementation group: "net.logstash.logback", name: "logstash-logback-encoder", version: "6.6"
+    implementation("io.projectreactor:reactor-core:3.4.21")
 
-    implementation('io.projectreactor:reactor-core:3.4.21')
-
-    implementation group: "net.logstash.logback", name: "logstash-logback-encoder", version: "6.6"
-
-    implementation('org.jcodec:jcodec-javase:0.2.5')
+    implementation("net.logstash.logback:logstash-logback-encoder:6.6")
 
     runtimeOnly("ch.qos.logback:logback-classic")
 }
@@ -44,6 +45,3 @@ java {
     sourceCompatibility = JavaVersion.toVersion("11")
     targetCompatibility = JavaVersion.toVersion("11")
 }
-
-
-
