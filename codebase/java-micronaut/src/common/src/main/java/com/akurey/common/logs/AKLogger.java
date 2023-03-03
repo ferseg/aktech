@@ -66,20 +66,19 @@ public final class AKLogger {
   }
 
   private static String getMessageFromStack(Exception exception) {
-    String errorMessage = exception.getMessage();
+    StringBuilder errorMessage = new StringBuilder(exception.getMessage());
     int level = 3;
     Throwable e = exception;
     while (level > 0) {
       if (e.getCause() == null) {
-        return errorMessage;
+        return errorMessage.toString();
       }
-      else {
-        e = e.getCause();
-        errorMessage += " -- " + e.getMessage();
-      }
+      e = e.getCause();
+      errorMessage.append(" -- ")
+                .append(e.getMessage());
       level--;
     }
-    return errorMessage;
+    return errorMessage.toString();
   }
 
 }

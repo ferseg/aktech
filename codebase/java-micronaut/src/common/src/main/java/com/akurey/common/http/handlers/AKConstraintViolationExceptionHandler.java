@@ -2,6 +2,8 @@ package com.akurey.common.http.handlers;
 
 import java.util.Iterator;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
@@ -39,22 +41,15 @@ public class AKConstraintViolationExceptionHandler extends BaseExceptionHandler
 
     return handleBadRequest(request, exception, message.toString());
   }
-
-  private String buildMessage(ConstraintViolation violation) {
-    Path propertyPath = violation.getPropertyPath();
-    StringBuilder message = new StringBuilder();
-    Iterator<Path.Node> i = propertyPath.iterator();
-    while (i.hasNext()) {
-      Path.Node node = i.next();
-      if ((node.getKind() == ElementKind.METHOD)
-          || (node.getKind() == ElementKind.CONSTRUCTOR)
-          || i.hasNext()) {
-        continue;
-      }
-      message.append(node.getName());
-    }
-    message.append(": ").append(violation.getMessage()).append(". ");
-    return message.toString();
-  }
+  
+  private String buildMessage(final ConstraintViolation<?> violation) {
+    final Path propertyPath = violation.getPropertyPath();
+    final String property = StreamSupport.stream(propertyPath.spliterator(), false)
+          .filter(node -> node.getKind() != ElementKind.METHOD)
+          .filter(node -> node.getKind() != ElementKind.CONSTRUCTOR)
+          .map(Path.Node::toString)
+          .collect(Collectors.joining("."));
+    return String.format("%s: %s", property, violation.getMessage());
+  } 
 
 }

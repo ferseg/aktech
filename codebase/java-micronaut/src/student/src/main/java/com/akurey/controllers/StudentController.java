@@ -7,6 +7,7 @@ import com.akurey.common.http.BaseController;
 import com.akurey.common.models.EmptyRequest;
 import com.akurey.common.models.EntityIdRequest;
 import com.akurey.common.models.MessageResponse;
+import com.akurey.models.Roles;
 import com.akurey.models.StudentRequest;
 import com.akurey.models.StudentResponse;
 import com.akurey.models.StudentsResponse;
@@ -38,9 +39,9 @@ public class StudentController extends BaseController {
   @ApiResponse(
       responseCode = "200",
       description = "The list of students",
-      content = @Content(mediaType = "application/json", schema = @Schema(implementation = StudentsResponse.class))
+      content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = StudentsResponse.class))
   )
-  @Secured({ "ROLE_USER", "ROLE_ADMIN" })
+  @Secured({ Roles.USER, Roles.ADMIN })
   @Get(value = "/", produces = MediaType.APPLICATION_JSON)
   public HttpResponse<?> getStudents(@RequestBean @Valid EmptyRequest request, Authentication authentication)
       throws AKException {
@@ -55,9 +56,9 @@ public class StudentController extends BaseController {
   @ApiResponse(
       responseCode = "200",
       description = "The data of a single student",
-      content = @Content(mediaType = "application/json", schema = @Schema(implementation = StudentResponse.class))
+      content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = StudentResponse.class))
   )
-  @Secured({ "ROLE_USER", "ROLE_ADMIN" })
+  @Secured({ Roles.USER, Roles.ADMIN })
   @Get(value = "/{id}", produces = MediaType.APPLICATION_JSON)
   public HttpResponse<?> getStudent(Long id, Authentication authentication) throws AKException {
 
@@ -72,9 +73,9 @@ public class StudentController extends BaseController {
   @ApiResponse(
       responseCode = "200",
       description = "The data of the new student",
-      content = @Content(mediaType = "application/json", schema = @Schema(implementation = StudentResponse.class))
+      content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = StudentResponse.class))
   )
-  @Secured({ "ROLE_ADMIN" })
+  @Secured({ Roles.ADMIN })
   @Post(value = "/", produces = MediaType.APPLICATION_JSON)
   public HttpResponse<?> createStudent(@RequestBean @Valid StudentRequest request, Authentication authentication) {
 
@@ -88,9 +89,9 @@ public class StudentController extends BaseController {
   @ApiResponse(
       responseCode = "200",
       description = "The data of the updated student",
-      content = @Content(mediaType = "application/json", schema = @Schema(implementation = StudentResponse.class))
+      content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = StudentResponse.class))
   )
-  @Secured({ "ROLE_ADMIN" })
+  @Secured({ Roles.ADMIN })
   @Put(value = "/{id}", produces = MediaType.APPLICATION_JSON)
   public HttpResponse<?> updateStudent(Long id, @RequestBean @Valid StudentRequest request,
       Authentication authentication) throws AKException {
@@ -106,9 +107,9 @@ public class StudentController extends BaseController {
   @ApiResponse(
       responseCode = "200",
       description = "Success message",
-      content = @Content(mediaType = "application/json", schema = @Schema(implementation = MessageResponse.class))
+      content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = MessageResponse.class))
   )
-  @Secured({ "ROLE_ADMIN", "ROLE_USER" })
+  @Secured({ Roles.ADMIN, Roles.USER })
   @Delete(value = "/{id}", processes = MediaType.APPLICATION_JSON)
   public HttpResponse<?> deleteStudent(Long id, Authentication authentication) throws AKException {
 

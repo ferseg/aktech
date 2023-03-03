@@ -30,7 +30,7 @@ public class BaseController {
     RestResponse<TResponse> response = new RestResponse<TResponse>();
     response.setData(responseBody);
     AKLogger.logRequestSuccess(this, request);
-    return HttpResponse.status(HttpStatus.OK).body(response);
+    return HttpResponse.ok(response);
   }
 
   protected <TRequest extends BaseRequest, TResponse extends BaseResponse> HttpResponse<RestResponse<TResponse>> buildCreatedResponse(
@@ -38,7 +38,7 @@ public class BaseController {
     RestResponse<TResponse> response = new RestResponse<TResponse>();
     response.setData(responseBody);
     AKLogger.logRequestSuccess(this, request);
-    return HttpResponse.status(HttpStatus.CREATED).body(response);
+    return HttpResponse.created(response);
   }
 
   protected <TRequest extends BaseRequest> HttpResponse<?> buildNoContentResponse(TRequest request) {
