@@ -35,6 +35,7 @@ public class StudentController extends BaseController {
   @Inject
   private StudentService studentService;
 
+  // NOTE: Having an empty request seems to me like an overkill or hacky, just because buildOkResponse needs it
   @Operation(description = "Get a list of students")
   @ApiResponse(
       responseCode = "200",
@@ -45,7 +46,7 @@ public class StudentController extends BaseController {
   @Get(value = "/", produces = MediaType.APPLICATION_JSON)
   public HttpResponse<?> getStudents(@RequestBean @Valid EmptyRequest request, Authentication authentication)
       throws AKException {
-
+    // NOTE: There is no need to setup request for an empty request
     setupRequest(request, authentication);
     StudentsResponse response = studentService.getStudents();
 

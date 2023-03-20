@@ -10,6 +10,7 @@ import com.akurey.common.exceptions.errors.CommonError;
 
 import static net.logstash.logback.marker.Markers.append;
 
+// NOTE: Does this have any added value? Since using for example @slf4j will already mark this as an info message
 public final class AKLogger {
 
   private static final String CUSTOM_LOG = "custom_log";
@@ -37,6 +38,7 @@ public final class AKLogger {
     logger.info(event.getMessage(), append(CUSTOM_LOG, marker));
   }
 
+  // NOTE: We could also achieve this by applying AOP so we don't to call it manually maybe
   public static void logRequestFailure(Object caller, AKException exception, Object request) {
     LogEvent event = LogEvent.REQUEST_EXECUTION_FAILED;
     Logger logger = LoggerFactory.getLogger(caller.getClass());

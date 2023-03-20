@@ -2,6 +2,7 @@ package com.akurey.common.models;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+// NOTE: I wouldn't use the same format for sucess and errors
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class RestResponse<T extends BaseResponse> {
 

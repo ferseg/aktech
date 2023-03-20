@@ -32,6 +32,7 @@ public class AuthenticationController extends BaseController {
   @Inject
   private AuthenticationService service;
 
+  // NOTE: It is always better to return the specific type if possible for the HttpResponse
   @Operation(description = "Authenticates a user using username and password")
   @ApiResponse(
       responseCode = "200",

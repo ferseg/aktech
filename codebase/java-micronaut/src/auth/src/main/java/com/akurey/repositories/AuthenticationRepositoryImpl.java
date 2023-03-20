@@ -28,6 +28,7 @@ public class AuthenticationRepositoryImpl extends BaseRepository implements Auth
     return entityManager;
   }
 
+  // NOTE: Move literals to constants
   @Override
   @Transactional
   public LoginResult login(String userIdentifier, String password) throws AKException {

@@ -2,6 +2,7 @@ package com.akurey.services;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -22,6 +23,8 @@ import com.akurey.repositories.AuthenticationRepository;
 import com.akurey.repositories.entities.GetUserWithRefreshTokenResult;
 import com.akurey.repositories.entities.LoginResult;
 
+import javax.security.auth.login.LoginException;
+
 import io.micronaut.security.authentication.Authentication;
 import io.micronaut.security.authentication.ServerAuthentication;
 import io.micronaut.security.token.jwt.generator.AccessRefreshTokenGenerator;
@@ -39,11 +42,13 @@ public class AuthenticationServiceImpl implements AuthenticationService {
   private AuthenticationRepository repository;
 
   @Override
-  public LoginResponse login(LoginRequest request) throws AKException {
+  public LoginResponse login(final LoginRequest request) throws AKException {
 
     // Login
-    LoginResult result = repository.login(request.getUsername(), request.getPassword());
+    final LoginResult result = repository.login(request.getUsername(), request.getPassword());
 
+    // NOTE: Is this really necesary? Since we are restricting to 2 roles
+    // also we should not retrict how many rolas a user can have (getRoleCode) seems to be just 1 role
     if (!result.getRoleCode().contentEquals(UserRole.ROLE_USER.getCode()) &&
         !result.getRoleCode().contentEquals(UserRole.ROLE_ADMIN.getCode())) {
       throw new AKUnauthorizedException(UnauthorizedError.LOGIN_USER_ERROR);
@@ -54,75 +59,68 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     // Generate JWT token
-    ArrayList<String> roles = new ArrayList<>();
-    roles.add(result.getRoleCode());
+    final List<String> roles = List.of(result.getRoleCode());
 
-    Map<String, Object> attributes = new HashMap<>();
+    final Map<String, Object> attributes = new HashMap<>();
 
-    Authentication userDetails = new ServerAuthentication(request.getUsername(), roles, attributes);
+    final Authentication userDetails = new ServerAuthentication(request.getUsername(), roles, attributes);
 
-    Optional<AccessRefreshToken> tokenOptional = tokenGenerator.generate(userDetails);
+    final Optional<AccessRefreshToken> tokenOptional = tokenGenerator.generate(userDetails);
 
-    if (tokenOptional.isPresent()) {
-      AccessRefreshToken token = tokenOptional.get();
-
-      // Create session
-      repository.createUserSession(request.getUsername(), token.getAccessToken(), token.getRefreshToken());
-
-      return LoginResponse.builder()
-          .accessToken(token.getAccessToken())
-          .refreshToken(token.getRefreshToken())
-          .build();
+    if (tokenOptional.isEmpty()) {
+      throw new AKUnauthorizedException();
     }
-    else {
-      throw new AKException(CommonError.LOGIN_ERROR);
-    }
+    final AccessRefreshToken token = tokenOptional.get();
+
+    // Create session
+    repository.createUserSession(request.getUsername(), token.getAccessToken(), token.getRefreshToken());
+
+    return LoginResponse.builder()
+        .accessToken(token.getAccessToken())
+        .refreshToken(token.getRefreshToken())
+        .build();
   }
 
   @Override
-  public LogoutResponse logout(LogoutRequest request) throws AKException {
+  public LogoutResponse logout(final LogoutRequest request) throws AKException {
 
-    String authorizationHeader = request.getAuthorizationHeader();
-    authorizationHeader = authorizationHeader.replaceFirst("Bearer ", "");
+    final String accessToken = request.getAuthorizationHeader().replaceFirst("Bearer ", "");
 
-    repository.logoutUserSession(authorizationHeader);
+    repository.logoutUserSession(accessToken);
 
     return new LogoutResponse();
   }
 
   @Override
-  public RefreshAuthTokenResponse refreshAuthToken(RefreshAuthTokenRequest request) throws AKException {
+  public RefreshAuthTokenResponse refreshAuthToken(final RefreshAuthTokenRequest request) throws AKException {
 
-    String refreshToken = request.getAuthorizationHeader().replaceFirst("Bearer ", "");
+    final String refreshToken = request.getAuthorizationHeader().replaceFirst("Bearer ", "");
 
-    Optional<String> validRefreshToken = refreshTokenValidator.validate(refreshToken);
+    final Optional<String> validRefreshToken = refreshTokenValidator.validate(refreshToken);
     if (validRefreshToken.isEmpty()) {
       // Signature of refresh token is not valid
       throw new AKUnauthorizedException(UnauthorizedError.REFRESH_TOKEN_ERROR);
     }
 
-    GetUserWithRefreshTokenResult userData = repository.getUserWithRefreshToken(refreshToken);
+    final GetUserWithRefreshTokenResult userData = repository.getUserWithRefreshToken(refreshToken);
 
-    ArrayList<String> roles = new ArrayList<>();
-    roles.add(userData.getRoleCodes());
+    final List<String> roles = List.of(userData.getRoleCodes());
 
-    Authentication auth = new ServerAuthentication(userData.getUserName(), roles, null);
+    final Authentication auth = new ServerAuthentication(userData.getUserName(), roles, null);
 
-    Optional<AccessRefreshToken> tokenOptional = tokenGenerator.generate(auth);
+    final Optional<AccessRefreshToken> tokenOptional = tokenGenerator.generate(auth);
 
-    if (tokenOptional.isPresent()) {
-      AccessRefreshToken token = tokenOptional.get();
-
-      repository.refreshSession(refreshToken, userData.getSessionId(), userData.getUserId(), token.getAccessToken(),
-          token.getRefreshToken());
-
-      return RefreshAuthTokenResponse.builder()
-          .accessToken(token.getAccessToken())
-          .refreshToken(token.getRefreshToken())
-          .build();
+    if (tokenOptional.isEmpty()) {
+      throw new AKUnauthorizedException(UnauthorizedError.REFRESH_TOKEN_ERROR);  
     }
-    else {
-      throw new AKException(CommonError.REFRESH_TOKEN_ERROR);
-    }
+    final AccessRefreshToken token = tokenOptional.get();
+
+    repository.refreshSession(refreshToken, userData.getSessionId(), userData.getUserId(), token.getAccessToken(),
+        token.getRefreshToken());
+
+    return RefreshAuthTokenResponse.builder()
+        .accessToken(token.getAccessToken())
+        .refreshToken(token.getRefreshToken())
+        .build();
   }
 }
