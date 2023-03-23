@@ -15,7 +15,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class StudentResponse extends BaseResponse {
 
-  private Long studentId;
+  private Long id;
 
   private String firstName;
 

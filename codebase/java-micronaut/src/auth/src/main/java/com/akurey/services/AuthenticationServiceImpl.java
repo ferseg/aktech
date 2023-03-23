@@ -47,8 +47,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     // Login
     final LoginResult result = repository.login(request.getUsername(), request.getPassword());
 
-    // NOTE: Is this really necesary? Since we are restricting to 2 roles
-    // also we should not retrict how many rolas a user can have (getRoleCode) seems to be just 1 role
+    // NOTE: Is this really necessary? Since we are restricting to 2 roles
+    // also we should not restrict how many rolas a user can have (getRoleCode) seems to be just 1 role
     if (!result.getRoleCode().contentEquals(UserRole.ROLE_USER.getCode()) &&
         !result.getRoleCode().contentEquals(UserRole.ROLE_ADMIN.getCode())) {
       throw new AKUnauthorizedException(UnauthorizedError.LOGIN_USER_ERROR);

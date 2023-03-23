@@ -30,7 +30,7 @@ dependencies {
     implementation("io.micronaut.data:micronaut-data-hibernate-jpa")
     implementation("com.google.guava:guava:31.1-jre")
 
-    runtimeOnly("mysql:mysql-connector-java")
+    implementation("org.postgresql:postgresql:42.5.0")
 
     annotationProcessor("io.micronaut.openapi:micronaut-openapi:4.2.1")
     implementation("io.swagger.core.v3:swagger-annotations")

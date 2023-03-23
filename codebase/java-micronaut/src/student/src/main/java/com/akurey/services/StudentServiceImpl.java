@@ -1,45 +1,33 @@
 package com.akurey.services;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.StreamSupport;
 
 import com.akurey.common.exceptions.AKException;
 import com.akurey.common.exceptions.AKNotFoundException;
-import com.akurey.common.logs.AKLogger;
 import com.akurey.common.models.MessageResponse;
+import com.akurey.mappers.StudentMapper;
 import com.akurey.models.StudentRequest;
 import com.akurey.models.StudentResponse;
 import com.akurey.models.StudentsResponse;
-import com.akurey.repositories.StudentRepository;
-import com.akurey.repositories.entities.EntityResult;
-import com.akurey.repositories.entities.Student;
-import com.google.common.collect.ImmutableList;
+import com.akurey.persistence.entities.Student;
+import com.akurey.persistence.repositories.StudentRepository;
 
-import io.micronaut.core.util.StringUtils;
-import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
+import lombok.RequiredArgsConstructor;
 
+@Singleton
+@RequiredArgsConstructor
 public class StudentServiceImpl implements StudentService {
 
   private final StudentRepository studentRepository;
-
-  @Inject
-  public StudentServiceImpl(StudentRepository studentRepository) {
-    this.studentRepository = studentRepository;
-  }
+  private final StudentMapper studentMapper;
 
   @Override
   public StudentsResponse getStudents() throws AKException {
-
-    EntityResult spResult = studentRepository.test(20, "The description");
-    AKLogger.logInfo(this, "id: " + spResult.getId());
-    AKLogger.logInfo(this, "entityCount: " + spResult.getEntityCount());
-    AKLogger.logInfo(this, "description: " + spResult.getDescription());
-
-    final List<Student> result = ImmutableList.copyOf(studentRepository.findAll());
-    final List<StudentResponse> students = result.stream()
-        .map(this::mapStudentToStudentResponse)
-        .collect(ImmutableList.toImmutableList());
+    final List<Student> result =  StreamSupport.stream(
+            studentRepository.findAll().spliterator(), false).toList();
+    final List<StudentResponse> students = studentMapper.toResponses(result);
 
     return StudentsResponse.builder()
         .students(students)
@@ -49,35 +37,22 @@ public class StudentServiceImpl implements StudentService {
   @Override
   public StudentResponse getStudent(final Long studentId) throws AKException {
     final Student student = studentRepository.findById(studentId).orElseThrow(AKNotFoundException::new);
-    return mapStudentToStudentResponse(student);
+    return studentMapper.toResponse(student);
   }
 
   @Override
   public StudentResponse createStudent(final StudentRequest student) {
-    final Student newStudent = Student.builder()
-        .firstName(student.getFirstName())
-        .middleName(student.getMiddleName())
-        .lastName(student.getLastName())
-        .email(student.getEmail())
-        .created(LocalDateTime.now())
-        .updated(LocalDateTime.now())
-        .build();
-
-    return mapStudentToStudentResponse(studentRepository.save(newStudent));
+    final Student newStudent = studentMapper.toEntity(student);
+    return studentMapper.toResponse(studentRepository.save(newStudent));
   }
 
   @Override
   public StudentResponse updateStudent(final StudentRequest student) throws AKException {
-    final Student existingStudent = studentRepository.findById(student.getId())
+    final Student studentToUpdate = studentMapper.toEntity(student);
+    studentRepository.findById(studentToUpdate.getId())
         .orElseThrow(AKNotFoundException::new);
 
-    existingStudent.setFirstName(student.getFirstName());
-    existingStudent.setMiddleName(Optional.ofNullable(student.getMiddleName()).orElse(StringUtils.EMPTY_STRING));
-    existingStudent.setLastName(student.getLastName());
-    existingStudent.setEmail(student.getEmail());
-    existingStudent.setUpdated(LocalDateTime.now());
-
-    return mapStudentToStudentResponse(studentRepository.update(existingStudent));
+    return studentMapper.toResponse(studentRepository.update(studentToUpdate));
   }
 
   @Override
@@ -85,17 +60,5 @@ public class StudentServiceImpl implements StudentService {
     final Student student = studentRepository.findById(studentId).orElseThrow(AKNotFoundException::new);
     studentRepository.delete(student);
     return new MessageResponse();
-  }
-
-  private StudentResponse mapStudentToStudentResponse(final Student student) {
-    return StudentResponse.builder()
-        .studentId(student.getStudentId())
-        .firstName(student.getFirstName())
-        .middleName(student.getMiddleName())
-        .lastName(student.getLastName())
-        .email(student.getEmail())
-        .created(student.getCreated())
-        .updated(student.getUpdated())
-        .build();
   }
 }

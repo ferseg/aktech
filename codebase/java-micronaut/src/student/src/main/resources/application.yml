@@ -25,7 +25,7 @@ micronaut:
     authentication: bearer
     endpoints:
       login:
-        enabled: false
+        enabled: true
       oauth:
         enabled: false
     token:
@@ -33,12 +33,12 @@ micronaut:
         signatures:
           secret:
             generator:
-              secret: ${ACCESS_TOKEN_SECRET}
+              secret: ${ACCESS_TOKEN_SECRET:thisIsASecretKeyForLocalDevelopment}
         generator:
           access-token:
-            expiration: 2629746
+            expiration: 3600
           refresh-token:
-            secret: ${REFRESH_TOKEN_SECRET}
+            secret: ${REFRESH_TOKEN_SECRET:thisIsASecretKeyForLocalDevelopment}
 ---
 jpa:
   default:
@@ -48,7 +48,7 @@ jpa:
         proc:
           param_null_passing: true
         hbm2ddl:
-          auto: none
+          auto: update
         show_sql: true
 ---
 netty:
@@ -63,7 +63,7 @@ datasources:
   default:
     pool-name: he-hikari-pool
     maximum-pool-size: 2
-    url: jdbc:mysql://${DATABASE_ENDPOINT}:3306/${DATABASE_NAME}
-    driverClassName: com.mysql.cj.jdbc.Driver
-    username: ${DATABASE_USER}
-    password: ${DATABASE_PASSWORD}
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://${DATABASE_ENDPOINT:127.0.0.1}:5432/${DATABASE_NAME:student}
+    username: ${DATABASE_USER:student_user}
+    password: ${DATABASE_PASSWORD:pwd1235}

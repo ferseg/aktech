@@ -2,6 +2,7 @@ package com.akurey.controllers;
 
 import javax.validation.Valid;
 
+import com.akurey.common.annotations.InjectAuthUser;
 import com.akurey.common.exceptions.AKException;
 import com.akurey.common.http.BaseController;
 import com.akurey.common.models.EmptyRequest;
@@ -27,27 +28,26 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import jakarta.inject.Inject;
+import lombok.RequiredArgsConstructor;
 
+@InjectAuthUser
 @Controller("/v1/students")
+@RequiredArgsConstructor
 public class StudentController extends BaseController {
 
-  @Inject
-  private StudentService studentService;
+  private final StudentService studentService;
 
-  // NOTE: Having an empty request seems to me like an overkill or hacky, just because buildOkResponse needs it
   @Operation(description = "Get a list of students")
   @ApiResponse(
       responseCode = "200",
       description = "The list of students",
       content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = StudentsResponse.class))
   )
-  @Secured({ Roles.USER, Roles.ADMIN })
-  @Get(value = "/", produces = MediaType.APPLICATION_JSON)
+  @Secured(Roles.ADMIN)
+  @Get(produces = MediaType.APPLICATION_JSON)
   public HttpResponse<?> getStudents(@RequestBean @Valid EmptyRequest request, Authentication authentication)
       throws AKException {
-    // NOTE: There is no need to setup request for an empty request
-    setupRequest(request, authentication);
+
     StudentsResponse response = studentService.getStudents();
 
     return buildOkResponse(request, response);
@@ -57,17 +57,15 @@ public class StudentController extends BaseController {
   @ApiResponse(
       responseCode = "200",
       description = "The data of a single student",
-      content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = StudentResponse.class))
+      content = @Content(mediaType = MediaType.APPLICATION_JSON,
+              schema = @Schema(implementation = StudentResponse.class))
   )
-  @Secured({ Roles.USER, Roles.ADMIN })
+  @Secured(Roles.ADMIN)
   @Get(value = "/{id}", produces = MediaType.APPLICATION_JSON)
-  public HttpResponse<?> getStudent(Long id, Authentication authentication) throws AKException {
+  public HttpResponse<?> getStudent(@RequestBean @Valid EntityIdRequest request) throws AKException {
 
-    EntityIdRequest request = EntityIdRequest.builder().id(id).build();
-    setupRequest(request, authentication);
-    StudentResponse response = studentService.getStudent(id);
-
-    return buildOkResponse(request, response);
+    StudentResponse response = studentService.getStudent(request.getId());
+    return HttpResponse.ok(response);
   }
 
   @Operation(description = "Create a student")
@@ -77,10 +75,9 @@ public class StudentController extends BaseController {
       content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = StudentResponse.class))
   )
   @Secured({ Roles.ADMIN })
-  @Post(value = "/", produces = MediaType.APPLICATION_JSON)
-  public HttpResponse<?> createStudent(@RequestBean @Valid StudentRequest request, Authentication authentication) {
+  @Post(produces = MediaType.APPLICATION_JSON)
+  public HttpResponse<?> createStudent(@RequestBean @Valid StudentRequest request) {
 
-    setupRequest(request, authentication);
     StudentResponse response = studentService.createStudent(request);
 
     return buildCreatedResponse(request, response);
@@ -90,15 +87,14 @@ public class StudentController extends BaseController {
   @ApiResponse(
       responseCode = "200",
       description = "The data of the updated student",
-      content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = StudentResponse.class))
+      content = @Content(mediaType = MediaType.APPLICATION_JSON, 
+          schema = @Schema(implementation = StudentResponse.class))
   )
   @Secured({ Roles.ADMIN })
   @Put(value = "/{id}", produces = MediaType.APPLICATION_JSON)
-  public HttpResponse<?> updateStudent(Long id, @RequestBean @Valid StudentRequest request,
-      Authentication authentication) throws AKException {
+  public HttpResponse<?> updateStudent(Long id, @RequestBean @Valid StudentRequest request) throws AKException {
 
     request.setId(id);
-    setupRequest(request, authentication);
     StudentResponse response = studentService.updateStudent(request);
 
     return buildOkResponse(request, response);
@@ -112,12 +108,10 @@ public class StudentController extends BaseController {
   )
   @Secured({ Roles.ADMIN, Roles.USER })
   @Delete(value = "/{id}", processes = MediaType.APPLICATION_JSON)
-  public HttpResponse<?> deleteStudent(Long id, Authentication authentication) throws AKException {
+  public HttpResponse<?> deleteStudent(@RequestBean EntityIdRequest request) throws AKException {
+    MessageResponse response = studentService.deleteStudent(request.getId());
 
-    EntityIdRequest request = EntityIdRequest.builder().id(id).build();
-    setupRequest(request, authentication);
-    MessageResponse response = studentService.deleteStudent(id);
-
-    return buildOkResponse(request, response);
+    // return buildOkResponse(request, response);
+    return HttpResponse.ok(response);
   }
 }

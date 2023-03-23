@@ -1,6 +1,6 @@
 plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2"
-    id("io.micronaut.application") version "3.7.3"
+    id("io.micronaut.application") version "3.7.7"
 }
 
 version = "0.1"
@@ -13,38 +13,46 @@ repositories {
 dependencies {
     implementation project(":common")
 
-    compileOnly("org.projectlombok:lombok:1.18.22")
-    annotationProcessor("org.projectlombok:lombok:1.18.22")
+    implementation platform("io.micronaut:micronaut-bom:3.8.5")
+    compileOnly("org.projectlombok:lombok:1.18.26")
+    annotationProcessor("org.projectlombok:lombok:1.18.26")
+
+    implementation("jakarta.annotation:jakarta.annotation-api")
 
     annotationProcessor("io.micronaut:micronaut-http-validation")
     implementation("io.micronaut:micronaut-http-client")
     implementation("io.micronaut:micronaut-jackson-databind")
-    implementation("jakarta.annotation:jakarta.annotation-api")
     runtimeOnly("ch.qos.logback:logback-classic")
+
     implementation("io.micronaut:micronaut-validation")
+
     implementation("io.micronaut.security:micronaut-security-annotations")
     implementation("io.micronaut.security:micronaut-security-jwt")
 
-    implementation("io.micronaut.sql:micronaut-hibernate-jpa")
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
     implementation("io.micronaut.data:micronaut-data-hibernate-jpa")
-    implementation("com.google.guava:guava:31.1-jre")
 
-    runtimeOnly("mysql:mysql-connector-java")
+    implementation('org.postgresql:postgresql:42.5.4')
 
-    annotationProcessor("io.micronaut.openapi:micronaut-openapi:4.2.1")
+    annotationProcessor('io.micronaut.openapi:micronaut-openapi:4.8.5')
     implementation("io.swagger.core.v3:swagger-annotations")
+
+    implementation("org.mapstruct:mapstruct:1.5.3.Final")
+    annotationProcessor("org.mapstruct:mapstruct-processor:1.5.3.Final")
+
+    implementation('io.projectreactor:reactor-core:3.5.4')
 }
 
 application {
     mainClass.set("com.akurey.Application")
 }
 java {
-    sourceCompatibility = JavaVersion.toVersion("11")
-    targetCompatibility = JavaVersion.toVersion("11")
+    sourceCompatibility = JavaVersion.toVersion("17")
+    targetCompatibility = JavaVersion.toVersion("17")
 }
 
 graalvmNative.toolchainDetection = false
+
 micronaut {
     runtime("netty")
     testRuntime("junit5")
