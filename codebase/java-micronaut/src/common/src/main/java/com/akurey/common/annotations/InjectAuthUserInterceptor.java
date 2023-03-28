@@ -22,16 +22,16 @@ public class InjectAuthUserInterceptor implements MethodInterceptor<Object, Obje
 
     @Override
     public Object intercept(final MethodInvocationContext<Object, Object> context) {
-        securityService.getAuthentication().ifPresent( au -> {
+        securityService.getAuthentication().ifPresent( auth -> {
                 final BaseRequest baseRequest = (BaseRequest) Arrays.stream(context.getParameterValues())
                     .filter(param -> param instanceof BaseRequest)
                     .findFirst()
                     .orElseThrow(() -> new IllegalArgumentException("Expecting a base request argument"));
-                final UserAuth ua = UserAuth.builder()
-                    .userIdentifier(au.getName())
-                    .roles(List.copyOf(au.getRoles()))
+                final UserAuth userAuth = UserAuth.builder()
+                    .userIdentifier(auth.getName())
+                    .roles(List.copyOf(auth.getRoles()))
                     .build();
-                baseRequest.setUser(ua);
+                baseRequest.setUser(userAuth);
             }
         );
         
