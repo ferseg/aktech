@@ -23,8 +23,7 @@ public class InjectAuthUserInterceptor implements MethodInterceptor<Object, Obje
     @Override
     public Object intercept(final MethodInvocationContext<Object, Object> context) {
         securityService.getAuthentication().ifPresent( au -> {
-                final List<Object> parameters = Arrays.stream(context.getParameterValues()).toList();
-                final BaseRequest baseRequest = (BaseRequest) parameters.stream()
+                final BaseRequest baseRequest = (BaseRequest) Arrays.stream(context.getParameterValues())
                     .filter(param -> param instanceof BaseRequest)
                     .findFirst()
                     .orElseThrow(() -> new IllegalArgumentException("Expecting a base request argument"));
