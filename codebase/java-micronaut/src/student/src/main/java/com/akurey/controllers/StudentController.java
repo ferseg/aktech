@@ -45,7 +45,7 @@ public class StudentController extends BaseController {
   )
   @Secured(Roles.ADMIN)
   @Get(produces = MediaType.APPLICATION_JSON)
-  public HttpResponse<?> getStudents(@RequestBean @Valid EmptyRequest request, Authentication authentication)
+  public HttpResponse<?> getStudents(@RequestBean @Valid EmptyRequest request)
       throws AKException {
 
     StudentsResponse response = studentService.getStudents();
